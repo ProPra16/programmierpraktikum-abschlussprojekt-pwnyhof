@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/Han
 <<<<<<< HEAD
 <<<<<<< HEAD
 ~(*-*)~
@@ -32,6 +35,9 @@ Informationen:
 1. Der Master-Branche kann jetzt von Eclipse als Java-Projekt
    erkannt und ausgeführt werden.
 <<<<<<< HEAD
+>>>>>>> origin/master
+=======
+<<<<<<< HEAD
 >>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/heads/master
@@ -52,3 +58,4 @@ Informationen:
 1. Der Master-Branche kann jetzt von Eclipse als Java-Projekt
    erkannt und ausgeführt werden.
 >>>>>>> refs/remotes/origin/chris
+>>>>>>> refs/remotes/origin/Han
