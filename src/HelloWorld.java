@@ -9,5 +9,7 @@ public class HelloWorld
 		System.out.println("Moin Moin");
 		System.out.println("Moinsen");
 		System.out.println("Oh mann ist das alles nervig und umstaendlich hier!");
+		System.out.println("test");
+
 	}
 }
