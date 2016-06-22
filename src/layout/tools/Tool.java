@@ -1,4 +1,4 @@
-package tools;
+package layout.tools;
 
 public interface Tool {
 

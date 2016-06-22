@@ -1,4 +1,4 @@
-package window;
+package layout.window;
 
 public class MainWindow {
 
