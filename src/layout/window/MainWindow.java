@@ -7,7 +7,7 @@ public class MainWindow{
 
 	public static void buildWindow(GridPane root){
 		Red red = new Red(0, 0, 1, 1);
-		root.add(red.getTool(), red.getColumnIndex(), red.getRowIndex(), red.getColSpan(), red.getRowSpan());
+		root.add(red.getTool(), 0, 0, 1, 1);
 	}
 	
 
