@@ -10,12 +10,12 @@ public class Red implements Tool{
 	private final int colSpan;
 	private final int rowSpan;
 	
-	public Red(){
+	public Red(int columnIndex, int rowIndex, int colSpan, int rowSpan){
 		red = new Button("Red");
-		columnIndex = 0;
-		rowIndex = 0;
-		colSpan = 1;
-		rowSpan = 1;
+		this.columnIndex = columnIndex;
+		this.rowIndex = rowIndex;
+		this.colSpan = colSpan;
+		this.rowSpan = rowSpan;
 		
         red.setOnAction(event -> {
         	System.out.println("Hello");
