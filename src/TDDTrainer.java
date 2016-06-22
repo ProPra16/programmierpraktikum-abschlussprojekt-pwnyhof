@@ -1,5 +1,10 @@
+import main.TDDTMain;
 
-public class TDDTrainer {
+public class TDDTrainer{
 
-		//Programmstart
+	//Programmstart
+	
+	public static void main(String[] args){
+		TDDTMain.start(args);
+	}
 }
