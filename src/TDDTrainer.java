@@ -1,5 +1,5 @@
 
 public class TDDTrainer {
 
-		//Main Klasse
+		//Programmstart
 }
