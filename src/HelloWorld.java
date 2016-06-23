@@ -1,23 +1,19 @@
 
-public class HelloWorld
-{
+public class HelloWorld {
 
-	// Yay es l�uft :D
-	// So l�uft das im Auenland
-	public static void main(String[] args)
-	{
-		System.out.println("Moin Moin");
-		System.out.println("Moinsen");
-		System.out.println("Oh mann ist das alles nervig und umstaendlich hier!");
-		System.out.println("TEST");
-		System.out.println("TEST");
-		System.out.println("TEST");
-		//Mal schauen ob das jetzt einfach so geht wie ich mir das gedacht hab^^
+    // Yay es l�uft :D
+    // So l�uft das im Auenland
+    public static void main(String[] args) {
+        System.out.println("Moin Moin");
+        System.out.println("Moinsen");
+        System.out.println("Oh mann ist das alles nervig und umstaendlich hier!");
+        System.out.println("TEST");
+        System.out.println("TEST");
+        System.out.println("TEST");
+        //Mal schauen ob das jetzt einfach so geht wie ich mir das gedacht hab^^
 
-		//Noch ein paar mehr zeichen!!!!!111einself
+        //Noch ein paar mehr zeichen!!!!!111einself
 
 
-		
-
-	}
+    }
 }
