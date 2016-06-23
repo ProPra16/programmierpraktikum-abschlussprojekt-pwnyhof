@@ -2,8 +2,8 @@
 public class HelloWorld
 {
 
-	// Yay es läuft :D
-	// So läuft das im Auenland
+	// Yay es lï¿½uft :D
+	// So lï¿½uft das im Auenland
 	public static void main(String[] args)
 	{
 		System.out.println("Moin Moin");
@@ -12,6 +12,9 @@ public class HelloWorld
 		System.out.println("TEST");
 		System.out.println("TEST");
 		System.out.println("TEST");
+		//Mal schauen ob das jetzt einfach so geht wie ich mir das gedacht hab^^
+
+		//Noch ein paar mehr zeichen!!!!!111einself
 
 
 		
