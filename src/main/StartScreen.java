@@ -1,5 +1,8 @@
 package main;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,7 +19,6 @@ public class StartScreen extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("TDDT 1.0");
 		primaryStage.show();
-
 	}
 
 }
