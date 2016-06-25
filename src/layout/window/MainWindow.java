@@ -10,6 +10,7 @@ public class MainWindow{
 		Red red = new Red();
 		root.add(red.getTool(), 0, 1);
 		
+		
 		Bar menubar = new Bar();
 		root.add(menubar.getTool(), 0, 0, 2, 1);
 	}
