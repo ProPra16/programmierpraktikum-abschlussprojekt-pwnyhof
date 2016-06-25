@@ -11,10 +11,6 @@ import javafx.stage.Stage;
 
 public class StartScreen extends Application {
 
-	public static void main(String[] args) {
-		Application.launch(StartScreen.class);
-	}
-
 	@Override
 	public void start(Stage primaryStage) {
 		try {
