@@ -36,7 +36,7 @@
             <Font name="Marlett" size="37.0" />
          </font>
       </Label>
-      <Button layoutX="222.0" layoutY="216.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="167.0" text="Start" textFill="RED">
+      <Button fx:id="start" layoutX="215.0" layoutY="213.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="167.0" text="Start" textFill="RED">
          <font>
             <Font name="MS PGothic" size="31.0" />
          </font>
