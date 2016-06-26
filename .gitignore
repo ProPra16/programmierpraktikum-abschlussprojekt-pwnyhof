@@ -16,6 +16,7 @@ hs_err_pid*
 .idea
 .classpath
 *.iml
+README
 out/
 
 ### Eclipse template
