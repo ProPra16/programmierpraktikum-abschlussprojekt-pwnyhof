@@ -1,5 +1,3 @@
-
-
 import javafx.application.Application;
 
 import javafx.scene.Scene;
@@ -14,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import layout.tools.Exit;
+import layout.tools.Read;
 import javafx.scene.paint.*;
 
 public class TDDTStart extends Application {
@@ -46,6 +46,7 @@ public class TDDTStart extends Application {
 		base.getChildren().add(name);
 		// ****************************************************
 		start.setOnAction(event -> {
+
 			AnchorPane second = new AnchorPane();
 
 			second.setPrefHeight(600);
@@ -60,6 +61,10 @@ public class TDDTStart extends Application {
 			bar.setPrefWidth(600);
 			Menu file = new Menu("File");
 			MenuItem fileExit = new MenuItem("Exit");
+
+			fileExit.setOnAction(Event -> {
+				Exit.exit();
+			});
 			file.getItems().add(fileExit);
 			bar.getMenus().add(file);
 			second.getChildren().add(bar);
@@ -69,14 +74,18 @@ public class TDDTStart extends Application {
 			final TextArea r = new TextArea();
 			l.setPrefHeight(530);
 			l.setPrefWidth(295);
+			// l.autosize();
 			l.setLayoutX(0);
 			l.setLayoutY(40);
+			l.setDisable(true);
+			// TODO: unlock after first unsuccessful test
 
 			r.setPrefHeight(530);
 			r.setPrefWidth(295);
+			// r.autosize();
 			r.setLayoutX(0);
 			r.setLayoutY(40);
-
+			// -----------------------------------------------------------------------
 			final Label code = new Label("Code");
 			code.setTextFill(Paint.valueOf("BLUE"));
 			code.setLayoutX(125);
@@ -88,13 +97,16 @@ public class TDDTStart extends Application {
 			test.setLayoutX(125);
 			test.setLayoutY(10);
 			test.setFont(Font.font("Courier New", FontWeight.BOLD, 22));
+			// -------------------------------------------------------------------------------
+
+			Read read = new Read();
 
 			// -------------------------------------------------------------------------------
 
 			AnchorPane left = new AnchorPane();
 			left.getChildren().addAll(l, code);
 			AnchorPane right = new AnchorPane();
-			right.getChildren().addAll(r, test);
+			right.getChildren().addAll(r, test, read.getTool());
 			// -------------------------------------------------------------------
 			SplitPane split = new SplitPane();
 
