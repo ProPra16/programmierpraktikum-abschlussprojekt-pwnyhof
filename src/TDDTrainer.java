@@ -1,4 +1,3 @@
-package de.hhu.propra16.abschlussprojekt;
 
 import de.hhu.propra16.abschlussprojekt.main.TDDTMain;
 

@@ -3,7 +3,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 
-mainClassName = 'de.hhu.propra16.abschlussprojekt.src.TDDTrainer'
+mainClassName = 'TDDTrainer'
 
 repositories {
     mavenCentral()
