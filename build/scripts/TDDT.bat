@@ -72,7 +72,7 @@ set CMD_LINE_ARGS=%$
 set CLASSPATH=%APP_HOME%\lib\TDDT.jar
 
 @rem Execute TDDT
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %TDDT_OPTS%  -classpath "%CLASSPATH%" Main %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %TDDT_OPTS%  -classpath "%CLASSPATH%" TDDTrainer %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
