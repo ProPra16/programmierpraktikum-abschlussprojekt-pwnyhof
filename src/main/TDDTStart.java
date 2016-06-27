@@ -1,21 +1,23 @@
 package main;
+
+import java.util.Scanner;
+
 import javafx.application.Application;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import layout.tools.Exit;
-import layout.tools.Read;
-import javafx.scene.paint.*;
+import layout.tools.CodeLabel;
+import layout.tools.MenueBar;
+import layout.tools.PrStageNameLb;
+import layout.tools.TestLabel;
+import layout.tools.TextAreaLeft;
+import layout.tools.TextAreaRight;
 
 public class TDDTStart extends Application {
 
@@ -27,24 +29,19 @@ public class TDDTStart extends Application {
 		Scene scene = new Scene(base);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("TDDT 1.0");
-
+		// --------------------------------------------------------
 		Button start = new Button("Start");
-		Label name = new Label("Welcome to TDDT 1.0!");
 
 		start.setPrefHeight(55);
 		start.setPrefWidth(165);
 		start.setLayoutX(215);
 		start.setLayoutY(215);
-
-		name.setLayoutX(125);
-		name.setLayoutY(85);
-		name.setPrefWidth(362);
-		name.setPrefHeight(39);
-		name.setFont(new Font("Mariet", 35));
-		name.setTextFill(Paint.valueOf("BLUE"));
+		// -----------------------------------------------------
+		PrStageNameLb name = new PrStageNameLb();
+		name.make();
 
 		base.getChildren().add(start);
-		base.getChildren().add(name);
+		base.getChildren().add(name.getTool());
 		// ****************************************************
 		start.setOnAction(event -> {
 
@@ -57,58 +54,52 @@ public class TDDTStart extends Application {
 			primaryStage.setScene(secondscene);
 
 			// -----------------------------------------------------
-			MenuBar bar = new MenuBar();
-			bar.setPrefHeight(25);
-			bar.setPrefWidth(600);
-			Menu file = new Menu("File");
-			MenuItem fileExit = new MenuItem("Exit");
+			MenueBar bar = new MenueBar();
+			bar.make();
 
-			fileExit.setOnAction(Event -> {
-				Exit.exit();
-			});
-			file.getItems().add(fileExit);
-			bar.getMenus().add(file);
-			second.getChildren().add(bar);
+			second.getChildren().add(bar.getTool());
 			// ------------------------------------------------------
 
-			final TextArea l = new TextArea();
-			final TextArea r = new TextArea();
-			l.setPrefHeight(530);
-			l.setPrefWidth(295);
-			// l.autosize();
-			l.setLayoutX(0);
-			l.setLayoutY(40);
-			l.setDisable(true);
-			// TODO: unlock after first unsuccessful test
+			TextAreaLeft l = new TextAreaLeft();
+			l.make();
+			TextAreaRight r = new TextAreaRight();
+			r.make();
 
-			r.setPrefHeight(530);
-			r.setPrefWidth(295);
-			// r.autosize();
-			r.setLayoutX(0);
-			r.setLayoutY(40);
 			// -----------------------------------------------------------------------
-			final Label code = new Label("Code");
-			code.setTextFill(Paint.valueOf("BLUE"));
-			code.setLayoutX(125);
-			code.setLayoutY(10);
-			code.setFont(Font.font("Courier New", FontWeight.BOLD, 22));
-
-			final Label test = new Label("Test");
-			test.setTextFill(Paint.valueOf("RED"));
-			test.setLayoutX(125);
-			test.setLayoutY(10);
-			test.setFont(Font.font("Courier New", FontWeight.BOLD, 22));
+			CodeLabel code = new CodeLabel();
+			code.make();
+			TestLabel test = new TestLabel();
+			test.make();
 			// -------------------------------------------------------------------------------
 
-			Read read = new Read();
-
+			Button read = new Button("read");
+			read.setPrefHeight(25);
+			read.setPrefWidth(50);
+			read.setTextFill(Color.TOMATO);
+			read.setFont(Font.font("Courier New", FontWeight.BOLD, 13));
+			read.setLayoutX(40);
+			read.setLayoutY(10);
 			// -------------------------------------------------------------------------------
 
 			AnchorPane left = new AnchorPane();
-			left.getChildren().addAll(l, code);
+			left.getChildren().addAll(l.getTool(), code.getTool());
 			AnchorPane right = new AnchorPane();
-			right.getChildren().addAll(r, test, read.getTool());
+			right.getChildren().addAll(r.getTool(), test.getTool(), read);
+
+			read.setOnAction(Event -> {
+
+				Scanner scanner = new Scanner(r.getText());
+				while (scanner.hasNext()) {
+					String input = scanner.nextLine();
+
+					r.setText(input);
+
+					System.out.println(r.getText());
+				}
+				scanner.close();
+			});
 			// -------------------------------------------------------------------
+
 			SplitPane split = new SplitPane();
 
 			split.setPrefHeight(575);
@@ -129,8 +120,8 @@ public class TDDTStart extends Application {
 
 	}
 
-//	public static void main(String[] args) {
-//		launch(args);
-//	}
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }
