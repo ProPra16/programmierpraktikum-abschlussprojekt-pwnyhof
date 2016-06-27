@@ -1,6 +1,7 @@
 Programmierpraktikum - Projekt 7
 
-image:https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-pwnyhof.svg?branch=master["Build Status", link="https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-pwnyhof"]
+.. image:: https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-pwnyhof.svg?branch=master
+    :target: https://travis-ci.org/ProPra16/programmierpraktikum-abschlussprojekt-pwnyhof
 
 Gruppe:
 
