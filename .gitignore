@@ -66,3 +66,7 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+.project
+*.project
+*.project
+*.project
