@@ -13,3 +13,5 @@ ObiHanKenobi
 Informationen:
 
 1. Projekt ist nun mit Gradle erstellt.
+
+2. Das Projekt kooperiert nun mit Travis.
