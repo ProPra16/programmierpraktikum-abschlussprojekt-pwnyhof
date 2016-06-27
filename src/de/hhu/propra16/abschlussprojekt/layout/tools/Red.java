@@ -1,4 +1,4 @@
-package de.hhu.propra16.abschlussprojekt.src.layout.tools;
+package de.hhu.propra16.abschlussprojekt.layout.tools;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;

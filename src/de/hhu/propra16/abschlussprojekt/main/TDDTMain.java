@@ -1,11 +1,11 @@
-package de.hhu.propra16.abschlussprojekt.src.main;
+package de.hhu.propra16.abschlussprojekt.main;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import de.hhu.propra16.abschlussprojekt.src.layout.window.MainWindow;
+import de.hhu.propra16.abschlussprojekt.layout.window.MainWindow;
 
 public class TDDTMain extends Application{
 

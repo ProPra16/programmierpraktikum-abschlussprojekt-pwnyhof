@@ -1,8 +1,8 @@
-package de.hhu.propra16.abschlussprojekt.src.layout.window;
+package de.hhu.propra16.abschlussprojekt.layout.window;
 
 import javafx.scene.layout.GridPane;
-import de.hhu.propra16.abschlussprojekt.src.layout.tools.Bar;
-import de.hhu.propra16.abschlussprojekt.src.layout.tools.Red;
+import de.hhu.propra16.abschlussprojekt.layout.tools.Bar;
+import de.hhu.propra16.abschlussprojekt.layout.tools.Red;
 
 public class MainWindow{
 

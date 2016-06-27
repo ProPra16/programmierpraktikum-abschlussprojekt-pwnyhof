@@ -1,6 +1,6 @@
-package de.hhu.propra16.abschlussprojekt.src;
+package de.hhu.propra16.abschlussprojekt;
 
-import de.hhu.propra16.abschlussprojekt.src.main.TDDTMain;
+import de.hhu.propra16.abschlussprojekt.main.TDDTMain;
 
 public class TDDTrainer{
 
