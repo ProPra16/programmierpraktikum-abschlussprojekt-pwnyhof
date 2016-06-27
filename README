@@ -10,9 +10,4 @@ ObiHanKenobi
 
 Informationen:
 
-1. Der Master-Branche kann jetzt von Eclipse als Java-Projekt
-   erkannt und ausgeführt werden.
-   
-2. Grundlegende Idee zum Projekt implementiert.
-
-   Ich teste das mal direkt von eclipse aus
+1. Projekt ist nun mir Gradle erstellt.
