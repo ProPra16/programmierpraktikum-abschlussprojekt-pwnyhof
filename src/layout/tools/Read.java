@@ -25,7 +25,7 @@ public class Read implements Tool {
 
 		read.setOnAction(Event -> {
 			System.out.println(textArea.getText());
-			textArea.setText(textArea.getText());
+			textArea.setText("blabla");
 		});
 	}
 
