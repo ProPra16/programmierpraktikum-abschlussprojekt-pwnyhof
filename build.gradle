@@ -3,7 +3,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 
-mainClassName = 'Main'
+mainClassName = 'TDDTrainer'
 
 repositories {
     mavenCentral()
