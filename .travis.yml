@@ -7,4 +7,8 @@ notifications:
   email: false
 =======
   email: false
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/Han
+=======
+>>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/Han
