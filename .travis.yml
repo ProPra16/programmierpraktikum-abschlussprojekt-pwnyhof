@@ -3,16 +3,4 @@ language: java
 jdk: oraclejdk8
 
 notifications:
-<<<<<<< HEAD
-<<<<<<< HEAD
   email: false
-=======
-  email: false
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/Han
-=======
->>>>>>> refs/remotes/origin/master
->>>>>>> refs/remotes/origin/Han
-=======
-  email: false
->>>>>>> refs/remotes/origin/Chris
