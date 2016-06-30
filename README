@@ -15,3 +15,9 @@ Informationen:
 2. Das Projekt kooperiert nun mit Travis.
 
 3. Grundgerüst/konzept der Grafischen Oberfläche steht
+
+Ziele:
+
+1. Graphische Oberfläche per fxml-Datei erstellen
+
+2. Implementierung der Programm-Logik
