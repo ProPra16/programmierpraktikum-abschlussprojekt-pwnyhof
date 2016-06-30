@@ -1,9 +1,16 @@
+
 import javafx.application.Application;
+import javafx.stage.Stage;
 import main.TDDTMain;
 
-public class TDDTStart {
+public class TDDTStart extends Application {
 
 	public static void main(String[] args) {
-		Application.launch(TDDTMain.class);
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage primaryStage) {
+		TDDTMain.mainWindow(primaryStage);
 	}
 }

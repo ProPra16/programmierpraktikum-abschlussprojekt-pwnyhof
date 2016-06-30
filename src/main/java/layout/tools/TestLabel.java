@@ -7,18 +7,19 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TestLabel implements Tool {
-	final Label test = new Label("Test");
+	
+	private Label test;
 
-	public void make() {
+	public TestLabel() {
+		test = new Label("Test");
+		
 		test.setTextFill(Paint.valueOf("RED"));
 		test.setLayoutX(125);
 		test.setLayoutY(10);
 		test.setFont(Font.font("Courier New", FontWeight.BOLD, 22));
 	}
 
-	@Override
 	public Node getTool() {
-		// TODO Auto-generated method stub
 		return test;
 	}
 
