@@ -1,2 +1,7 @@
-/layout/
-/main/
+
+/bin/
+/.gradle/
+/build/
+/.settings/
+.classpath
+.project
