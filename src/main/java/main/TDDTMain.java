@@ -34,6 +34,5 @@ public class TDDTMain {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-		System.out.println("Hi");
 	}
 }
