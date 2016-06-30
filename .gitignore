@@ -4,4 +4,8 @@
 /build/
 /.settings/
 .classpath
+<<<<<<< HEAD
 .projekt
+=======
+.project
+>>>>>>> origin/master
