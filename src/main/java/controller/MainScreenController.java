@@ -1,5 +1,10 @@
 package controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,9 +26,6 @@ public class MainScreenController {
 	public MenuItem exit;
 
 	@FXML
-	public Button start;
-
-	@FXML
 	public Button runTest;
 
 	@FXML
@@ -34,6 +36,9 @@ public class MainScreenController {
 
 	@FXML
 	public TextArea rightTA;
+
+	@FXML
+	public TextArea console;
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
@@ -52,15 +57,39 @@ public class MainScreenController {
 	}
 
 	@FXML
-	public void handleButton(ActionEvent e) {
+	public void handleButton(ActionEvent e) throws IOException {
 		if (e.getSource() == runCode) {
 
 			rightTA.setText(leftTA.getText());
 			return;
 
 		}
-		if (e.getSource() == load) {
+		if (e.getSource() == runTest) {
+			try {
 
+				String content = rightTA.getText();
+
+				File file = new File("C:/Users/Han/Desktop/Data/Test1.java");
+
+				// if file doesnt exists, then create it
+				if (!file.exists()) {
+					file.createNewFile();
+				}
+
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(content);
+				bw.close();
+
+				System.out.println("Done");
+
+			} catch (IOException ee) {
+				ee.printStackTrace();
+			}
+			// Runtime rt = Runtime.getRuntime();
+			// Process pr = rt.exec("javac Test.java");
+			// JUnitCore junit = new JUnitCore();
+			// Result result = junit.run(pr.getClass());
 		}
 		if (e.getSource() == save) {
 
