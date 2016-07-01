@@ -1,12 +1,9 @@
-package controller;
+package layout.tools;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
