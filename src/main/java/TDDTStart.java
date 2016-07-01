@@ -10,7 +10,7 @@ public class TDDTStart extends Application {
 	public void start(Stage stage) throws Exception {
 
 		// Load root layout from fxml file.
-		BorderPane base = FXMLLoader.load(getClass().getResource("/layout.tools/TextScreen.fxml"));
+		BorderPane base = FXMLLoader.load(getClass().getResource("/layout/tools/TextScreen.fxml"));
 
 		// Show the scene containing the root layout.
 		Scene scene = new Scene(base);

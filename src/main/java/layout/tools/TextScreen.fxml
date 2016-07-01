@@ -17,7 +17,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="251.0">
                <children>
-                  <TextArea fx:id="leftTA" prefHeight="331.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="leftTA" layoutX="27.0" layoutY="41.0" prefHeight="331.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
@@ -37,9 +37,9 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
-                              <MenuItem mnemonicParsing="false" text="New" />
-                          <MenuItem mnemonicParsing="false" text="Load" />
-                              <MenuItem mnemonicParsing="false" text="Save" />
+                              <MenuItem fx:id="neu" mnemonicParsing="false" onAction="#handleMenuItem" text="New" />
+                          <MenuItem fx:id="load" mnemonicParsing="false" onAction="#handleMenuItem" text="Load" />
+                              <MenuItem fx:id="save" mnemonicParsing="false" onAction="#handleMenuItem" text="Save" />
                               <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleMenuItem" text="Exit" />
                         </items>
                       </Menu>
@@ -75,7 +75,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Button fx:id="runTest" mnemonicParsing="false" text="runTest" textFill="#eb0303">
+                              <Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="runTest" textFill="#eb0303">
                                  <font>
                                     <Font name="Consolas Bold" size="15.0" />
                                  </font></Button>
@@ -98,7 +98,7 @@
             <Label text="Console" BorderPane.alignment="TOP_LEFT" />
          </top>
          <center>
-            <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="console" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </bottom>
