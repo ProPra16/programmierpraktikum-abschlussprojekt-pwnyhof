@@ -1,5 +1,8 @@
 package de.hhu.propra16.tddt.controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -7,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-
 public class MainScreenController {
 
 	@FXML
@@ -46,6 +48,42 @@ public class MainScreenController {
 
 		}
 		if (e.getSource() == save) {
+			try {
+
+				String test = rightTA.getText();
+
+				File testFile = new File("./Test/Test.java");
+
+				// if file doesnt exists, then create it
+				if (!testFile.exists()) {
+					testFile.createNewFile();
+				}
+
+				FileWriter testFw = new FileWriter(testFile.getAbsoluteFile());
+				BufferedWriter testBw = new BufferedWriter(testFw);
+				testBw.write(test);
+				testBw.close();
+
+				// ************************************************************************************************
+
+				String code = leftTA.getText();
+
+				File codeFile = new File("./Code/Code.java");
+
+				// if file doesnt exists, then create it
+				if (!codeFile.exists()) {
+					codeFile.createNewFile();
+				}
+
+				FileWriter codeFw = new FileWriter(codeFile.getAbsoluteFile());
+				BufferedWriter codeBw = new BufferedWriter(codeFw);
+				codeBw.write(code);
+				codeBw.close();
+				System.out.println("Done");
+
+			} catch (IOException ee) {
+				ee.printStackTrace();
+			}
 
 		}
 		if (e.getSource() == exit) {
@@ -54,46 +92,22 @@ public class MainScreenController {
 	}
 
 	@FXML
-	public void handleButton(ActionEvent e) throws IOException {
+	public void handleButton(ActionEvent e) {
 		if (e.getSource() == runCode) {
-
-			rightTA.setText(leftTA.getText());
-			return;
+			Runtime rt = Runtime.getRuntime();
+			try {
+				rt.exec("javac  ./Code.java");
+				rt.exec("java  ./Code/Code");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 		}
 		if (e.getSource() == runTest) {
-			
-			/*
-			try {
 
-				
-				String content = rightTA.getText();
-
-				File file = new File("C:/Users/Han/Desktop/Data/Test1.java");
-
-				// if file doesnt exists, then create it
-				if (!file.exists()) {
-					file.createNewFile();
-				}
-
-				FileWriter fw = new FileWriter(file.getAbsoluteFile());
-				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(content);
-				bw.close();
-
-				System.out.println("Done");
-				
-
-			} catch (IOException ee) {
-				ee.printStackTrace();
-			}
-			*/
-			// Runtime rt = Runtime.getRuntime();
-			// Process pr = rt.exec("javac Test.java");
-			// JUnitCore junit = new JUnitCore();
-			// Result result = junit.run(pr.getClass());
 		}
-		
+
 	}
 
 }
