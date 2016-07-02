@@ -1,4 +1,4 @@
-//package de.hhu.propra16.tddt;
+package de.hhu.propra16.tddt;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,7 @@ public class TDDTStart extends Application {
 
 		try{
 		// Load root layout from fxml file.
-		BorderPane base = FXMLLoader.load(getClass().getResource("./de/hhu/propra16/tddt/layout/TextScreen.fxml"));
+		BorderPane base = FXMLLoader.load(getClass().getResource("./layout/TextScreen.fxml"));
 
 		// Show the scene containing the root layout.
 		Scene scene = new Scene(base);

@@ -59,7 +59,7 @@ public class MainScreenController {
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
 		if (e.getSource() == runCode) {
-			System.out.println("Hi");
+
 			rightTA.setText(leftTA.getText());
 			return;
 
