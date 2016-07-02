@@ -1,5 +1,7 @@
 package de.hhu.propra16.tddt;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,7 +11,7 @@ import javafx.stage.Stage;
 
 public class TDDTStart extends Application {
 
-	public void start(Stage stage) throws Exception {
+	public void start(Stage primaryStage) throws Exception {
 
 		try{
 		// Load root layout from fxml file.
@@ -17,17 +19,14 @@ public class TDDTStart extends Application {
 
 		// Show the scene containing the root layout.
 		Scene scene = new Scene(base);
-		Stage primaryStage = new Stage();
+		
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		catch(Exception e){
-			
-		}
-
 	}
-
-
 
 	public static void main(String[] args) {
 		launch(args);
