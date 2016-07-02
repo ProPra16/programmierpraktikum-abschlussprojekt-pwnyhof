@@ -67,6 +67,7 @@ public class MainScreenController {
 		if (e.getSource() == runTest) {
 			try {
 
+				/*
 				String content = rightTA.getText();
 
 				File file = new File("C:/Users/Han/Desktop/Data/Test1.java");
@@ -82,6 +83,7 @@ public class MainScreenController {
 				bw.close();
 
 				System.out.println("Done");
+				*/
 
 			} catch (IOException ee) {
 				ee.printStackTrace();
