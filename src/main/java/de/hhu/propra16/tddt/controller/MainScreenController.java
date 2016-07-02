@@ -1,8 +1,5 @@
 package de.hhu.propra16.tddt.controller;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
