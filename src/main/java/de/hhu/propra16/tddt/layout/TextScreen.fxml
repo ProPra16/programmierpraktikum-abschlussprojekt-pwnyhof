@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="layout.tools.MainScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
    <center>
       <SplitPane dividerPositions="0.498989898989899" prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="251.0">
                <children>
-                  <TextArea fx:id="leftTA" prefHeight="331.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="leftTA" prefHeight="418.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
                <children>
-                  <TextArea fx:id="rightTA" layoutX="-14.0" prefHeight="331.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="rightTA" layoutX="-6.0" prefHeight="418.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
@@ -93,12 +93,12 @@
       </SplitPane>
    </top>
    <bottom>
-      <BorderPane prefHeight="110.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <top>
             <Label text="Console" BorderPane.alignment="TOP_LEFT" />
          </top>
          <center>
-            <TextArea fx:id="console" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="console" prefHeight="241.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </bottom>
