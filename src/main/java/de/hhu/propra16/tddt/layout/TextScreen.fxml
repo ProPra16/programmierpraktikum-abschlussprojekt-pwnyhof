@@ -93,12 +93,12 @@
       </SplitPane>
    </top>
    <bottom>
-      <BorderPane prefHeight="146.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <top>
             <Label text="Console" BorderPane.alignment="TOP_LEFT" />
          </top>
          <center>
-            <TextArea fx:id="console" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="console" prefHeight="241.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </bottom>
