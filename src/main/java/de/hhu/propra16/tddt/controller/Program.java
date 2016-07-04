@@ -13,7 +13,6 @@ import javafx.scene.control.TextArea;
 import vk.core.api.CompilationUnit;
 import vk.core.api.CompileError;
 import vk.core.api.CompilerResult;
-import vk.core.internal.InternalCompileProblem;
 import vk.core.internal.InternalCompiler;
 
 public class Program {
