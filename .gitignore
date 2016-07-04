@@ -6,3 +6,6 @@
 .classpath
 .project
 build.fxbuild
+/.settings/
+/.gradle/
+/build/
