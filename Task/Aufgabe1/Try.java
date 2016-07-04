@@ -1,12 +1,18 @@
 
+
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Try{
 	
 	@Test
-	public void test(){
-		assertEquals("Hello World", Code.greet());
+	public void stringTest(){
+		assertEquals("Hello Wo!", Code.greet());
 		
+	}
+	
+	@Test
+	public void addTest(){
+		assertEquals(10, Code.add());
 	}
 }

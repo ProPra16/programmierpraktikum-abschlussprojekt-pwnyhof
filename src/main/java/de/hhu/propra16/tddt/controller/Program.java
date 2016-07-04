@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import javafx.scene.control.TextArea;
@@ -88,7 +89,8 @@ public class Program {
 		if (result != null && !result.hasCompileErrors()) {
 			Process processRun = null;
 			try {
-				processRun = Runtime.getRuntime().exec("java -cp " + info.getPathToFiles() + " " + info.getCodeFileName());
+				processRun = Runtime.getRuntime()
+						.exec("java -cp " + info.getPathToFiles() + " " + info.getCodeFileName());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -108,7 +110,6 @@ public class Program {
 		try {
 			contentTest = Files.readAllLines(testFilePath);
 			contentCode = Files.readAllLines(codeFilePath);
-			
 
 		} catch (IOException e) {
 			System.out.println("ERROR: File Path Not Found!");
@@ -120,7 +121,7 @@ public class Program {
 		for (int i = 0; i < contentTest.size(); i++) {
 			contentTestInString = contentTestInString + contentTest.get(i);
 		}
-		
+
 		String contentCodeInString = "";
 		for (int i = 0; i < contentCode.size(); i++) {
 			contentCodeInString = contentCodeInString + contentCode.get(i);
@@ -147,7 +148,7 @@ public class Program {
 		for (int i = 0; i < arrayCode.length; i++) {
 			console.setText(console.getText() + arrayCode[i].toString() + "\n");
 		}
-		
+
 		testResult = comp.getTestResult();
 		Collection<TestFailure> errorTest = testResult.getTestFailures();
 		TestFailure[] arrayTest = new TestFailure[errorTest.size()];
@@ -157,17 +158,29 @@ public class Program {
 		for (int i = 0; i < arrayTest.length; i++) {
 			console.setText(console.getText() + arrayTest[i].getMessage() + "\n");
 		}
+		if (testResult.getNumberOfFailedTests() == 0) {
+			Duration testDur = testResult.getTestDuration();
+			testDur.toString();
+			System.out.println(testDur + "\n" + "All tests succesfull! Congratulations ASSHOLE!");
+		}
+		if (testResult.getNumberOfFailedTests() != 0) {
+			int numberFailed = testResult.getNumberOfFailedTests();
+			int numberIgn = testResult.getNumberOfIgnoredTests();
+			int numberSuccess = testResult.getNumberOfSuccessfulTests();
+			Duration testDur = testResult.getTestDuration();
+			testDur.toString();
+			System.out.println(testDur + "\n" + "Number of failed tests: " + numberFailed + "\n"
+					+ "Number of ignored tests: " + numberIgn + "\n" + "Number of successful tests: " + numberSuccess);
+
+		}
 	}
 
-	/*private void createFile() {
-		try {
-			Files.createFile(pathToFile);
-		}
-
-		catch (IOException e) {
-			System.out.print("Der gegebene Dateipfad ist falsch!\n");
-		}
-	}*/
+	/*
+	 * private void createFile() { try { Files.createFile(pathToFile); }
+	 * 
+	 * catch (IOException e) { System.out.print(
+	 * "Der gegebene Dateipfad ist falsch!\n"); } }
+	 */
 
 	private void println(InputStream inStream) throws Exception {
 		String line = null;

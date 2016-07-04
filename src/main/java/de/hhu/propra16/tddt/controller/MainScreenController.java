@@ -143,6 +143,8 @@ public class MainScreenController {
 		}
 		if (e.getSource() == saveTest) {
 			FileChooser testFileChooser = new FileChooser();
+			File initialDirectory = new File("./Task");
+			testFileChooser.setInitialDirectory(initialDirectory);
 			FileChooser.ExtensionFilter testExtFilter = new FileChooser.ExtensionFilter("Java files (*.java)",
 					"*.java");
 			testFileChooser.getExtensionFilters().add(testExtFilter);
@@ -157,6 +159,8 @@ public class MainScreenController {
 		if (e.getSource() == saveCode) {
 
 			FileChooser codeFileChooser = new FileChooser();
+			File initialDirectory = new File("./Task");
+			codeFileChooser.setInitialDirectory(initialDirectory);
 			FileChooser.ExtensionFilter codeExtFilter = new FileChooser.ExtensionFilter("Java files (*.java)",
 					"*.java");
 			codeFileChooser.getExtensionFilters().add(codeExtFilter);
@@ -182,7 +186,7 @@ public class MainScreenController {
 			Console con = new Console(console);
 			PrintStream out = new PrintStream(con, true);
 			System.setOut(out);
-			
+
 			Information info = new Information("Try", "Code", "./Task/Aufgabe1/");
 
 			Program program = new Program(info, console);
@@ -193,12 +197,12 @@ public class MainScreenController {
 
 		}
 		if (e.getSource() == runTest) {
-			
+
 			// Schickt den Output auf die TextArea "console"
 			Console con = new Console(console);
 			PrintStream out = new PrintStream(con, true);
 			System.setOut(out);
-			
+
 			Information info = new Information("Try", "Code", "./Task/Aufgabe1/");
 
 			Program program = new Program(info, console);
