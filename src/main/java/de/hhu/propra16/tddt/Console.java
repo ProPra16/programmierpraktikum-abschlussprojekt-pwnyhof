@@ -3,7 +3,6 @@ package de.hhu.propra16.tddt;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
 public class Console extends OutputStream {

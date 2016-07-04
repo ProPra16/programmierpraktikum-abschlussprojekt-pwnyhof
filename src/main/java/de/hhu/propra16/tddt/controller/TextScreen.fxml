@@ -17,12 +17,13 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="251.0">
                <children>
-                  <TextArea fx:id="leftTA" prefHeight="418.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="leftTA" layoutX="-7.0" prefHeight="418.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
                <children>
-                  <TextArea fx:id="rightTA" layoutX="-6.0" prefHeight="418.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea layoutX="-6.0" prefHeight="418.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="rightTA" layoutX="4.0" layoutY="10.0" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
@@ -38,8 +39,11 @@
                       <Menu mnemonicParsing="false" text="File">
                         <items>
                               <MenuItem fx:id="neu" mnemonicParsing="false" onAction="#handleMenuItem" text="New" />
-                          <MenuItem fx:id="load" mnemonicParsing="false" onAction="#handleMenuItem" text="Load" />
-                              <MenuItem fx:id="save" mnemonicParsing="false" onAction="#handleMenuItem" text="Save" />
+                              <MenuItem fx:id="catalog" mnemonicParsing="false" onAction="#handleMenuItem" text="Catalog" />
+                              <MenuItem fx:id="loadCode" mnemonicParsing="false" onAction="#handleMenuItem" text="LoadCode" />
+                              <MenuItem fx:id="loadTest" mnemonicParsing="false" onAction="#handleMenuItem" text="LoadTest" />
+                              <MenuItem fx:id="saveCode" mnemonicParsing="false" onAction="#handleMenuItem" text="SaveCode" />
+                              <MenuItem fx:id="saveTest" mnemonicParsing="false" onAction="#handleMenuItem" text="SaveTest" />
                               <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleMenuItem" text="Exit" />
                         </items>
                       </Menu>
@@ -63,7 +67,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Button fx:id="runCode" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
+                              <Button fx:id="runCode" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
                                  <font>
                                     <Font name="Consolas Bold" size="15.0" />
                                  </font></Button>
