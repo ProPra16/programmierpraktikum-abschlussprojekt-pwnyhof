@@ -1,4 +1,4 @@
-package de.hhu.propra16.tddt;
+package de.hhu.propra16.tddt.controller;
 
 import java.io.IOException;
 import java.io.OutputStream;
