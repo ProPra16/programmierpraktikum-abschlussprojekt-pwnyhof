@@ -10,9 +10,18 @@ ObiHanKenobi
 
 Informationen:
 
-1. Der Master-Branche kann jetzt von Eclipse als Java-Projekt
-   erkannt und ausgeführt werden.
-   
-2. Grundlegende Idee zum Projekt implementiert.
+1. Projekt ist nun mit Gradle erstellt.
 
-   Ich teste das mal direkt von eclipse aus
+2. Das Projekt kooperiert nun mit Travis.
+
+3. Grundgerüst/konzept der Grafischen Oberfläche steht
+
+4. Grafische Oberfläche per FXML erstellt
+
+5. Erstellung, Kompilieren und Ausführen eines Programms aus TDDT heraus möglich
+
+Ziele:
+
+1. Graphische OberflÃ¤che per fxml-Datei erstellen
+
+2. Implementierung der Programm-Logik
