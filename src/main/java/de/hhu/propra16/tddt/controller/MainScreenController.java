@@ -1,4 +1,4 @@
-package de.hhu.propra16.tddt.controller;
+package main.java.de.hhu.propra16.tddt.controller;
 
 import java.io.BufferedReader;
 
@@ -6,13 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

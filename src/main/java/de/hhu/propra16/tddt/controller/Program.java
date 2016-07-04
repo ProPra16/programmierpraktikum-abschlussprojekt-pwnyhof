@@ -1,4 +1,4 @@
-package de.hhu.propra16.tddt.controller;
+package main.java.de.hhu.propra16.tddt.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class Program {
 	}
 
 	public void compile() {
-		// Compiliert das Programm NICHT imaginär
+		// Compiliert das Programm NICHT imaginï¿½r
 		Process processCompile = null;
 		try {
 			processCompile = Runtime.getRuntime().exec("javac " + codeFilePath);
@@ -69,7 +69,7 @@ public class Program {
 		units[0] = unit;
 		InternalCompiler comp = new InternalCompiler(units);
 
-		// Compiliert das Programm imaginär
+		// Compiliert das Programm imaginï¿½r
 		comp.compileAndRunTests();
 
 		// Nimmt das Resultat des Compilierens entgegen
@@ -135,7 +135,7 @@ public class Program {
 		units[1] = unitCode;
 		InternalCompiler comp = new InternalCompiler(units);
 
-		// Lässt die Tests laufen
+		// Lï¿½sst die Tests laufen
 		comp.compileAndRunTests();
 
 		// Nimmt das Resultat des Compilierens entgegen
