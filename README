@@ -16,6 +16,10 @@ Informationen:
 
 3. GrundgerÃ¼st/konzept der Grafischen OberflÃ¤che steht
 
+4. Grafische Oberfläche per FXML erstellt
+
+5. Erstellung, Kompilieren und Ausführen eines Programms aus TDDT heraus möglich
+
 Ziele:
 
 1. Graphische OberflÃ¤che per fxml-Datei erstellen
