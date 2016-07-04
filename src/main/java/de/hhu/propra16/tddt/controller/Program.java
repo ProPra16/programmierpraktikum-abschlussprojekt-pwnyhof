@@ -21,16 +21,16 @@ public class Program {
 	private final Path pathToFile;
 	private TextArea console;
 	private CompilerResult result = null;
-	
-	public Program(String programName, String pathToDir, TextArea console){
+
+	public Program(String programName, String pathToDir, TextArea console) {
 		this.programName = programName;
 		this.pathToDir = pathToDir;
 		this.pathToFile = Paths.get(pathToDir + programName + ".java");
 		this.console = console;
-		
+
 		try {
 			Files.exists(pathToFile);
-			if(Files.isDirectory(pathToFile)){
+			if (Files.isDirectory(pathToFile)) {
 				createFile();
 			}
 
@@ -38,8 +38,8 @@ public class Program {
 			createFile();
 		}
 	}
-	
-	public void compile(){
+
+	public void compile() {
 		// Liest Programm aus einer Datei
 		List<String> content;
 		try {
@@ -64,11 +64,11 @@ public class Program {
 
 		// Compiliert das Programm imaginär
 		comp.compileAndRunTests();
-		
+
 		// Compiliert das Programm NICHT imaginär
 		Process processCompile = null;
 		try {
-			processCompile = Runtime.getRuntime().exec("javac " +pathToFile);
+			processCompile = Runtime.getRuntime().exec("javac " + pathToFile);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -77,8 +77,8 @@ public class Program {
 		while (processCompile.isAlive()) {
 
 		}
-		
-		//Nimmt das Resultat des Compilierens entgegen
+
+		// Nimmt das Resultat des Compilierens entgegen
 		result = comp.getCompilerResult();
 		Collection<CompileError> error = result.getCompilerErrorsForCompilationUnit(units[0]);
 		CompileError[] array = new CompileError[error.size()];
@@ -86,16 +86,16 @@ public class Program {
 
 		// Gibt Errors aus
 		for (int i = 0; i < array.length; i++) {
-			console.setText(console.getText()  +array[i].toString() +"\n");
+			console.setText(console.getText() + array[i].toString() + "\n");
 		}
 	}
-	
-	public void run(){
+
+	public void run() {
 		// Wenn es keine Errors gibt wird das Programm gestartet
 		if (result != null && !result.hasCompileErrors()) {
 			Process processRun = null;
 			try {
-				processRun = Runtime.getRuntime().exec("java -cp " + pathToDir +" " + programName);
+				processRun = Runtime.getRuntime().exec("java -cp " + pathToDir + " " + programName);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -107,11 +107,11 @@ public class Program {
 			}
 		}
 	}
-	
-	public void test(){
-		
+
+	public void test() {
+
 	}
-	
+
 	private void createFile() {
 		try {
 			Files.createFile(pathToFile);
@@ -121,7 +121,7 @@ public class Program {
 			System.out.print("Der gegebene Dateipfad ist falsch!\n");
 		}
 	}
-	
+
 	private void println(InputStream inStream) throws Exception {
 		String line = null;
 		BufferedReader in = new BufferedReader(new InputStreamReader(inStream));
@@ -129,7 +129,5 @@ public class Program {
 			System.out.println(line);
 		}
 	}
-	
-	
 
 }
