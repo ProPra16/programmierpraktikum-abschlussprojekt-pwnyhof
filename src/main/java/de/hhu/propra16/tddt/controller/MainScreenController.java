@@ -2,7 +2,6 @@ package de.hhu.propra16.tddt.controller;
 
 import java.io.BufferedReader;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import de.hhu.propra16.tddt.Console;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -152,7 +150,7 @@ public class MainScreenController {
 
 			// if file doesnt exists, then create it
 			if (testFile != null) {
-				SaveFile(leftTA.getText(), testFile);
+				SaveFile(rightTA.getText(), testFile);
 			}
 		}
 
@@ -168,7 +166,6 @@ public class MainScreenController {
 
 			if (codefile != null) {
 				SaveFile(leftTA.getText(), codefile);
-
 			}
 		}
 		if (e.getSource() == exit) {
@@ -185,98 +182,31 @@ public class MainScreenController {
 			Console con = new Console(console);
 			PrintStream out = new PrintStream(con, true);
 			System.setOut(out);
+			
+			Information info = new Information("Try", "Code", "./Task/Aufgabe1/");
 
-			// Liest Programm aus einer Datei
-			filePath = Paths.get("./Code/Code.java");
-			try {
-				content = Files.readAllLines(filePath);
+			Program program = new Program(info, console);
 
-			} catch (IOException e1) {
+			program.compile();
 
-				createFile();
-				System.out.println("Fail");
-			}
-
-			// Wandelt den Quellcode in einen String um
-			String contentS = "";
-			for (int i = 0; i < content.size(); i++) {
-				contentS = contentS + content.get(i);
-			}
-
-			// Erstellt eine CompilationUnit mit den vorangegangenen Daten
-			CompilationUnit unit = new CompilationUnit("Code", contentS, false);
-			CompilationUnit[] units = new CompilationUnit[1];
-			units[0] = unit;
-			InternalCompiler comp = new InternalCompiler(units);
-
-			// Compiliert das Programm imaginär
-			comp.compileAndRunTests();
-
-			// Compiliert das Programm NICHT imaginär
-			Process processCompile = null;
-			try {
-				processCompile = Runtime.getRuntime().exec("javac ./Code/Code.java");
-			} catch (IOException e6) {
-				e6.printStackTrace();
-			}
-
-			// Solange compiliert wird WARTEN!
-			while (processCompile.isAlive()) {
-
-			}
-
-			// Nimmt das Resultat des Compilierens entgegen
-			CompilerResult result = comp.getCompilerResult();
-			Collection<CompileError> error = result.getCompilerErrorsForCompilationUnit(units[0]);
-			CompileError[] array = new CompileError[error.size()];
-			error.toArray(array);
-
-			// Gibt Errors aus
-			for (int i = 0; i < array.length; i++) {
-				console.setText(console.getText() + array[i] + "\n");
-			}
-
-			// Wenn es keine Errors gibt wird das Programm gestartet
-			if (!result.hasCompileErrors()) {
-				Process processRun = null;
-				try {
-					processRun = Runtime.getRuntime().exec("java -cp ./Code Code");
-				} catch (IOException e7) {
-					e7.printStackTrace();
-				}
-				try {
-					printLines(" stdout:", processRun.getInputStream());
-					printLines(" stderr:", processRun.getErrorStream());
-				} catch (Exception e8) {
-					e8.printStackTrace();
-				}
-			}
+			program.run();
 
 		}
 		if (e.getSource() == runTest) {
+			
+			// Schickt den Output auf die TextArea "console"
+			Console con = new Console(console);
+			PrintStream out = new PrintStream(con, true);
+			System.setOut(out);
+			
+			Information info = new Information("Try", "Code", "./Task/Aufgabe1/");
+
+			Program program = new Program(info, console);
+
+			program.test();
 
 		}
 
-	}
-
-	private static void printLines(String name, InputStream ins) throws Exception {
-		String line = null;
-		BufferedReader in = new BufferedReader(new InputStreamReader(ins));
-		while ((line = in.readLine()) != null) {
-			System.out.println(name + " " + line);
-		}
-	}
-
-	private static void createFile() {
-
-		filePath = Paths.get("./Code/Code.java");
-		try {
-			Files.createFile(filePath);
-		}
-
-		catch (IOException e) {
-			System.out.print("Der gegebene Dateipfad ist falsch!\n");
-		}
 	}
 
 	private void SaveFile(String content, File file) {

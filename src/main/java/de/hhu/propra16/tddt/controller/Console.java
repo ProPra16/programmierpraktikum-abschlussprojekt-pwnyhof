@@ -1,4 +1,4 @@
-package de.hhu.propra16.tddt;
+package de.hhu.propra16.tddt.controller;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -12,9 +12,6 @@ public class Console extends OutputStream {
 	        public Console(TextArea txtArea) {
 	            this.txtArea = txtArea;
 	        }
-	        
-	        
-	
 
 	        @Override
 	        public void write(int b) throws IOException {
