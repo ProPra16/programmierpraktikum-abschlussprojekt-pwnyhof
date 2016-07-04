@@ -9,3 +9,5 @@ build.fxbuild
 /.settings/
 /.gradle/
 /build/
+.idea/
+out/
