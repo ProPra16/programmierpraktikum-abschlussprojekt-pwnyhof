@@ -13,6 +13,6 @@ public class Try{
 	
 	@Test
 	public void addTest(){
-		assertEquals(10, Code.add());
+		assertEquals(9, Code.add());
 	}
 }

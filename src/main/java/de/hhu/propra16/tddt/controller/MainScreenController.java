@@ -105,6 +105,7 @@ public class MainScreenController {
 		}
 		if (e.getSource() == loadTest) {
 
+			
 			FileChooser fileChooser = new FileChooser();
 			File initialDirectory = new File("./Task");
 			fileChooser.setInitialDirectory(initialDirectory);
