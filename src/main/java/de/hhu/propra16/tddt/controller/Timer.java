@@ -1,11 +1,11 @@
 package de.hhu.propra16.tddt.controller;
 
-public class MWTimer {
+public class Timer {
 
 	long startTime;
 	long endTime;
 	
-	public MWTimer(){
+	public Timer(){
 	}
 	
 	public void startTimer(){
