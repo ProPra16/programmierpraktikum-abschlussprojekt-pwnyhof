@@ -20,25 +20,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-<<<<<<< HEAD
+import javafx.scene.control.TextField;<<<<<<<HEAD
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
-=======
->>>>>>> refs/heads/master
+import javafx.scene.input.KeyCombination;=======>>>>>>>refs/heads/master
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
-	private Stage stage;
-<<<<<<< HEAD
-	String commandLine = "";
-=======
-	String commandLine = " ";
->>>>>>> refs/heads/master
+	private Stage stage;<<<<<<<
+	HEAD String commandLine="";=======
+	String commandLine = " ";>>>>>>>refs/heads/master
 
 	@FXML
 	public MenuItem neu;
@@ -178,8 +172,9 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == saveCode) {
-			//TODO CTRL + S fuer save
-//			saveCode.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+			// TODO CTRL + S fuer save
+			// saveCode.setAccelerator(new KeyCodeCombination(KeyCode.S,
+			// KeyCombination.CONTROL_DOWN));
 
 			FileChooser codeFileChooser = new FileChooser();
 			File initialDirectory = new File("./Task");
@@ -260,8 +255,8 @@ public class MainScreenController {
 			}
 		}
 		if (e.getSource() == runWithCommand) {
-<<<<<<< HEAD
-//			TODO: Ausgabe auf Console
+
+			// TODO: Ausgabe auf Console
 			commandLine = " " + commandField.getText();
 
 			ConfigReader config = new ConfigReader("Aufgabe1");
@@ -273,18 +268,6 @@ public class MainScreenController {
 
 			program.compile();
 
-=======
-			ConfigReader config = new ConfigReader("Aufgabe1");
-
-			Information info = new Information(config.getTestName(), config.getProgramName(),
-					"./Task/" + config.getTask() + "/");
-
-			Program program = new Program(info, console);
-			commandLine = " " + commandField.getText();
-			program.compile();
-
-			
->>>>>>> refs/heads/master
 			program.run(commandLine);
 		}
 
