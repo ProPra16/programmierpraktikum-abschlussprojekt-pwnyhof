@@ -5,3 +5,12 @@
 /.settings/
 .classpath
 .project
+<<<<<<< HEAD
+=======
+build.fxbuild
+/.settings/
+/.gradle/
+/build/
+.idea/
+out/
+>>>>>>> refs/remotes/origin/master
