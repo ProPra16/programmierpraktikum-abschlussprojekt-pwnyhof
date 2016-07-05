@@ -11,9 +11,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -44,6 +48,9 @@ public class MainScreenController {
 
 	@FXML
 	public Button runTest;
+
+	@FXML
+	public Button runCommand;
 
 	@FXML
 	public Button runCode;
@@ -177,8 +184,9 @@ public class MainScreenController {
 			System.setOut(out);
 
 			ConfigReader config = new ConfigReader("Aufgabe1");
-			
-			Information info = new Information(config.getTestName(), config.getProgramName(), "./Task/" +config.getTask() +"/");
+
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
 
 			Program program = new Program(info, console);
 
@@ -193,10 +201,11 @@ public class MainScreenController {
 			Console con = new Console(console);
 			PrintStream out = new PrintStream(con, true);
 			System.setOut(out);
-			
+
 			ConfigReader config = new ConfigReader("Aufgabe1");
-			
-			Information info = new Information(config.getTestName(), config.getProgramName(), "./Task/" +config.getTask() +"/");
+
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
 
 			Program program = new Program(info, console);
 
@@ -205,6 +214,23 @@ public class MainScreenController {
 		}
 		if (e.getSource() == clear) {
 			console.clear();
+		}
+		if (e.getSource() == runCommand) {
+			try {
+				// Load root layout from fxml file.
+				AnchorPane command = FXMLLoader.load(getClass().getResource("./controller/CommandLineScreen.fxml"));
+
+				// Show the scene containing the root layout.
+				
+
+				Stage commandStage = new Stage();
+				Scene scene = new Scene(command);
+				commandStage.setScene(scene);
+				commandStage.show();
+
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 
 	}
