@@ -111,6 +111,9 @@ public class MainScreenController {
 			} catch (IOException ex) {
 				// System.err.println(ex);
 			}
+			catch (NullPointerException ex2){
+				
+			}
 
 		}
 		if (e.getSource() == loadTest) {
