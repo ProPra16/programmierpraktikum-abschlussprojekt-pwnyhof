@@ -9,17 +9,27 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.smartcardio.CommandAPDU;
+
+import de.hhu.propra16.tddt.TDDTStart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
 	private Stage stage;
+	String commandLine = " ";
 
 	@FXML
 	public MenuItem neu;
@@ -46,13 +56,25 @@ public class MainScreenController {
 	public Button runTest;
 
 	@FXML
+	public Button runCommand;
+
+	@FXML
+	public Button runWithCommand;
+
+	@FXML
 	public Button runCode;
+
+	@FXML
+	public Button clear;
 
 	@FXML
 	public TextArea leftTA;
 
 	@FXML
 	public TextArea rightTA;
+
+	@FXML
+	public TextField commandField;
 
 	@FXML
 	public TextArea console;
@@ -99,7 +121,7 @@ public class MainScreenController {
 				}
 				bufferedLoad.close();
 			} catch (IOException ex) {
-				// System.err.println(ex);
+
 			}
 
 		}
@@ -125,7 +147,7 @@ public class MainScreenController {
 				}
 				bufferedLoad.close();
 			} catch (IOException ex) {
-				// System.err.println(ex);
+
 			}
 		}
 		if (e.getSource() == saveTest) {
@@ -175,14 +197,15 @@ public class MainScreenController {
 			System.setOut(out);
 
 			ConfigReader config = new ConfigReader("Aufgabe1");
-			
-			Information info = new Information(config.getTestName(), config.getProgramName(), "./Task/" +config.getTask() +"/");
+
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
 
 			Program program = new Program(info, console);
 
 			program.compile();
 
-			program.run();
+			program.run(commandLine);
 
 		}
 		if (e.getSource() == runTest) {
@@ -191,15 +214,50 @@ public class MainScreenController {
 			Console con = new Console(console);
 			PrintStream out = new PrintStream(con, true);
 			System.setOut(out);
-			
+
 			ConfigReader config = new ConfigReader("Aufgabe1");
-			
-			Information info = new Information(config.getTestName(), config.getProgramName(), "./Task/" +config.getTask() +"/");
+
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
 
 			Program program = new Program(info, console);
 
 			program.test();
 
+		}
+		if (e.getSource() == clear) {
+			console.clear();
+		}
+		if (e.getSource() == runCommand) {
+
+			try {
+				// Load root layout from fxml file.
+				AnchorPane command = FXMLLoader.load(getClass().getResource("CommandLineScreen.fxml"));
+
+				// Show the scene containing the root layout.
+				Scene scene = new Scene(command);
+				Stage commandStage = new Stage();
+				commandStage.setScene(scene);
+
+				commandStage.show();
+
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		if (e.getSource() == runWithCommand) {
+			ConfigReader config = new ConfigReader("Aufgabe1");
+
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
+
+			Program program = new Program(info, console);
+			commandLine = " " + commandField.getText();
+			System.out.print(commandLine);
+			program.compile();
+
+			
+			program.run(commandLine);
 		}
 
 	}

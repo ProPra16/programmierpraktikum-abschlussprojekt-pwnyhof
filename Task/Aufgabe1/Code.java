@@ -2,8 +2,9 @@
 public class Code{
 	public static void main(String[] args){
 
-	System.out.println(greet());
-	System.out.println(add());
+	Int a = Integer.valueOf(args[0]);
+	System.out.println(a);
+	
 }
 
 public static String greet()

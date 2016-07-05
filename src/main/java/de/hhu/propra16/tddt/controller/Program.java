@@ -84,7 +84,7 @@ public class Program {
 		}
 	}
 
-	public void run() {
+	public void run(String args) {
 		// Wenn es keine Errors gibt wird das Programm gestartet
 		if (result != null && !result.hasCompileErrors()) {
 			Process processRun = null;
