@@ -108,8 +108,8 @@ public class MainScreenController {
 					}
 				}
 				bufferedLoad.close();
-			} catch (IOException ex) {
-				// System.err.println(ex);
+			} catch (Exception ex) {
+
 			}
 
 		}
@@ -133,8 +133,8 @@ public class MainScreenController {
 					}
 				}
 				bufferedLoad.close();
-			} catch (IOException ex) {
-				// System.err.println(ex);
+			} catch (Exception ex) {
+
 			}
 		}
 		if (e.getSource() == saveTest) {
