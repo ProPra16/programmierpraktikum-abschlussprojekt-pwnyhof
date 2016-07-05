@@ -20,8 +20,12 @@ Informationen:
 
 5. Erstellung, Kompilieren und Ausführen eines Programms aus TDDT heraus möglich
 
+6. Anzeige der Konsolenmeldungen in der Programmeigenen Konsole
+
+7. Implementierung eines ConfigReaders
+
 Ziele:
 
-1. Graphische OberflÃ¤che per fxml-Datei erstellen
+1. Graphische Oberfläche per fxml-Datei erstellen
 
 2. Implementierung der Programm-Logik
