@@ -5,43 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
-=======
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
->>>>>>> refs/heads/master
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
    <children>
-<<<<<<< HEAD
-      <SplitPane dividerPositions="0.32407407407407407" layoutX="163.0" layoutY="-50.0" orientation="VERTICAL" prefHeight="140.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="15.0" prefWidth="598.0">
-               <children>
-                  <Button fx:id="runWithCommand" layoutX="237.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleButton" text="run with command" textFill="#197ada">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="7.0" layoutY="4.0" prefHeight="10.0" prefWidth="87.0" text="Command" textFill="#c625a8">
-                     <font>
-                        <Font name="Consolas Bold" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <TextField fx:id="commandField" layoutX="130.0" layoutY="22.0" prefHeight="70.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-=======
-      <Button fx:id="runWithCommand" layoutX="7.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleButton" text="run with command" textFill="#197ada">
+      <TextField fx:id="commandField" layoutX="176.0" layoutY="39.0" prefHeight="60.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0" />
+      <Button fx:id="runWithCommand" layoutX="206.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleButton" text="run with commandline input" textFill="#4059ff">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="Consolas Bold" size="12.0" />
          </font>
       </Button>
-      <TextField fx:id="commandField" layoutY="30.0" prefHeight="45.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
->>>>>>> refs/heads/master
    </children>
 </AnchorPane>

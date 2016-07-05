@@ -10,9 +10,6 @@ import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.smartcardio.CommandAPDU;
-
-import de.hhu.propra16.tddt.TDDTStart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,19 +17,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;<<<<<<<HEAD
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;=======>>>>>>>refs/heads/master
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
-	private Stage stage;<<<<<<<
-	HEAD String commandLine="";=======
-	String commandLine = " ";>>>>>>>refs/heads/master
+	private Stage stage;
+
+	String commandLine = " ";
 
 	@FXML
 	public MenuItem neu;
@@ -81,9 +78,6 @@ public class MainScreenController {
 
 	@FXML
 	public TextArea console;
-
-	@FXML
-	public TextField commandField;
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
@@ -173,8 +167,7 @@ public class MainScreenController {
 
 		if (e.getSource() == saveCode) {
 			// TODO: CTRL + S fuer save
-			// saveCode.setAccelerator(new KeyCodeCombination(KeyCode.S,
-			// KeyCombination.CONTROL_DOWN));
+			saveCode.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
 
 			FileChooser codeFileChooser = new FileChooser();
 			File initialDirectory = new File("./Task");
@@ -250,7 +243,7 @@ public class MainScreenController {
 
 				commandStage.show();
 
-			} catch (IOException e1) {
+			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
