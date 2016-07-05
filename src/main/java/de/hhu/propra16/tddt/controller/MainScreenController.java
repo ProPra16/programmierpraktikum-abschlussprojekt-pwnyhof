@@ -172,7 +172,7 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == saveCode) {
-			// TODO CTRL + S fuer save
+			// TODO: CTRL + S fuer save
 			// saveCode.setAccelerator(new KeyCodeCombination(KeyCode.S,
 			// KeyCombination.CONTROL_DOWN));
 
