@@ -1,6 +1,3 @@
-package test.java;
-
-import main.java.Library;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

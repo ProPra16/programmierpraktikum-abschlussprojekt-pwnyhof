@@ -1,4 +1,4 @@
-package main.java.de.hhu.propra16.tddt.controller;
+package de.hhu.propra16.tddt.controller;
 
 public class Information {
 
