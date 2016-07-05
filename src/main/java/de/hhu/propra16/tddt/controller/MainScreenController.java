@@ -16,14 +16,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
 	private Stage stage;
+	String commandLine = "";
 
 	@FXML
 	public MenuItem neu;
@@ -53,6 +57,9 @@ public class MainScreenController {
 	public Button runCommand;
 
 	@FXML
+	public Button runWithCommand;
+
+	@FXML
 	public Button runCode;
 
 	@FXML
@@ -66,6 +73,9 @@ public class MainScreenController {
 
 	@FXML
 	public TextArea console;
+
+	@FXML
+	public TextField commandField;
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
@@ -138,6 +148,7 @@ public class MainScreenController {
 			}
 		}
 		if (e.getSource() == saveTest) {
+
 			FileChooser testFileChooser = new FileChooser();
 			File initialDirectory = new File("./Task");
 			testFileChooser.setInitialDirectory(initialDirectory);
@@ -153,6 +164,8 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == saveCode) {
+			//TODO CTRL + S fuer save
+//			saveCode.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
 
 			FileChooser codeFileChooser = new FileChooser();
 			File initialDirectory = new File("./Task");
@@ -192,7 +205,7 @@ public class MainScreenController {
 
 			program.compile();
 
-			program.run();
+			program.run(commandLine);
 
 		}
 		if (e.getSource() == runTest) {
@@ -218,7 +231,7 @@ public class MainScreenController {
 		if (e.getSource() == runCommand) {
 			try {
 				// Load root layout from fxml file.
-				AnchorPane command = FXMLLoader.load(getClass().getResource("./controller/CommandLineScreen.fxml"));
+				AnchorPane command = FXMLLoader.load(getClass().getResource("CommandLineScreen.fxml"));
 
 				// Show the scene containing the root layout.
 
@@ -230,6 +243,21 @@ public class MainScreenController {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+		}
+		if (e.getSource() == runWithCommand) {
+//			TODO: Ausgabe auf Console
+			commandLine = " " + commandField.getText();
+
+			ConfigReader config = new ConfigReader("Aufgabe1");
+
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
+
+			Program program = new Program(info, console);
+
+			program.compile();
+
+			program.run(commandLine);
 		}
 
 	}

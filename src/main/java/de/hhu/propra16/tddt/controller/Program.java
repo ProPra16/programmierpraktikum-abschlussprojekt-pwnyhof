@@ -84,14 +84,14 @@ public class Program {
 		}
 	}
 
-	public void run() {
+	public void run(String args) {
 		// Wenn es keine Errors gibt wird das Programm gestartet
 		if (result != null && !result.hasCompileErrors()) {
 			Process processRun = null;
 			try {
 				processRun = Runtime.getRuntime()
-						.exec("java -cp " + info.getPathToFiles() + " " + info.getCodeFileName());
-			} catch (IOException e) {
+						.exec("java -cp " + info.getPathToFiles() + " " + info.getCodeFileName() + args);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			try {

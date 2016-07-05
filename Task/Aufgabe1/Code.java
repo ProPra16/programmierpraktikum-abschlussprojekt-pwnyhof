@@ -2,8 +2,15 @@
 public class Code{
 	public static void main(String[] args){
 
-	System.out.println(greet());
+	int a = Integer.valueOf(args[0]);
+	int b = Integer.valueOf(args[1]);
+
+	String s = String.valueOf(args[2]);
+
+	System.out.println(s);
+	System.out.println(a * b);
 	System.out.println(add());
+
 }
 
 public static String greet()
