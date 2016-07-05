@@ -63,6 +63,9 @@ public class MainScreenController {
 	public Button runCode;
 
 	@FXML
+	public Button clear;
+
+	@FXML
 	public TextArea leftTA;
 
 	@FXML
@@ -209,6 +212,9 @@ public class MainScreenController {
 
 			program.test();
 
+		}
+		if (e.getSource() == clear) {
+			console.clear();
 		}
 
 	}
