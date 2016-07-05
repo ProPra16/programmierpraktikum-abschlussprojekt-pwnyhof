@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.smartcardio.CommandAPDU;
+
+import de.hhu.propra16.tddt.TDDTStart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +21,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+=======
+>>>>>>> refs/heads/master
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -27,7 +34,11 @@ import javafx.stage.Stage;
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
 	private Stage stage;
+<<<<<<< HEAD
 	String commandLine = "";
+=======
+	String commandLine = " ";
+>>>>>>> refs/heads/master
 
 	@FXML
 	public MenuItem neu;
@@ -70,6 +81,9 @@ public class MainScreenController {
 
 	@FXML
 	public TextArea rightTA;
+
+	@FXML
+	public TextField commandField;
 
 	@FXML
 	public TextArea console;
@@ -118,7 +132,7 @@ public class MainScreenController {
 					}
 				}
 				bufferedLoad.close();
-			} catch (Exception ex) {
+			} catch (IOException ex) {
 
 			}
 
@@ -143,7 +157,7 @@ public class MainScreenController {
 					}
 				}
 				bufferedLoad.close();
-			} catch (Exception ex) {
+			} catch (IOException ex) {
 
 			}
 		}
@@ -229,15 +243,16 @@ public class MainScreenController {
 			console.clear();
 		}
 		if (e.getSource() == runCommand) {
+
 			try {
 				// Load root layout from fxml file.
 				AnchorPane command = FXMLLoader.load(getClass().getResource("CommandLineScreen.fxml"));
 
 				// Show the scene containing the root layout.
-
-				Stage commandStage = new Stage();
 				Scene scene = new Scene(command);
+				Stage commandStage = new Stage();
 				commandStage.setScene(scene);
+
 				commandStage.show();
 
 			} catch (IOException e1) {
@@ -245,6 +260,7 @@ public class MainScreenController {
 			}
 		}
 		if (e.getSource() == runWithCommand) {
+<<<<<<< HEAD
 //			TODO: Ausgabe auf Console
 			commandLine = " " + commandField.getText();
 
@@ -257,6 +273,18 @@ public class MainScreenController {
 
 			program.compile();
 
+=======
+			ConfigReader config = new ConfigReader("Aufgabe1");
+
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
+
+			Program program = new Program(info, console);
+			commandLine = " " + commandField.getText();
+			program.compile();
+
+			
+>>>>>>> refs/heads/master
 			program.run(commandLine);
 		}
 

@@ -2,6 +2,7 @@
 public class Code{
 	public static void main(String[] args){
 
+<<<<<<< HEAD
 	int a = Integer.valueOf(args[0]);
 	int b = Integer.valueOf(args[1]);
 
@@ -11,6 +12,11 @@ public class Code{
 	System.out.println(a * b);
 	System.out.println(add());
 
+=======
+	Int a = Integer.valueOf(args[0]);
+	System.out.println(a);
+	
+>>>>>>> refs/heads/master
 }
 
 public static String greet()
