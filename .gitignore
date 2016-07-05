@@ -11,3 +11,4 @@ build.fxbuild
 /build/
 .idea/
 out/
+*.iml
