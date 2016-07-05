@@ -6,17 +6,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,15 +16,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import vk.core.api.CompilationUnit;
-import vk.core.api.CompileError;
-import vk.core.api.CompilerResult;
-import vk.core.internal.InternalCompiler;
 
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
-	private static List<String> content;
-	private static Path filePath;
 	private Stage stage;
 
 	@FXML
@@ -190,7 +176,9 @@ public class MainScreenController {
 			PrintStream out = new PrintStream(con, true);
 			System.setOut(out);
 
-			Information info = new Information("Try", "Code", "./Task/Aufgabe1/");
+			ConfigReader config = new ConfigReader("Aufgabe1");
+			
+			Information info = new Information(config.getTestName(), config.getProgramName(), "./Task/" +config.getTask() +"/");
 
 			Program program = new Program(info, console);
 
@@ -205,8 +193,10 @@ public class MainScreenController {
 			Console con = new Console(console);
 			PrintStream out = new PrintStream(con, true);
 			System.setOut(out);
-
-			Information info = new Information("Try", "Code", "./Task/Aufgabe1/");
+			
+			ConfigReader config = new ConfigReader("Aufgabe1");
+			
+			Information info = new Information(config.getTestName(), config.getProgramName(), "./Task/" +config.getTask() +"/");
 
 			Program program = new Program(info, console);
 
