@@ -221,7 +221,6 @@ public class MainScreenController {
 				AnchorPane command = FXMLLoader.load(getClass().getResource("./controller/CommandLineScreen.fxml"));
 
 				// Show the scene containing the root layout.
-				
 
 				Stage commandStage = new Stage();
 				Scene scene = new Scene(command);
