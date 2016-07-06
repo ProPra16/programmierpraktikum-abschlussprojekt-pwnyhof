@@ -13,4 +13,5 @@ public class Code {
 		int b = 10;
 		return a + b;
 	}
+}
 
