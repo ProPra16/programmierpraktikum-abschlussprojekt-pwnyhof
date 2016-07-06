@@ -26,49 +26,16 @@ public class MainScreenController {
 	String commandLine = " ";
 
 	@FXML
-	public MenuItem neu;
+	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
 
 	@FXML
-	public MenuItem load;
+	public Button runTest, fieldClear, runCode, clear;
 
 	@FXML
-	public MenuItem saveTest;
-
-	@FXML
-	public MenuItem saveCode;
-
-	@FXML
-	public MenuItem exit;
-
-	@FXML
-	public MenuItem catalog;
-
-	@FXML
-	public Button runTest;
-
-	@FXML
-	public Button fieldClear;
-
-	@FXML
-	public MenuItem runWithConfiguration;
-
-	@FXML
-	public Button runCode;
-
-	@FXML
-	public Button clear;
-
-	@FXML
-	public TextArea leftTA;
-
-	@FXML
-	public TextArea rightTA;
+	public TextArea leftTA, rightTA, console;
 
 	@FXML
 	public TextField commandField;
-
-	@FXML
-	public TextArea console;
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
