@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-
-/bin/
-/.gradle/
-/build/
-/.settings/
-.classpath
-.project
-<<<<<<< HEAD
-=======
-build.fxbuild
-/.settings/
-/.gradle/
-/build/
-.idea/
-out/
->>>>>>> refs/remotes/origin/master
-=======
 
 /bin/
 /.gradle/
@@ -29,5 +11,3 @@ build.fxbuild
 /build/
 .idea/
 out/
-src/main/java/de/hhu/propra16/tddt/controller/MainScreenController.java
->>>>>>> master

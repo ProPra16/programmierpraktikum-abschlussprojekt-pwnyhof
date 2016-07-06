@@ -9,10 +9,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.smartcardio.CommandAPDU;
-
-import de.hhu.propra16.tddt.TDDTStart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +18,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -96,7 +91,7 @@ public class MainScreenController {
 			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
 			fileChooser.getExtensionFilters().add(extFilter);
 
-			File file = fileChooser.showOpenDialog(stage);
+			fileChooser.showOpenDialog(stage);
 		}
 		if (e.getSource() == loadCode) {
 
