@@ -122,7 +122,6 @@ public class MainScreenController {
 		}
 		if (e.getSource() == loadTest) {
 
-			
 			FileChooser fileChooser = new FileChooser();
 			File initialDirectory = new File("./Task");
 			fileChooser.setInitialDirectory(initialDirectory);
@@ -248,7 +247,6 @@ public class MainScreenController {
 
 			Program program = new Program(info, console);
 			commandLine = " " + commandField.getText();
-			System.out.print(commandLine);
 			program.compile();
 
 			
