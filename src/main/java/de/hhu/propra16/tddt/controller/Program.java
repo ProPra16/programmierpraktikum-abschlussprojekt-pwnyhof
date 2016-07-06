@@ -90,7 +90,7 @@ public class Program {
 			Process processRun = null;
 			try {
 				processRun = Runtime.getRuntime()
-						.exec("java -cp " + info.getPathToFiles() + " " + info.getCodeFileName());
+						.exec("java -cp " + info.getPathToFiles() + " " + info.getCodeFileName() + args);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -2,8 +2,8 @@
 public class Code{
 	public static void main(String[] args){
 
-	Int a = Integer.valueOf(args[0]);
-	System.out.println(a);
+		int a = Integer.valueOf(args[0]);
+		System.out.println(a);
 	
 }
 
