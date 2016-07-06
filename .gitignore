@@ -9,6 +9,5 @@ build.fxbuild
 /.settings/
 /.gradle/
 /build/
-.idea/
+.idea/workspace.xml
 out/
-*.iml
