@@ -7,8 +7,11 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
@@ -22,8 +25,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
                <children>
-                  <TextArea layoutX="-6.0" prefHeight="418.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0" />
-                  <TextArea fx:id="rightTA" layoutX="4.0" layoutY="10.0" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
@@ -40,16 +42,21 @@
                         <items>
                               <MenuItem fx:id="neu" mnemonicParsing="false" onAction="#handleMenuItem" text="New" />
                               <MenuItem fx:id="catalog" mnemonicParsing="false" onAction="#handleMenuItem" text="Catalog" />
-                              <MenuItem fx:id="loadCode" mnemonicParsing="false" onAction="#handleMenuItem" text="LoadCode" />
-                              <MenuItem fx:id="loadTest" mnemonicParsing="false" onAction="#handleMenuItem" text="LoadTest" />
-                              <MenuItem fx:id="saveCode" mnemonicParsing="false" onAction="#handleMenuItem" text="SaveCode" />
-                              <MenuItem fx:id="saveTest" mnemonicParsing="false" onAction="#handleMenuItem" text="SaveTest" />
+                              <MenuItem fx:id="load" mnemonicParsing="false" onAction="#handleMenuItem" text="Load" />
+                              <MenuItem fx:id="saveCode" onAction="#handleMenuItem" text="SaveCode">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
+                              <MenuItem fx:id="saveTest" onAction="#handleMenuItem" text="SaveTest">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
                               <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleMenuItem" text="Exit" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Edit">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Delete" />
+                          <MenuItem fx:id="runWithConfiguration" mnemonicParsing="false" onAction="#handleMenuItem" text="Run with Arguments" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Help">
@@ -75,11 +82,6 @@
                                  <font>
                                     <Font name="Gentium Basic Bold" size="22.0" />
                                  </font></Label>
-                              <Button fx:id="runCommand" layoutX="189.0" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="28.0" prefWidth="103.0" text="runCommand" textFill="#2609dd">
-                                 <font>
-                                    <Font name="Consolas Bold" size="15.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -88,7 +90,7 @@
                                  <font>
                                     <Font name="Consolas Bold" size="15.0" />
                                  </font></Button>
-                              <Label layoutX="127.0" text="Test" textFill="#eb0303">
+                              <Label layoutX="127.0" layoutY="1.0" text="Test" textFill="#eb0303">
                                  <font>
                                     <Font name="Gentium Basic Bold" size="22.0" />
                                  </font></Label>
@@ -110,11 +112,33 @@
                      <font>
                         <Font name="Consolas Bold" size="12.0" />
                      </font></Button>
-               </graphic></Label>
+               </graphic>
+               <font>
+                  <Font name="Consolas Bold" size="12.0" />
+               </font></Label>
          </top>
          <center>
-            <TextArea fx:id="console" prefHeight="241.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="console" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
          </center>
+         <bottom>
+            <VBox>
+               <children>
+                  <Label text="Arguments" textFill="#ff0606">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#4d15bc">
+                           <font>
+                              <Font name="Consolas Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </Label>
+                  <TextField fx:id="commandField" prefHeight="39.0" prefWidth="600.0" />
+               </children>
+            </VBox>
+         </bottom>
       </BorderPane>
    </bottom>
 </BorderPane>

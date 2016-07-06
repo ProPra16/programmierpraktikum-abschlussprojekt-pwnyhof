@@ -7,7 +7,7 @@ import javafx.scene.control.TextArea;
 
 public class Console extends OutputStream {
 
-	private TextArea txtArea;
+	private TextArea txtArea = null;
 
 	public Console(TextArea txtArea) {
 		this.txtArea = txtArea;
@@ -15,7 +15,9 @@ public class Console extends OutputStream {
 
 	@Override
 	public void write(int b) throws IOException {
+
 		txtArea.appendText(String.valueOf((char) b));
+
 	}
 
 }
