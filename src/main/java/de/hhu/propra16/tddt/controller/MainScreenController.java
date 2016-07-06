@@ -146,6 +146,9 @@ public class MainScreenController {
 			} catch (IOException ex) {
 
 			}
+			catch (NullPointerException ex2){
+				
+			}
 		}
 		if (e.getSource() == saveTest) {
 			FileChooser testFileChooser = new FileChooser();
