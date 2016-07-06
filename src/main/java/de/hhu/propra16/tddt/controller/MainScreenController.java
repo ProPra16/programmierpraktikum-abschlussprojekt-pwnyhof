@@ -91,7 +91,7 @@ public class MainScreenController {
 			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
 			fileChooser.getExtensionFilters().add(extFilter);
 
-			File file = fileChooser.showOpenDialog(stage);
+			fileChooser.showOpenDialog(stage);
 		}
 		if (e.getSource() == loadCode) {
 
