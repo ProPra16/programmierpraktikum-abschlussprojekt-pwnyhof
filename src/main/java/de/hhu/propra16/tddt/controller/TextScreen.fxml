@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -11,106 +7,101 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
    <center>
-      <SplitPane dividerPositions="0.49498327759197325" prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.5" prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane prefHeight="309.0" prefWidth="297.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="300.0">
                <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="308.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <items>
-                        <AnchorPane maxHeight="25.0">
-                           <children>
-                              <Button fx:id="runCode" alignment="TOP_LEFT" maxHeight="25.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="Consolas Bold" size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="runCommand" alignment="TOP_RIGHT" layoutX="189.0" maxHeight="25.0" mnemonicParsing="false" onAction="#handleButton" text="runCommand" textFill="#2609dd" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="Consolas Bold" size="15.0" />
-                                 </font>
-                              </Button>
-                              <Label alignment="TOP_CENTER" layoutX="125.0" maxHeight="25.0" text="Code" textFill="#2d0edd" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="Gentium Basic Bold" size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutY="33.0" prefHeight="275.0">
-                           <children>
-                              <TextArea fx:id="leftTA" prefHeight="278.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                     </items>
-                  </SplitPane>
+                  <TextArea fx:id="leftTA" layoutX="8.0" prefHeight="272.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-          <AnchorPane prefHeight="272.0" prefWidth="300.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
                <children>
-                  <SplitPane dividerPositions="0.5" layoutY="-2.0" orientation="VERTICAL" prefHeight="308.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <items>
-                        <AnchorPane maxHeight="25.0">
-                           <children>
-                              <Label alignment="TOP_CENTER" layoutX="125.0" maxHeight="25.0" text="Test" textFill="#eb0303" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="Gentium Basic Bold" size="22.0" />
-                                 </font>
-                              </Label>
-                              <Button fx:id="runTest" alignment="TOP_LEFT" layoutX="1.0" maxHeight="25.0" mnemonicParsing="false" onAction="#handleButton" text="runTest" textFill="#eb0303" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="Consolas Bold" size="15.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutY="33.0" prefHeight="275.0">
-                           <children>
-                              <TextArea fx:id="rightTA" prefHeight="275.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                     </items>
-                  </SplitPane>
+                  <TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
    </center>
    <top>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="160.0">
-         <children>
-            <MenuBar prefHeight="28.0" prefWidth="600.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                        <MenuItem fx:id="neu" mnemonicParsing="false" onAction="#handleMenuItem" text="New" />
-                        <MenuItem fx:id="catalog" mnemonicParsing="false" onAction="#handleMenuItem" text="Catalog" />
-                        <MenuItem fx:id="loadCode" mnemonicParsing="false" onAction="#handleMenuItem" text="LoadCode" />
-                        <MenuItem fx:id="loadTest" mnemonicParsing="false" onAction="#handleMenuItem" text="LoadTest" />
-                        <MenuItem fx:id="saveCode" mnemonicParsing="false" onAction="#handleMenuItem" text="SaveCode" />
-                        <MenuItem fx:id="saveTest" mnemonicParsing="false" onAction="#handleMenuItem" text="SaveTest" />
-                        <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleMenuItem" text="Exit" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </children>
-      </AnchorPane>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <MenuBar AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                              <MenuItem fx:id="neu" mnemonicParsing="false" onAction="#handleMenuItem" text="New" />
+                              <MenuItem fx:id="catalog" mnemonicParsing="false" onAction="#handleMenuItem" text="Catalog" />
+                              <MenuItem fx:id="load" mnemonicParsing="false" onAction="#handleMenuItem" text="Load" />
+                              <MenuItem fx:id="saveCode" onAction="#handleMenuItem" text="SaveCode">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
+                              <MenuItem fx:id="saveTest" onAction="#handleMenuItem" text="SaveTest">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
+                              <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleMenuItem" text="Exit" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                          <MenuItem fx:id="runWithConfiguration" mnemonicParsing="false" onAction="#handleMenuItem" text="Run with Arguments" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="20.0" prefWidth="600.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" prefHeight="30.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="runCode" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
+                                 <font>
+                                    <Font name="Consolas Bold" size="15.0" />
+                                 </font></Button>
+                              <Label layoutX="128.0" text="Code" textFill="#2d0edd">
+                                 <font>
+                                    <Font name="Gentium Basic Bold" size="22.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="runTest" textFill="#eb0303">
+                                 <font>
+                                    <Font name="Consolas Bold" size="15.0" />
+                                 </font></Button>
+                              <Label layoutX="127.0" layoutY="1.0" text="Test" textFill="#eb0303">
+                                 <font>
+                                    <Font name="Gentium Basic Bold" size="22.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </top>
    <bottom>
       <BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -121,11 +112,321 @@
                      <font>
                         <Font name="Consolas Bold" size="12.0" />
                      </font></Button>
-               </graphic></Label>
+               </graphic>
+               <font>
+                  <Font name="Consolas Bold" size="12.0" />
+               </font></Label>
          </top>
          <center>
-            <TextArea fx:id="console" prefHeight="241.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="console" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
          </center>
+         <bottom>
+            <VBox>
+               <children>
+                  <Label text="Arguments" textFill="#ff0606">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#4d15bc">
+                           <font>
+                              <Font name="Consolas Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </Label>
+                  <TextField fx:id="commandField" prefHeight="39.0" prefWidth="600.0" />
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </bottom>
+</BorderPane>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
+   <center>
+      <SplitPane dividerPositions="0.5" prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="300.0">
+               <children>
+                  <TextArea fx:id="leftTA" layoutX="8.0" prefHeight="272.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
+               <children>
+                  <TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+   <top>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <MenuBar AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                              <MenuItem fx:id="neu" mnemonicParsing="false" onAction="#handleMenuItem" text="New" />
+                              <MenuItem fx:id="catalog" mnemonicParsing="false" onAction="#handleMenuItem" text="Catalog" />
+                              <MenuItem fx:id="load" mnemonicParsing="false" onAction="#handleMenuItem" text="Load" />
+                              <MenuItem fx:id="saveCode" onAction="#handleMenuItem" text="SaveCode">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
+                              <MenuItem fx:id="saveTest" onAction="#handleMenuItem" text="SaveTest">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
+                              <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleMenuItem" text="Exit" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                          <MenuItem fx:id="runWithConfiguration" mnemonicParsing="false" onAction="#handleMenuItem" text="Run with Arguments" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="20.0" prefWidth="600.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" prefHeight="30.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="runCode" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
+                                 <font>
+                                    <Font name="Consolas Bold" size="15.0" />
+                                 </font></Button>
+                              <Label layoutX="128.0" text="Code" textFill="#2d0edd">
+                                 <font>
+                                    <Font name="Gentium Basic Bold" size="22.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="runTest" textFill="#eb0303">
+                                 <font>
+                                    <Font name="Consolas Bold" size="15.0" />
+                                 </font></Button>
+                              <Label layoutX="127.0" layoutY="1.0" text="Test" textFill="#eb0303">
+                                 <font>
+                                    <Font name="Gentium Basic Bold" size="22.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </top>
+   <bottom>
+      <BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Console" BorderPane.alignment="TOP_LEFT">
+               <graphic>
+                  <Button fx:id="clear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font></Button>
+               </graphic>
+               <font>
+                  <Font name="Consolas Bold" size="12.0" />
+               </font></Label>
+         </top>
+         <center>
+            <TextArea fx:id="console" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <VBox>
+               <children>
+                  <Label text="Arguments" textFill="#ff0606">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#4d15bc">
+                           <font>
+                              <Font name="Consolas Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </Label>
+                  <TextField fx:id="commandField" prefHeight="39.0" prefWidth="600.0" />
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </bottom>
+</BorderPane>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hhu.propra16.tddt.controller.MainScreenController">
+   <center>
+      <SplitPane dividerPositions="0.5" prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="300.0">
+               <children>
+                  <TextArea fx:id="leftTA" layoutX="8.0" prefHeight="272.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
+               <children>
+                  <TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+   <top>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <MenuBar AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                              <MenuItem fx:id="neu" mnemonicParsing="false" onAction="#handleMenuItem" text="New" />
+                              <MenuItem fx:id="catalog" mnemonicParsing="false" onAction="#handleMenuItem" text="Catalog" />
+                              <MenuItem fx:id="load" mnemonicParsing="false" onAction="#handleMenuItem" text="Load" />
+                              <MenuItem fx:id="saveCode" onAction="#handleMenuItem" text="SaveCode">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
+                              <MenuItem fx:id="saveTest" onAction="#handleMenuItem" text="SaveTest">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator></MenuItem>
+                              <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#handleMenuItem" text="Exit" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                          <MenuItem fx:id="runWithConfiguration" mnemonicParsing="false" onAction="#handleMenuItem" text="Run with Arguments" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="About" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="20.0" prefWidth="600.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" prefHeight="30.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="runCode" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
+                                 <font>
+                                    <Font name="Consolas Bold" size="15.0" />
+                                 </font></Button>
+                              <Label layoutX="128.0" text="Code" textFill="#2d0edd">
+                                 <font>
+                                    <Font name="Gentium Basic Bold" size="22.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="runTest" textFill="#eb0303">
+                                 <font>
+                                    <Font name="Consolas Bold" size="15.0" />
+                                 </font></Button>
+                              <Label layoutX="127.0" layoutY="1.0" text="Test" textFill="#eb0303">
+                                 <font>
+                                    <Font name="Gentium Basic Bold" size="22.0" />
+                                 </font></Label>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </top>
+   <bottom>
+      <BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Console" BorderPane.alignment="TOP_LEFT">
+               <graphic>
+                  <Button fx:id="clear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
+                     <font>
+                        <Font name="Consolas Bold" size="12.0" />
+                     </font></Button>
+               </graphic>
+               <font>
+                  <Font name="Consolas Bold" size="12.0" />
+               </font></Label>
+         </top>
+         <center>
+            <TextArea fx:id="console" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <VBox>
+               <children>
+                  <Label text="Arguments" textFill="#ff0606">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#4d15bc">
+                           <font>
+                              <Font name="Consolas Bold" size="12.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </Label>
+                  <TextField fx:id="commandField" prefHeight="39.0" prefWidth="600.0" />
+               </children>
+            </VBox>
+         </bottom>
       </BorderPane>
    </bottom>
 </BorderPane>

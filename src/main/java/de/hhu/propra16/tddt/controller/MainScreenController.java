@@ -9,31 +9,27 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
 	private Stage stage;
+
 	String commandLine = " ";
 
 	@FXML
 	public MenuItem neu;
 
 	@FXML
-	public MenuItem loadCode;
-
-	@FXML
-	public MenuItem loadTest;
+	public MenuItem load;
 
 	@FXML
 	public MenuItem saveTest;
@@ -51,10 +47,10 @@ public class MainScreenController {
 	public Button runTest;
 
 	@FXML
-	public Button runCommand;
+	public Button fieldClear;
 
 	@FXML
-	public Button runWithCommand;
+	public MenuItem runWithConfiguration;
 
 	@FXML
 	public Button runCode;
@@ -76,6 +72,7 @@ public class MainScreenController {
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
+
 		if (e.getSource() == neu) {
 
 			leftTA.clear();
@@ -93,88 +90,78 @@ public class MainScreenController {
 
 			fileChooser.showOpenDialog(stage);
 		}
-		if (e.getSource() == loadCode) {
-
-			FileChooser fileChooser = new FileChooser();
-
-			File initialDirectory = new File("./Task");
-			fileChooser.setInitialDirectory(initialDirectory);
-
-			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
-			fileChooser.getExtensionFilters().add(extFilter);
-			File file = fileChooser.showOpenDialog(stage);
-			// System.out.println(file);
+		if (e.getSource() == load) {
 
 			try {
 				leftTA.setText("");
-				BufferedReader bufferedLoad = new BufferedReader(new FileReader(file));
-				String zeile = null;
-				while ((zeile = bufferedLoad.readLine()) != null) {
-					if (!zeile.startsWith("#")) {
-						leftTA.setText(leftTA.getText() + zeile + "\n");
+				BufferedReader codeLoad = new BufferedReader(new FileReader("./Task/Aufgabe1/Code.java"));
+				String code = null;
+				while ((code = codeLoad.readLine()) != null) {
+					if (!code.startsWith("#")) {
+						leftTA.setText(leftTA.getText() + code + "\n");
 					}
 				}
-				bufferedLoad.close();
-			} catch (IOException ex) {
-
-			}
-
-		}
-		if (e.getSource() == loadTest) {
-
-			FileChooser fileChooser = new FileChooser();
-			File initialDirectory = new File("./Task");
-			fileChooser.setInitialDirectory(initialDirectory);
-			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
-			fileChooser.getExtensionFilters().add(extFilter);
-			File file = fileChooser.showOpenDialog(stage);
-			// System.out.println(file);
-
-			try {
+				codeLoad.close();
+				// *************************************************************************
 				rightTA.setText("");
-				BufferedReader bufferedLoad = new BufferedReader(new FileReader(file));
-				String zeile = null;
-				while ((zeile = bufferedLoad.readLine()) != null) {
-					if (!zeile.startsWith("#")) {
-						rightTA.setText(rightTA.getText() + "\n" + zeile);
+				BufferedReader testLoad = new BufferedReader(new FileReader("./Task/Aufgabe1/Try.java"));
+				String test = null;
+				while ((test = testLoad.readLine()) != null) {
+					if (!test.startsWith("#")) {
+						rightTA.setText(rightTA.getText() + test + "\n");
 					}
 				}
-				bufferedLoad.close();
+				testLoad.close();
 			} catch (IOException ex) {
 
 			}
-		}
-		if (e.getSource() == saveTest) {
-			FileChooser testFileChooser = new FileChooser();
-			File initialDirectory = new File("./Task");
-			testFileChooser.setInitialDirectory(initialDirectory);
-			FileChooser.ExtensionFilter testExtFilter = new FileChooser.ExtensionFilter("Java files (*.java)",
-					"*.java");
-			testFileChooser.getExtensionFilters().add(testExtFilter);
-			File testFile = testFileChooser.showOpenDialog(stage);
 
-			// if file doesnt exists, then create it
-			if (testFile != null) {
-				SaveFile(rightTA.getText(), testFile);
+		}
+		// if (e.getSource() == loadTest) {
+		//
+		// FileChooser fileChooser = new FileChooser();
+		// File initialDirectory = new File("./Task");
+		// fileChooser.setInitialDirectory(initialDirectory);
+		// FileChooser.ExtensionFilter extFilter = new
+		// FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
+		// fileChooser.getExtensionFilters().add(extFilter);
+		// File file = fileChooser.showOpenDialog(stage);
+		// // System.out.println(file);
+		//
+		// try {
+		// rightTA.setText("");
+		// BufferedReader bufferedLoad = new BufferedReader(new
+		// FileReader(file));
+		// String zeile = null;
+		// while ((zeile = bufferedLoad.readLine()) != null) {
+		// if (!zeile.startsWith("#")) {
+		// rightTA.setText(rightTA.getText() + "\n" + zeile);
+		// }
+		// }
+		// bufferedLoad.close();
+		// } catch (IOException ex) {
+		//
+		// }
+		// }
+		if (e.getSource() == saveTest) {
+
+			File testfile = new File("./Task/Aufgabe1/Try.java");
+
+			if (testfile != null) {
+				SaveFile(rightTA.getText(), testfile);
 			}
 		}
 
 		if (e.getSource() == saveCode) {
 
-			FileChooser codeFileChooser = new FileChooser();
-			File initialDirectory = new File("./Task");
-			codeFileChooser.setInitialDirectory(initialDirectory);
-			FileChooser.ExtensionFilter codeExtFilter = new FileChooser.ExtensionFilter("Java files (*.java)",
-					"*.java");
-			codeFileChooser.getExtensionFilters().add(codeExtFilter);
-			File codefile = codeFileChooser.showOpenDialog(stage);
-
-			// Show save file dialog
+			File codefile = new File("./Task/Aufgabe1/Code.java");
 
 			if (codefile != null) {
 				SaveFile(leftTA.getText(), codefile);
 			}
+
 		}
+
 		if (e.getSource() == exit) {
 			System.exit(0);
 		}
@@ -182,13 +169,10 @@ public class MainScreenController {
 
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
-
+		Console con = new Console(console);
+		PrintStream out = new PrintStream(con, true);
+		System.setOut(out);
 		if (e.getSource() == runCode) {
-
-			// Schickt den Output auf die TextArea "console"
-			Console con = new Console(console);
-			PrintStream out = new PrintStream(con, true);
-			System.setOut(out);
 
 			ConfigReader config = new ConfigReader("Aufgabe1");
 
@@ -199,15 +183,10 @@ public class MainScreenController {
 
 			program.compile();
 
-			program.run(commandLine);
+			program.run(" " + commandField.getText());
 
 		}
 		if (e.getSource() == runTest) {
-
-			// Schickt den Output auf die TextArea "console"
-			Console con = new Console(console);
-			PrintStream out = new PrintStream(con, true);
-			System.setOut(out);
 
 			ConfigReader config = new ConfigReader("Aufgabe1");
 
@@ -222,35 +201,8 @@ public class MainScreenController {
 		if (e.getSource() == clear) {
 			console.clear();
 		}
-		if (e.getSource() == runCommand) {
-
-			try {
-				// Load root layout from fxml file.
-				AnchorPane command = FXMLLoader.load(getClass().getResource("CommandLineScreen.fxml"));
-
-				// Show the scene containing the root layout.
-				Scene scene = new Scene(command);
-				Stage commandStage = new Stage();
-				commandStage.setScene(scene);
-
-				commandStage.show();
-
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
-		if (e.getSource() == runWithCommand) {
-			ConfigReader config = new ConfigReader("Aufgabe1");
-
-			Information info = new Information(config.getTestName(), config.getProgramName(),
-					"./Task/" + config.getTask() + "/");
-
-			Program program = new Program(info, console);
-			commandLine = " " + commandField.getText();
-			program.compile();
-
-			
-			program.run(commandLine);
+		if (e.getSource() == fieldClear) {
+			commandField.clear();
 		}
 
 	}

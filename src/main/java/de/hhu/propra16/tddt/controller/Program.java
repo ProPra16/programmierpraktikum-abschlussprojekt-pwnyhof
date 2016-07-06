@@ -91,7 +91,7 @@ public class Program {
 			try {
 				processRun = Runtime.getRuntime()
 						.exec("java -cp " + info.getPathToFiles() + " " + info.getCodeFileName() + args);
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			try {
