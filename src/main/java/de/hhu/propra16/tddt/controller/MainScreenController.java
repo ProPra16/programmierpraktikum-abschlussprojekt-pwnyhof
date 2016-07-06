@@ -122,8 +122,7 @@ public class MainScreenController {
 				bufferedLoad.close();
 			} catch (IOException ex) {
 
-			}
-			catch (NullPointerException ex2){
+			} catch (NullPointerException ex2){
 				
 			}
 
@@ -151,6 +150,8 @@ public class MainScreenController {
 				bufferedLoad.close();
 			} catch (IOException ex) {
 
+			} catch (NullPointerException ex2){
+				
 			}
 		}
 		if (e.getSource() == saveTest) {
