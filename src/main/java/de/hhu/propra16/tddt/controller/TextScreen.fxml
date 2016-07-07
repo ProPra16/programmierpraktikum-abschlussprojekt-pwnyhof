@@ -21,12 +21,12 @@
 			<items>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="300.0">
 					<children>
-						<TextArea fx:id="leftTA" layoutX="8.0" prefHeight="272.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+						<TextArea fx:id="leftTA" layoutX="8.0" prefHeight="272.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 					</children>
 				</AnchorPane>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
 					<children>
-						<TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+						<TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 					</children>
 				</AnchorPane>
 			</items>
@@ -77,9 +77,9 @@
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
+											<effect>
+												<DropShadow />
+											</effect>
 										</Button>
 										<Label layoutX="128.0" text="Code" textFill="#2d0edd">
 											<font>
@@ -94,9 +94,9 @@
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
+											<effect>
+												<DropShadow />
+											</effect>
 										</Button>
 										<Label layoutX="127.0" layoutY="1.0" text="Test" textFill="#eb0303">
 											<font>
@@ -121,9 +121,9 @@
 							<font>
 								<Font name="Consolas Bold" size="12.0" />
 							</font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
+							<effect>
+								<DropShadow />
+							</effect>
 						</Button>
 					</graphic>
 					<font>
@@ -146,9 +146,9 @@
 									<font>
 										<Font name="Consolas Bold" size="12.0" />
 									</font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
+									<effect>
+										<DropShadow />
+									</effect>
 								</Button>
 							</graphic>
 						</Label>

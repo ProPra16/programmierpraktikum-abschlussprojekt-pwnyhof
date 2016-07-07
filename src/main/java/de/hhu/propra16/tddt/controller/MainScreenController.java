@@ -40,7 +40,6 @@ public class MainScreenController {
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
-
 		if (e.getSource() == neu) {
 
 			leftTA.clear();
