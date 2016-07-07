@@ -103,7 +103,7 @@ public class Program {
 		}
 	}
 
-	public void test() {
+	public boolean test() {
 		// Liest Programm aus einer Datei
 		List<String> contentTest;
 		List<String> contentCode;
@@ -113,7 +113,7 @@ public class Program {
 
 		} catch (IOException e) {
 			System.out.println("ERROR: File Path Not Found!");
-			return;
+			return false;
 		}
 
 		// Wandelt den Testcode in einen String um
@@ -171,8 +171,13 @@ public class Program {
 			testDur.toString();
 			System.out.println(testDur + "\n" + "Number of failed tests: " + numberFailed + "\n"
 					+ "Number of ignored tests: " + numberIgn + "\n" + "Number of successful tests: " + numberSuccess);
-
+			if(numberFailed == 1) {
+				System.out.println("2sdfasfd");
+				return true;
+			}
 		}
+		
+		return false;
 	}
 
 	/*

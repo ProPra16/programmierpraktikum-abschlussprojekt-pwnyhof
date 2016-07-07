@@ -21,7 +21,11 @@
 			<items>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="300.0">
 					<children>
+<<<<<<< HEAD
 						<TextArea fx:id="leftTA" layoutX="8.0" prefHeight="272.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+=======
+						<TextArea fx:id="leftTA" disable="true" layoutX="8.0" prefHeight="272.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+>>>>>>> refs/heads/master
 					</children>
 				</AnchorPane>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
@@ -73,7 +77,7 @@
 							<items>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 									<children>
-										<Button fx:id="runCode" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
+										<Button fx:id="runCode" disable="true" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
@@ -86,6 +90,7 @@
 												<Font name="Gentium Basic Bold" size="22.0" />
 											</font>
 										</Label>
+                              <Button fx:id="nextCode" disable="true" layoutX="210.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="25.0" prefWidth="70.0" text="next" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 									</children>
 								</AnchorPane>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -103,6 +108,7 @@
 												<Font name="Gentium Basic Bold" size="22.0" />
 											</font>
 										</Label>
+                              <Button fx:id="nextTest" disable="true" layoutX="193.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="25.0" prefWidth="70.0" text="next" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 									</children>
 								</AnchorPane>
 							</items>
