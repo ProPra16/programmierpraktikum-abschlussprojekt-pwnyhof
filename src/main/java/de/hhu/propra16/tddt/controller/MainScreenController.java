@@ -34,11 +34,8 @@ public class MainScreenController {
 	@FXML
 
 	public TextArea leftTA, rightTA, console;
-<<<<<<< HEAD
 
 	@FXML
-=======
->>>>>>> refs/remotes/origin/Han
 
 	public TextField commandField;
 
