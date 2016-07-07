@@ -32,7 +32,38 @@ public class MainScreenController {
 	public Button runTest, fieldClear, runCode, clear;
 
 	@FXML
+<<<<<<< HEAD
 	public TextArea leftTA, rightTA, console;
+=======
+	public MenuItem saveTest;
+
+	@FXML
+	public MenuItem saveCode;
+
+	@FXML
+	public MenuItem exit;
+
+	@FXML
+	public MenuItem catalog;
+
+	@FXML
+	public Button runTest;
+
+	@FXML
+	public Button fieldClear;
+
+	@FXML
+	public Button runCode;
+
+	@FXML
+	public Button clear;
+
+	@FXML
+	public TextArea leftTA;
+
+	@FXML
+	public TextArea rightTA;
+>>>>>>> refs/heads/Han
 
 	@FXML
 	public TextField commandField;
@@ -84,7 +115,10 @@ public class MainScreenController {
 			}
 
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/heads/Han
 		if (e.getSource() == saveTest) {
 
 			File testfile = new File("./Task/Aufgabe1/Try.java");
@@ -98,6 +132,7 @@ public class MainScreenController {
 
 			File codefile = new File("./Task/Aufgabe1/Code.java");
 
+			
 			if (codefile != null) {
 				SaveFile(leftTA.getText(), codefile);
 			}
