@@ -130,7 +130,15 @@ public class MainScreenController {
 
 			Program program = new Program(info, console);
 
-			program.compile();
+			boolean codeTrue = program.compile();
+			
+			if(codeTrue) {
+				try {
+				nextCode.setDisable(false);
+				} catch (NullPointerException e2) {
+					
+				}	
+			}
 
 			program.run(" " + commandField.getText());
 
@@ -162,15 +170,20 @@ public class MainScreenController {
 			commandField.clear();
 		}
 		
-		if(e.getSource() == nextCode){
-			
-		}
-		
 		if(e.getSource() == nextTest){
 			runCode.setDisable(false);
 			leftTA.setDisable(false);
 			runTest.setDisable(true);
 			rightTA.setDisable(true);
+			nextCode.setDisable(true);
+		}
+		
+		if(e.getSource() == nextCode){
+			runCode.setDisable(true);
+			leftTA.setDisable(true);
+			runTest.setDisable(false);
+			rightTA.setDisable(false);
+			nextTest.setDisable(true);
 		}
 
 	}
