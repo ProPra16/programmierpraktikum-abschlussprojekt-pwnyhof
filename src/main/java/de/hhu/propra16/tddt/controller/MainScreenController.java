@@ -50,9 +50,6 @@ public class MainScreenController {
 	public Button fieldClear;
 
 	@FXML
-	public MenuItem runWithConfiguration;
-
-	@FXML
 	public Button runCode;
 
 	@FXML
@@ -117,32 +114,6 @@ public class MainScreenController {
 			}
 
 		}
-		// if (e.getSource() == loadTest) {
-		//
-		// FileChooser fileChooser = new FileChooser();
-		// File initialDirectory = new File("./Task");
-		// fileChooser.setInitialDirectory(initialDirectory);
-		// FileChooser.ExtensionFilter extFilter = new
-		// FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
-		// fileChooser.getExtensionFilters().add(extFilter);
-		// File file = fileChooser.showOpenDialog(stage);
-		// // System.out.println(file);
-		//
-		// try {
-		// rightTA.setText("");
-		// BufferedReader bufferedLoad = new BufferedReader(new
-		// FileReader(file));
-		// String zeile = null;
-		// while ((zeile = bufferedLoad.readLine()) != null) {
-		// if (!zeile.startsWith("#")) {
-		// rightTA.setText(rightTA.getText() + "\n" + zeile);
-		// }
-		// }
-		// bufferedLoad.close();
-		// } catch (IOException ex) {
-		//
-		// }
-		// }
 		if (e.getSource() == saveTest) {
 
 			File testfile = new File("./Task/Aufgabe1/Try.java");
@@ -156,6 +127,7 @@ public class MainScreenController {
 
 			File codefile = new File("./Task/Aufgabe1/Code.java");
 
+			
 			if (codefile != null) {
 				SaveFile(leftTA.getText(), codefile);
 			}
