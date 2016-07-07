@@ -139,7 +139,6 @@ public class MainScreenController {
 			Program program = new Program(info, console);
 
 			program.test();
-
 		}
 		if (e.getSource() == clear) {
 			console.clear();
