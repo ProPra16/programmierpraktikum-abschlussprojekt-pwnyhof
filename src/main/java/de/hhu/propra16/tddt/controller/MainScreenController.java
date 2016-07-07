@@ -26,12 +26,13 @@ public class MainScreenController {
 	String commandLine = " ";
 
 	@FXML
-	public MenuItem neu;
+	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
 
 	@FXML
-	public MenuItem load;
+	public Button runTest, fieldClear, runCode, clear;
 
 	@FXML
+<<<<<<< HEAD
 	public MenuItem saveTest;
 
 	@FXML
@@ -60,12 +61,12 @@ public class MainScreenController {
 
 	@FXML
 	public TextArea rightTA;
+=======
+	public TextArea leftTA, rightTA, console;
+>>>>>>> refs/remotes/origin/master
 
 	@FXML
 	public TextField commandField;
-
-	@FXML
-	public TextArea console;
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
@@ -99,7 +100,7 @@ public class MainScreenController {
 					}
 				}
 				codeLoad.close();
-				// *************************************************************************
+
 				rightTA.setText("");
 				BufferedReader testLoad = new BufferedReader(new FileReader("./Task/Aufgabe1/Try.java"));
 				String test = null;
@@ -114,6 +115,10 @@ public class MainScreenController {
 			}
 
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 		if (e.getSource() == saveTest) {
 
 			File testfile = new File("./Task/Aufgabe1/Try.java");

@@ -10,5 +10,5 @@ build.fxbuild
 /.gradle/
 /build/
 .idea/
+*.iml
 out/
-src/main/java/de/hhu/propra16/tddt/controller/MainScreenController.java

@@ -18,3 +18,4 @@ public class Code {
 		return a + b;
 	}
 }
+
