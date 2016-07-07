@@ -9,73 +9,39 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
 	Runtime rt = Runtime.getRuntime();
 	private Stage stage;
+
 	String commandLine = " ";
 
 	@FXML
-	public MenuItem neu;
+	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
 
 	@FXML
-	public MenuItem loadCode;
+	public Button runTest, fieldClear, runCode, clear;
 
 	@FXML
-	public MenuItem loadTest;
+
+	public TextArea leftTA, rightTA, console;
 
 	@FXML
-	public MenuItem saveTest;
 
-	@FXML
-	public MenuItem saveCode;
-
-	@FXML
-	public MenuItem exit;
-
-	@FXML
-	public MenuItem catalog;
-
-	@FXML
-	public Button runTest;
-
-	@FXML
-	public Button runCommand;
-
-	@FXML
-	public Button runWithCommand;
-
-	@FXML
-	public Button runCode;
-
-	@FXML
-	public Button clear;
-
-	@FXML
-	public TextArea leftTA;
-
-	@FXML
-	public TextArea rightTA;
-
-	@FXML
 	public TextField commandField;
 
 	@FXML
-	public TextArea console;
-
-	@FXML
 	public void handleMenuItem(ActionEvent e) {
+
 		if (e.getSource() == neu) {
 
 			leftTA.clear();
