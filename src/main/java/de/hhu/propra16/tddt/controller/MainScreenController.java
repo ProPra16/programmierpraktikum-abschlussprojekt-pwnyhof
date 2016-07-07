@@ -10,8 +10,6 @@ import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.junit.FixMethodOrder;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,7 +30,7 @@ public class MainScreenController {
 
 	@FXML
 	public Button runTest, fieldClear, runCode, clear, nextTest;
-	
+
 	@FXML
 	public Button nextCode;
 
@@ -46,6 +44,7 @@ public class MainScreenController {
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
+
 		if (e.getSource() == neu) {
 
 			leftTA.clear();
@@ -144,15 +143,14 @@ public class MainScreenController {
 			Program program = new Program(info, console);
 
 			boolean testTrue = program.test();
-			if(testTrue) {
+			if (testTrue) {
 				try {
-				nextTest.setDisable(false);
-				} catch (NullPointerException e2) {	
+					nextTest.setDisable(false);
+				} catch (NullPointerException e2) {
 				}
-				
+
 			}
-			
-			
+
 		}
 		if (e.getSource() == clear) {
 			console.clear();
@@ -160,12 +158,12 @@ public class MainScreenController {
 		if (e.getSource() == fieldClear) {
 			commandField.clear();
 		}
-		
-		if(e.getSource() == nextCode){
-			
+
+		if (e.getSource() == nextCode) {
+
 		}
-		
-		if(e.getSource() == nextTest){
+
+		if (e.getSource() == nextTest) {
 			runCode.setDisable(false);
 			leftTA.setDisable(false);
 			runTest.setDisable(true);
