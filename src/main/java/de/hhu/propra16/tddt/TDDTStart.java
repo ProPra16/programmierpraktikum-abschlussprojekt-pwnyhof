@@ -19,6 +19,7 @@ public class TDDTStart extends Application {
 			// Show the scene containing the root layout.
 			Scene scene = new Scene(base);
 
+			primaryStage.setTitle("TDDT 1.0");
 			primaryStage.setScene(scene);
 
 			primaryStage.show();
