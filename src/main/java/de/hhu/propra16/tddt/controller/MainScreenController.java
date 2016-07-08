@@ -176,7 +176,7 @@ public class MainScreenController {
 			runTest.setDisable(true);
 			rightTA.setDisable(true);
 			nextCode.setDisable(true);
-			currentPhase.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+			currentPhase.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 		
 		if(e.getSource() == nextCode){
@@ -185,6 +185,7 @@ public class MainScreenController {
 			runTest.setDisable(false);
 			rightTA.setDisable(false);
 			nextTest.setDisable(true);
+			currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 
 	}
