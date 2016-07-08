@@ -10,10 +10,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -30,7 +35,7 @@ public class MainScreenController {
 	public Button runTest, fieldClear, runCode, clear, nextTest;
 	
 	@FXML
-	public Button nextCode;
+	public Button nextCode, currentPhase;
 
 	@FXML
 	public TextArea leftTA, rightTA, console;
@@ -171,6 +176,7 @@ public class MainScreenController {
 			runTest.setDisable(true);
 			rightTA.setDisable(true);
 			nextCode.setDisable(true);
+			currentPhase.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 		
 		if(e.getSource() == nextCode){

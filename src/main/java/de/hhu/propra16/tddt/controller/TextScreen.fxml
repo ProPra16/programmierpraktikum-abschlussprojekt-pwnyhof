@@ -12,6 +12,7 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -117,21 +118,26 @@
 	<bottom>
 		<BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 			<top>
-				<Label text="Console" BorderPane.alignment="TOP_LEFT">
-					<graphic>
-						<Button fx:id="clear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
-							<font>
-								<Font name="Consolas Bold" size="12.0" />
-							</font>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-						</Button>
-					</graphic>
-					<font>
-						<Font name="Consolas Bold" size="12.0" />
-					</font>
-				</Label>
+            <HBox spacing="173.0" BorderPane.alignment="TOP_LEFT">
+               <children>
+      				<Label text="Console">
+      					<graphic>
+      						<Button fx:id="clear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
+      							<font>
+      								<Font name="Consolas Bold" size="12.0" />
+      							</font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+      						</Button>
+      					</graphic>
+      					<font>
+      						<Font name="Consolas Bold" size="12.0" />
+      					</font>
+      				</Label>
+                  <Button fx:id="currentPhase" mnemonicParsing="false" text="Button" />
+               </children>
+            </HBox>
 			</top>
 			<center>
 				<TextArea fx:id="console" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
