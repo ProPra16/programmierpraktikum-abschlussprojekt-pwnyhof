@@ -135,7 +135,7 @@
       						<Font name="Consolas Bold" size="12.0" />
       					</font>
       				</Label>
-                  <Button fx:id="currentPhase" mnemonicParsing="false" text="Button" />
+                  <Button fx:id="currentPhase" mnemonicParsing="false" text="Button"/>
                </children>
             </HBox>
 			</top>

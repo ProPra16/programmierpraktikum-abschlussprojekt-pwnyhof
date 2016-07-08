@@ -36,7 +36,7 @@ public class MainScreenController {
 	
 	@FXML
 	public Button nextCode, currentPhase;
-
+	
 	@FXML
 	public TextArea leftTA, rightTA, console;
 
