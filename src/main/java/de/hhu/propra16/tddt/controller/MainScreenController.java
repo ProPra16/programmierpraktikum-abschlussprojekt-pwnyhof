@@ -33,7 +33,6 @@ public class MainScreenController {
 	public Button nextCode;
 
 	@FXML
-
 	public TextArea leftTA, rightTA, console;
 
 	@FXML
