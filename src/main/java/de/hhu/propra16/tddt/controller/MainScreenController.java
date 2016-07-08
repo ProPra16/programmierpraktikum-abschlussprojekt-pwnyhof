@@ -131,7 +131,6 @@ public class MainScreenController {
 			Program program = new Program(info, console);
 
 			boolean codeTrue = program.compile();
-			
 			if(codeTrue) {
 				try {
 				nextCode.setDisable(false);
