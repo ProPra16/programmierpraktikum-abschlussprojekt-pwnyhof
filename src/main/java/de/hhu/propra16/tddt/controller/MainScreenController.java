@@ -10,6 +10,8 @@ import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.junit.FixMethodOrder;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,7 +31,10 @@ public class MainScreenController {
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
 
 	@FXML
-	public Button runTest, fieldClear, runCode, clear;
+	public Button runTest, fieldClear, runCode, clear, nextTest;
+	
+	@FXML
+	public Button nextCode;
 
 	@FXML
 
@@ -125,7 +130,15 @@ public class MainScreenController {
 
 			Program program = new Program(info, console);
 
-			program.compile();
+			boolean codeTrue = program.compile();
+			
+			if(codeTrue) {
+				try {
+				nextCode.setDisable(false);
+				} catch (NullPointerException e2) {
+					
+				}	
+			}
 
 			program.run(" " + commandField.getText());
 
@@ -139,13 +152,38 @@ public class MainScreenController {
 
 			Program program = new Program(info, console);
 
-			program.test();
+			boolean testTrue = program.test();
+			if(testTrue) {
+				try {
+				nextTest.setDisable(false);
+				} catch (NullPointerException e2) {	
+				}
+				
+			}
+			
+			
 		}
 		if (e.getSource() == clear) {
 			console.clear();
 		}
 		if (e.getSource() == fieldClear) {
 			commandField.clear();
+		}
+		
+		if(e.getSource() == nextTest){
+			runCode.setDisable(false);
+			leftTA.setDisable(false);
+			runTest.setDisable(true);
+			rightTA.setDisable(true);
+			nextCode.setDisable(true);
+		}
+		
+		if(e.getSource() == nextCode){
+			runCode.setDisable(true);
+			leftTA.setDisable(true);
+			runTest.setDisable(false);
+			rightTA.setDisable(false);
+			nextTest.setDisable(true);
 		}
 
 	}

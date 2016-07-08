@@ -34,7 +34,7 @@ public class Program {
 
 	}
 
-	public void compile() {
+	public boolean compile() {
 		// Compiliert das Programm NICHT imaginär
 		Process processCompile = null;
 		try {
@@ -55,7 +55,7 @@ public class Program {
 
 		} catch (IOException e) {
 			System.out.println("ERROR: File Path Not Found!");
-			return;
+			return false;
 		}
 
 		// Wandelt den Quellcode in einen String um
@@ -82,6 +82,11 @@ public class Program {
 		for (int i = 0; i < array.length; i++) {
 			console.setText(console.getText() + array[i].toString() + "\n");
 		}
+		if(array.length == 0){
+			return true;
+		}
+		
+		return false;
 	}
 
 	public void run(String args) {
@@ -103,7 +108,7 @@ public class Program {
 		}
 	}
 
-	public void test() {
+	public boolean test() {
 		// Liest Programm aus einer Datei
 		List<String> contentTest;
 		List<String> contentCode;
@@ -113,7 +118,7 @@ public class Program {
 
 		} catch (IOException e) {
 			System.out.println("ERROR: File Path Not Found!");
-			return;
+			return false;
 		}
 
 		// Wandelt den Testcode in einen String um
@@ -171,8 +176,12 @@ public class Program {
 			testDur.toString();
 			System.out.println(testDur + "\n" + "Number of failed tests: " + numberFailed + "\n"
 					+ "Number of ignored tests: " + numberIgn + "\n" + "Number of successful tests: " + numberSuccess);
-
+			if(numberFailed == 1) {
+				return true;
+			}
 		}
+		
+		return false;
 	}
 
 	/*
