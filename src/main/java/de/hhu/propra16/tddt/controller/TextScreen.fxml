@@ -12,6 +12,7 @@
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -73,7 +74,7 @@
 							<items>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 									<children>
-										<Button fx:id="runCode" disable="true" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
+										<Button fx:id="runCode" disable="true" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="check" textFill="#1809eb">
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
@@ -98,7 +99,7 @@
 								</AnchorPane>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 									<children>
-										<Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="runTest" textFill="#eb0303">
+										<Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="check" textFill="#eb0303">
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
@@ -131,6 +132,7 @@
 	<bottom>
 		<BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 			<top>
+<<<<<<< HEAD
 				<Label text="Console" BorderPane.alignment="TOP_LEFT">
 					<graphic>
 						<Button fx:id="clear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
@@ -146,13 +148,36 @@
 						<Font name="Consolas Bold" size="12.0" />
 					</font>
 				</Label>
+=======
+            <HBox spacing="173.0" BorderPane.alignment="TOP_LEFT">
+               <children>
+      				<Label text="Console">
+      					<graphic>
+      						<Button fx:id="clear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
+      							<font>
+      								<Font name="Consolas Bold" size="12.0" />
+      							</font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+      						</Button>
+      					</graphic>
+      					<font>
+      						<Font name="Consolas Bold" size="12.0" />
+      					</font>
+      				</Label>
+                  <Button fx:id="currentPhase" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #FF0000;" />
+               </children>
+            </HBox>
+>>>>>>> refs/heads/master
 			</top>
 			<center>
-				<TextArea fx:id="console" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
+				<TextArea fx:id="console" editable="false" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
 			</center>
 			<bottom>
 				<VBox>
 					<children>
+<<<<<<< HEAD
 						<Label text="Arguments" textFill="#ff0606">
 							<font>
 								<Font name="System Bold" size="12.0" />
@@ -168,7 +193,29 @@
 								</Button>
 							</graphic>
 						</Label>
+=======
+                  <HBox>
+                     <children>
+      						<Label text="Arguments" textFill="#ff0606">
+      							<font>
+      								<Font name="System Bold" size="12.0" />
+      							</font>
+      							<graphic>
+      								<Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
+      									<font>
+      										<Font name="Consolas Bold" size="12.0" />
+      									</font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+      								</Button>
+      							</graphic>
+      						</Label>
+                     </children>
+                  </HBox>
+>>>>>>> refs/heads/master
 						<TextField fx:id="commandField" prefHeight="39.0" prefWidth="600.0" />
+                  <Button fx:id="run" maxHeight="25.0" maxWidth="49.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="22.0" prefWidth="49.0" style="-fx-background-color: #090a09;" text="run" textFill="#00f200" />
 					</children>
 				</VBox>
 			</bottom>
