@@ -2,13 +2,14 @@ public class Code {
 	public static void main(String[] args) {
 
 		int a = Integer.valueOf(args[0]);
+		
 		System.out.println(a);
 		System.out.println(add());
 		System.out.println(greet());
 	}
 
 	public static String greet() {
-		return "Hell World!";
+		return "Hel World!";
 	}
 
 	public static int add() {
@@ -17,3 +18,4 @@ public class Code {
 		return a + b;
 	}
 }
+
