@@ -91,39 +91,23 @@ public class MainScreenController {
 		if (e.getSource() == saveTest) {
 
 			try {
-				File testfile = new File(config.getPath() + config.getTestName() + ".java");
-
-				if (testfile != null) {
-					SaveFile(rightTA.getText(), testfile);
-				}
-			} catch (NullPointerException e1) {
-				try {
-					SaveFile(rightTA.getText(), testfile);
-				} catch (Exception e11) {
-					System.out.println("Keine Uebung ausgewaehlt");
-				}
+				SaveFile(rightTA.getText(), testfile);
+			} catch (Exception e1) {
+				System.out.println("Keine Uebung ausgewaehlt");
 			}
+		}
 
-			if (e.getSource() == saveCode) {
+		if (e.getSource() == saveCode) {
 
-				try {
-					File codefile = new File(config.getPath() + config.getProgramName() + ".java");
-
-					if (codefile != null) {
-						SaveFile(leftTA.getText(), codefile);
-					}
-				} catch (NullPointerException e1) {
-					try {
-						SaveFile(leftTA.getText(), codefile);
-					} catch (Exception e11) {
-						System.out.println("Keine Uebung ausgewaehlt");
-					}
-				}
+			try {
+				SaveFile(leftTA.getText(), codefile);
+			} catch (Exception e1) {
+				System.out.println("Keine Uebung ausgewaehlt");
 			}
+		}
 
-			if (e.getSource() == exit) {
-				System.exit(0);
-			}
+		if (e.getSource() == exit) {
+			System.exit(0);
 		}
 	}
 
@@ -155,6 +139,7 @@ public class MainScreenController {
 						currentPhase.setBackground(
 								new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 					} catch (NullPointerException e2) {
+
 					}
 				}
 			} catch (NullPointerException e1) {
@@ -174,19 +159,18 @@ public class MainScreenController {
 
 				}
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Uebung aus");
 
 			}
 		}
 
 		if (e.getSource() == run) {
 			try {
+
 				program.compile();
 
 				program.run(" " + commandField.getText());
 
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Uebung aus");
 
 			}
 		}
@@ -199,13 +183,6 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == nextTest) {
-			runCode.setDisable(false);
-			leftTA.setDisable(false);
-			runTest.setDisable(true);
-			rightTA.setDisable(true);
-			nextCode.setDisable(true);
-			currentPhase
-					.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 			try {
 				SaveFile(rightTA.getText(), testfile);
 				int oneFail = program.test();
@@ -283,7 +260,7 @@ public class MainScreenController {
 		} catch (IOException ex) {
 
 		} catch (NullPointerException e1) {
-			System.out.println("Bitte waehlen Sie eine Uebung aus (du Lappen)");
+			System.out.println("Bitte waehlen Sie eine Übung aus (du Lappen)");
 		}
 	}
 
@@ -297,5 +274,7 @@ public class MainScreenController {
 		} catch (IOException ex) {
 			Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
 		}
+
 	}
+
 }
