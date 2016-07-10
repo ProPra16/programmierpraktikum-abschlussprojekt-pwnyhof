@@ -51,7 +51,7 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == catalog) {
-			
+
 			runCode.setDisable(true);
 			nextCode.setDisable(true);
 			leftTA.setDisable(true);
@@ -96,7 +96,6 @@ public class MainScreenController {
 			if (codefile != null) {
 				SaveFile(leftTA.getText(), codefile);
 			}
-
 		}
 
 		if (e.getSource() == exit) {
@@ -109,39 +108,37 @@ public class MainScreenController {
 		Console con = new Console(console);
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
-		
+
+		Information info = new Information(config.getTestName(), config.getProgramName(),
+				"./Task/" + config.getTask() + "/");
+
+		Program program = new Program(info, console);
+
+		if (config == null) {
+			System.out.println("Bitte waehlen Sie eine Uebung aus!");
+			return;
+		}
+
 		if (e.getSource() == runCode) {
-
 			try {
-				Information info = new Information(config.getTestName(), config.getProgramName(),
-						"./Task/" + config.getTask() + "/");
-
-				Program program = new Program(info, console);
 
 				int zeroFails = program.test();
-				
+
 				if (zeroFails == 0) {
 					try {
 						nextCode.setDisable(false);
+						currentPhase.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 					} catch (NullPointerException e2) {
 
 					}
 				}
-
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus");
 
 			}
-
 		}
 
 		if (e.getSource() == runTest) {
-
 			try {
-				Information info = new Information(config.getTestName(), config.getProgramName(),
-						"./Task/" + config.getTask() + "/");
-
-				Program program = new Program(info, console);
 
 				int oneFail = program.test();
 				if (oneFail == 1) {
@@ -152,29 +149,22 @@ public class MainScreenController {
 
 				}
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus");
 
 			}
-
 		}
-		
-		if (e.getSource() == run){
-			try {
-				Information info = new Information(config.getTestName(), config.getProgramName(),
-						"./Task/" + config.getTask() + "/");
 
-				Program program = new Program(info, console);
-				
+		if (e.getSource() == run) {
+			try {
+
 				program.compile();
 
 				program.run(" " + commandField.getText());
 
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus");
 
 			}
 		}
-		
+
 		if (e.getSource() == clear) {
 			console.clear();
 		}
@@ -188,22 +178,37 @@ public class MainScreenController {
 			runTest.setDisable(true);
 			rightTA.setDisable(true);
 			nextCode.setDisable(true);
-			currentPhase.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+			currentPhase.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 
 		if (e.getSource() == nextCode) {
-			runCode.setDisable(true);
-			nextCode.setDisable(true);
-			leftTA.setDisable(true);
-			runTest.setDisable(false);
-			rightTA.setDisable(false);
-			nextTest.setDisable(true);
-			currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
-		}
+			try {
+				int zeroFails = program.test();
 
+				if (zeroFails == 0) {
+					try {
+						runCode.setDisable(true);
+						nextCode.setDisable(true);
+						leftTA.setDisable(true);
+						runTest.setDisable(false);
+						rightTA.setDisable(false);
+						nextTest.setDisable(true);
+						currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+					} catch (NullPointerException e2) {
+
+					}
+				}
+			} catch (NullPointerException e1) {
+
+			}
+		}
 	}
-	
+
 	private void loadMethod() {
+		Console con = new Console(console);
+		PrintStream out = new PrintStream(con, true);
+		System.setOut(out);
+
 		try {
 			leftTA.setText("");
 			BufferedReader codeLoad = new BufferedReader(
