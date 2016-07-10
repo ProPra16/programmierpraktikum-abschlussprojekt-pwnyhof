@@ -51,7 +51,7 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == catalog) {
-			
+
 			runCode.setDisable(true);
 			nextCode.setDisable(true);
 			leftTA.setDisable(true);
@@ -109,7 +109,7 @@ public class MainScreenController {
 		Console con = new Console(console);
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
-		
+
 		if (e.getSource() == runCode) {
 
 			try {
@@ -119,7 +119,7 @@ public class MainScreenController {
 				Program program = new Program(info, console);
 
 				int zeroFails = program.test();
-				
+
 				if (zeroFails == 0) {
 					try {
 						nextCode.setDisable(false);
@@ -157,14 +157,14 @@ public class MainScreenController {
 			}
 
 		}
-		
-		if (e.getSource() == run){
+
+		if (e.getSource() == run) {
 			try {
 				Information info = new Information(config.getTestName(), config.getProgramName(),
 						"./Task/" + config.getTask() + "/");
 
 				Program program = new Program(info, console);
-				
+
 				program.compile();
 
 				program.run(" " + commandField.getText());
@@ -174,7 +174,7 @@ public class MainScreenController {
 
 			}
 		}
-		
+
 		if (e.getSource() == clear) {
 			console.clear();
 		}
@@ -202,7 +202,7 @@ public class MainScreenController {
 		}
 
 	}
-	
+
 	private void loadMethod() {
 		try {
 			leftTA.setText("");
