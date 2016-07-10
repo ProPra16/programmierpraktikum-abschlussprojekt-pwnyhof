@@ -82,19 +82,27 @@ public class MainScreenController {
 
 		if (e.getSource() == saveTest) {
 
-			File testfile = new File(config.getPath() + config.getTestName() + ".java");
+			try {
+				File testfile = new File(config.getPath() + config.getTestName() + ".java");
 
-			if (testfile != null) {
-				SaveFile(rightTA.getText(), testfile);
+				if (testfile != null) {
+					SaveFile(rightTA.getText(), testfile);
+				}
+			} catch (NullPointerException e1) {
 			}
 		}
 
-		if (e.getSource() == saveCode) {
+		if (e.getSource() == saveCode)
 
-			File codefile = new File(config.getPath() + config.getProgramName() + ".java");
+		{
 
-			if (codefile != null) {
-				SaveFile(leftTA.getText(), codefile);
+			try {
+				File codefile = new File(config.getPath() + config.getProgramName() + ".java");
+
+				if (codefile != null) {
+					SaveFile(leftTA.getText(), codefile);
+				}
+			} catch (NullPointerException e1) {
 			}
 		}
 
@@ -108,7 +116,6 @@ public class MainScreenController {
 		Console con = new Console(console);
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
-
 
 		Information info = new Information(config.getTestName(), config.getProgramName(),
 				"./Task/" + config.getTask() + "/");
@@ -125,11 +132,11 @@ public class MainScreenController {
 
 				int zeroFails = program.test();
 
-
 				if (zeroFails == 0) {
 					try {
 						nextCode.setDisable(false);
-						currentPhase.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+						currentPhase.setBackground(
+								new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 					} catch (NullPointerException e2) {
 
 					}
@@ -156,8 +163,6 @@ public class MainScreenController {
 			}
 		}
 
-		
-
 		if (e.getSource() == run) {
 			try {
 				program.compile();
@@ -183,7 +188,8 @@ public class MainScreenController {
 			runTest.setDisable(true);
 			rightTA.setDisable(true);
 			nextCode.setDisable(true);
-			currentPhase.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+			currentPhase
+					.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 
 		if (e.getSource() == nextCode) {
@@ -198,7 +204,8 @@ public class MainScreenController {
 						runTest.setDisable(false);
 						rightTA.setDisable(false);
 						nextTest.setDisable(true);
-						currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+						currentPhase.setBackground(
+								new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 					} catch (NullPointerException e2) {
 
 					}
@@ -208,8 +215,6 @@ public class MainScreenController {
 			}
 		}
 	}
-
-	
 
 	private void loadMethod() {
 		Console con = new Console(console);
