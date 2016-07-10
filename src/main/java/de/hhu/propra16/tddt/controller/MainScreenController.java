@@ -19,6 +19,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -54,15 +55,34 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == catalog) {
+			
+			final DirectoryChooser ExerciseFolder = new DirectoryChooser();
+			File initialDirectory = new File("./Task");
+			ExerciseFolder.setInitialDirectory(initialDirectory);
+			String sfolder = "";
+			
+			final File selectedDirectory = ExerciseFolder.showDialog(stage);
+			if (selectedDirectory != null) {
+				sfolder = selectedDirectory.getName();
+			}
+			
+			System.out.println(sfolder);
+			
+			if (!sfolder.isEmpty()){
+				ConfigReader CR = new ConfigReader(sfolder);
+			}
+			
+			/*
 			FileChooser fileChooser = new FileChooser();
 
 			File initialDirectory = new File("./Task");
 			fileChooser.setInitialDirectory(initialDirectory);
 
 			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
-			fileChooser.getExtensionFilters().add(extFilter);
+			//fileChooser.getExtensionFilters().add(extFilter);
 
 			fileChooser.showOpenDialog(stage);
+			*/		
 		}
 		if (e.getSource() == load) {
 
@@ -142,6 +162,7 @@ public class MainScreenController {
 			program.run(" " + commandField.getText());
 
 		}
+		
 		if (e.getSource() == runTest) {
 
 			ConfigReader config = new ConfigReader("Aufgabe1");
@@ -180,6 +201,7 @@ public class MainScreenController {
 		
 		if(e.getSource() == nextCode){
 			runCode.setDisable(true);
+			nextCode.setDisable(true);
 			leftTA.setDisable(true);
 			runTest.setDisable(false);
 			rightTA.setDisable(false);

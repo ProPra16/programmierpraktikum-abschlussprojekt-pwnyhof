@@ -82,6 +82,7 @@ public class Program {
 		for (int i = 0; i < array.length; i++) {
 			console.setText(console.getText() + array[i].toString() + "\n");
 		}
+
 		if(array.length == 0){
 			return true;
 		}
