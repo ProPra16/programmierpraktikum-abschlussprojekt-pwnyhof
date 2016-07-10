@@ -25,6 +25,9 @@ import javafx.stage.Stage;
 public class MainScreenController {
 	private Stage stage;
 	private ConfigReader config = null;
+	private File testfile;
+	private File codefile;
+	private Program program;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
@@ -44,6 +47,9 @@ public class MainScreenController {
 
 	@FXML
 	public void handleMenuItem(ActionEvent e) {
+		Console con = new Console(console);
+		PrintStream out = new PrintStream(con, true);
+		System.setOut(out);
 
 		if (e.getSource() == neu) {
 			leftTA.clear();
@@ -74,6 +80,8 @@ public class MainScreenController {
 				config = new ConfigReader(sfolder);
 				loadMethod();
 			}
+			codefile = new File(config.getPath() + config.getProgramName() + ".java");
+			testfile = new File(config.getPath() + config.getTestName() + ".java");
 
 		}
 		if (e.getSource() == load) {
@@ -82,19 +90,19 @@ public class MainScreenController {
 
 		if (e.getSource() == saveTest) {
 
-			File testfile = new File(config.getPath() + config.getTestName() + ".java");
-
-			if (testfile != null) {
+			try {
 				SaveFile(rightTA.getText(), testfile);
+			} catch (Exception e1) {
+				System.out.println("Keine Uebung ausgewaehlt");
 			}
 		}
 
 		if (e.getSource() == saveCode) {
 
-			File codefile = new File(config.getPath() + config.getProgramName() + ".java");
-
-			if (codefile != null) {
+			try {
 				SaveFile(leftTA.getText(), codefile);
+			} catch (Exception e1) {
+				System.out.println("Keine Uebung ausgewaehlt");
 			}
 		}
 
@@ -109,25 +117,27 @@ public class MainScreenController {
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
 
-		Information info = new Information(config.getTestName(), config.getProgramName(),
-				"./Task/" + config.getTask() + "/");
+		try {
+			Information info = new Information(config.getTestName(), config.getProgramName(),
+					"./Task/" + config.getTask() + "/");
 
-		Program program = new Program(info, console);
+			program = new Program(info, console);
 
-		if (config == null) {
-			System.out.println("Bitte waehlen Sie eine Uebung aus!");
+		} catch (NullPointerException e3) {
+			System.out.println("Bitte waehlen Sie eine Uebung aus");
 			return;
 		}
 
 		if (e.getSource() == runCode) {
 			try {
-
+				SaveFile(leftTA.getText(), codefile);
 				int zeroFails = program.test();
 
 				if (zeroFails == 0) {
 					try {
 						nextCode.setDisable(false);
-						currentPhase.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+						currentPhase.setBackground(
+								new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 					} catch (NullPointerException e2) {
 
 					}
@@ -139,7 +149,7 @@ public class MainScreenController {
 
 		if (e.getSource() == runTest) {
 			try {
-
+				SaveFile(rightTA.getText(), testfile);
 				int oneFail = program.test();
 				if (oneFail == 1) {
 					try {
@@ -173,16 +183,31 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == nextTest) {
-			runCode.setDisable(false);
-			leftTA.setDisable(false);
-			runTest.setDisable(true);
-			rightTA.setDisable(true);
-			nextCode.setDisable(true);
-			currentPhase.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+			try {
+				SaveFile(rightTA.getText(), testfile);
+				int oneFail = program.test();
+
+				if (oneFail == 1) {
+					try {
+						runCode.setDisable(false);
+						leftTA.setDisable(false);
+						runTest.setDisable(true);
+						rightTA.setDisable(true);
+						nextCode.setDisable(true);
+						currentPhase.setBackground(
+								new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+					} catch (NullPointerException e2) {
+
+					}
+				}
+			} catch (NullPointerException e1) {
+
+			}
 		}
 
 		if (e.getSource() == nextCode) {
 			try {
+				SaveFile(leftTA.getText(), codefile);
 				int zeroFails = program.test();
 
 				if (zeroFails == 0) {
@@ -193,7 +218,8 @@ public class MainScreenController {
 						runTest.setDisable(false);
 						rightTA.setDisable(false);
 						nextTest.setDisable(true);
-						currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+						currentPhase.setBackground(
+								new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 					} catch (NullPointerException e2) {
 
 					}
