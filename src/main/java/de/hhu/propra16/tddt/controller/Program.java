@@ -34,7 +34,6 @@ public class Program {
 
 	}
 
-	
 	public void compile() {
 		// Compiliert das Programm NICHT imaginär
 		Process processCompile = null;
@@ -160,14 +159,14 @@ public class Program {
 		for (int i = 0; i < arrayTest.length; i++) {
 			console.setText(console.getText() + arrayTest[i].getMessage() + "\n");
 		}
-		
+
 		int numberFailed = testResult.getNumberOfFailedTests();
-		
+
 		if (numberFailed == 0) {
 			Duration testDur = testResult.getTestDuration();
 			testDur.toString();
 			System.out.println(testDur + "\n" + "All tests succesfull! Congratulations ASSHOLE!");
-			if(numberFailed == 0) {
+			if (numberFailed == 0) {
 				return 0;
 			}
 		}
@@ -178,12 +177,12 @@ public class Program {
 			testDur.toString();
 			System.out.println(testDur + "\n" + "Number of failed tests: " + numberFailed + "\n"
 					+ "Number of ignored tests: " + numberIgn + "\n" + "Number of successful tests: " + numberSuccess);
-			
-			if(numberFailed == 1) {
+
+			if (numberFailed == 1) {
 				return 1;
 			}
 		}
-		
+
 		return -1;
 	}
 
