@@ -22,12 +22,12 @@
 			<items>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="300.0">
 					<children>
-						<TextArea fx:id="leftTA" disable="true" layoutX="8.0" prefHeight="272.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+						<TextArea fx:id="leftTA" disable="true" layoutX="8.0" prefHeight="272.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 					</children>
 				</AnchorPane>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="294.0">
 					<children>
-						<TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="296.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+						<TextArea fx:id="rightTA" prefHeight="272.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 					</children>
 				</AnchorPane>
 			</items>
@@ -78,23 +78,16 @@
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
-											<effect>
-												<DropShadow />
-											</effect>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
 										</Button>
 										<Label layoutX="128.0" text="Code" textFill="#2d0edd">
 											<font>
 												<Font name="Gentium Basic Bold" size="22.0" />
 											</font>
 										</Label>
-                              <Button fx:id="nextCode" disable="true" layoutX="229.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleButton" text="next" textFill="#9100a1" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="Consolas Bold" size="15.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Button>
+                              <Button fx:id="nextCode" disable="true" layoutX="210.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="25.0" prefWidth="70.0" text="next" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 									</children>
 								</AnchorPane>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -103,23 +96,16 @@
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
-											<effect>
-												<DropShadow />
-											</effect>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
 										</Button>
 										<Label layoutX="127.0" layoutY="1.0" text="Test" textFill="#eb0303">
 											<font>
 												<Font name="Gentium Basic Bold" size="22.0" />
 											</font>
 										</Label>
-                              <Button fx:id="nextTest" disable="true" layoutX="229.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleButton" text="next" textFill="#9e029e" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <font>
-                                    <Font name="Consolas Bold" size="15.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Button>
+                              <Button fx:id="nextTest" disable="true" layoutX="193.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="25.0" prefWidth="70.0" text="next" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 									</children>
 								</AnchorPane>
 							</items>
@@ -132,23 +118,6 @@
 	<bottom>
 		<BorderPane prefHeight="256.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 			<top>
-<<<<<<< HEAD
-				<Label text="Console" BorderPane.alignment="TOP_LEFT">
-					<graphic>
-						<Button fx:id="clear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
-							<font>
-								<Font name="Consolas Bold" size="12.0" />
-							</font>
-							<effect>
-								<DropShadow />
-							</effect>
-						</Button>
-					</graphic>
-					<font>
-						<Font name="Consolas Bold" size="12.0" />
-					</font>
-				</Label>
-=======
             <HBox spacing="173.0" BorderPane.alignment="TOP_LEFT">
                <children>
       				<Label text="Console">
@@ -169,7 +138,6 @@
                   <Button fx:id="currentPhase" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #FF0000;" />
                </children>
             </HBox>
->>>>>>> refs/heads/master
 			</top>
 			<center>
 				<TextArea fx:id="console" editable="false" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
@@ -177,23 +145,6 @@
 			<bottom>
 				<VBox>
 					<children>
-<<<<<<< HEAD
-						<Label text="Arguments" textFill="#ff0606">
-							<font>
-								<Font name="System Bold" size="12.0" />
-							</font>
-							<graphic>
-								<Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#4d15bc">
-									<font>
-										<Font name="Consolas Bold" size="12.0" />
-									</font>
-									<effect>
-										<DropShadow />
-									</effect>
-								</Button>
-							</graphic>
-						</Label>
-=======
                   <HBox>
                      <children>
       						<Label text="Arguments" textFill="#ff0606">
@@ -213,7 +164,6 @@
       						</Label>
                      </children>
                   </HBox>
->>>>>>> refs/heads/master
 						<TextField fx:id="commandField" prefHeight="39.0" prefWidth="600.0" />
                   <Button fx:id="run" maxHeight="25.0" maxWidth="49.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="22.0" prefWidth="49.0" style="-fx-background-color: #090a09;" text="run" textFill="#00f200" />
 					</children>
