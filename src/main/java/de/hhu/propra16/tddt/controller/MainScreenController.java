@@ -66,8 +66,6 @@ public class MainScreenController {
 				sfolder = selectedDirectory.getName();
 			}
 			
-			System.out.println(sfolder);
-			
 			if (!sfolder.isEmpty()){
 				ConfigReader CR = new ConfigReader(sfolder);
 			}
