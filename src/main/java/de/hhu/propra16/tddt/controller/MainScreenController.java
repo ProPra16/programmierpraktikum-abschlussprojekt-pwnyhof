@@ -152,7 +152,7 @@ public class MainScreenController {
 
 				}
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus");
+				System.out.println("Bitte waehlen Sie eine Uebung aus");
 
 			}
 
@@ -170,7 +170,7 @@ public class MainScreenController {
 				program.run(" " + commandField.getText());
 
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus");
+				System.out.println("Bitte waehlen Sie eine Uebung aus");
 
 			}
 		}
@@ -229,7 +229,7 @@ public class MainScreenController {
 		} catch (IOException ex) {
 
 		} catch (NullPointerException e1) {
-			System.out.println("Bitte waehlen Sie eine Übung aus (du Lappen)");
+			System.out.println("Bitte waehlen Sie eine Uebung aus (du Lappen)");
 		}
 	}
 
