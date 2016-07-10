@@ -243,7 +243,5 @@ public class MainScreenController {
 		} catch (IOException ex) {
 			Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
 		}
-
 	}
-
 }
