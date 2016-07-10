@@ -155,7 +155,6 @@ public class MainScreenController {
 						currentPhase.setBackground(
 								new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 					} catch (NullPointerException e2) {
-
 					}
 				}
 			} catch (NullPointerException e1) {
