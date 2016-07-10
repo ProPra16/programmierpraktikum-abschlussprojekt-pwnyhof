@@ -34,7 +34,8 @@ public class Program {
 
 	}
 
-	public boolean compile() {
+	
+	public void compile() {
 		// Compiliert das Programm NICHT imaginär
 		Process processCompile = null;
 		try {
@@ -55,7 +56,7 @@ public class Program {
 
 		} catch (IOException e) {
 			System.out.println("ERROR: File Path Not Found!");
-			return false;
+			return;
 		}
 
 		// Wandelt den Quellcode in einen String um
@@ -82,15 +83,9 @@ public class Program {
 		for (int i = 0; i < array.length; i++) {
 			console.setText(console.getText() + array[i].toString() + "\n");
 		}
-
-		if(array.length == 0){
-			return true;
-		}
-		
-		return false;
 	}
 
-	public boolean run(String args) {
+	public void run(String args) {
 		// Wenn es keine Errors gibt wird das Programm gestartet
 		if (result != null && !result.hasCompileErrors()) {
 			Process processRun = null;
@@ -102,19 +97,15 @@ public class Program {
 			}
 			try {
 				println(processRun.getInputStream());
-				boolean error = println(processRun.getErrorStream());
-				
-				if(error){
-					return true;
-				}
+				println(processRun.getErrorStream());
+
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
-		return false;
 	}
 
-	public boolean test() {
+	public int test() {
 		// Liest Programm aus einer Datei
 		List<String> contentTest;
 		List<String> contentCode;
@@ -124,7 +115,7 @@ public class Program {
 
 		} catch (IOException e) {
 			System.out.println("ERROR: File Path Not Found!");
-			return false;
+			return -1;
 		}
 
 		// Wandelt den Testcode in einen String um
@@ -169,43 +160,39 @@ public class Program {
 		for (int i = 0; i < arrayTest.length; i++) {
 			console.setText(console.getText() + arrayTest[i].getMessage() + "\n");
 		}
-		if (testResult.getNumberOfFailedTests() == 0) {
+		
+		int numberFailed = testResult.getNumberOfFailedTests();
+		
+		if (numberFailed == 0) {
 			Duration testDur = testResult.getTestDuration();
 			testDur.toString();
 			System.out.println(testDur + "\n" + "All tests succesfull! Congratulations ASSHOLE!");
+			if(numberFailed == 0) {
+				return 0;
+			}
 		}
-		if (testResult.getNumberOfFailedTests() != 0) {
-			int numberFailed = testResult.getNumberOfFailedTests();
+		if (numberFailed != 0) {
 			int numberIgn = testResult.getNumberOfIgnoredTests();
 			int numberSuccess = testResult.getNumberOfSuccessfulTests();
 			Duration testDur = testResult.getTestDuration();
 			testDur.toString();
 			System.out.println(testDur + "\n" + "Number of failed tests: " + numberFailed + "\n"
 					+ "Number of ignored tests: " + numberIgn + "\n" + "Number of successful tests: " + numberSuccess);
+			
 			if(numberFailed == 1) {
-				return true;
+				return 1;
 			}
 		}
 		
-		return false;
+		return -1;
 	}
 
-	/*
-	 * private void createFile() { try { Files.createFile(pathToFile); }
-	 * 
-	 * catch (IOException e) { System.out.print(
-	 * "Der gegebene Dateipfad ist falsch!\n"); } }
-	 */
-
-	private boolean println(InputStream inStream) throws Exception {
+	private void println(InputStream inStream) throws Exception {
 		String line = null;
-		boolean b = true;
 		BufferedReader in = new BufferedReader(new InputStreamReader(inStream));
 		while ((line = in.readLine()) != null) {
 			System.out.println(line);
-			b = false;
 		}
-		return b;
 	}
 
 }

@@ -20,20 +20,17 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
-	private Runtime rt = Runtime.getRuntime();
 	private Stage stage;
-	private String commandLine = " ";
 	private ConfigReader config = null;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
 
 	@FXML
-	public Button runTest, fieldClear, runCode, clear, nextTest;
+	public Button runTest, fieldClear, runCode, clear, nextTest, run;
 
 	@FXML
 	public Button nextCode, currentPhase;
@@ -49,12 +46,19 @@ public class MainScreenController {
 	public void handleMenuItem(ActionEvent e) {
 
 		if (e.getSource() == neu) {
-
 			leftTA.clear();
 			rightTA.clear();
 		}
 
 		if (e.getSource() == catalog) {
+			
+			runCode.setDisable(true);
+			nextCode.setDisable(true);
+			leftTA.setDisable(true);
+			runTest.setDisable(false);
+			rightTA.setDisable(false);
+			nextTest.setDisable(true);
+			currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 
 			final DirectoryChooser ExerciseFolder = new DirectoryChooser();
 			File initialDirectory = new File("./Task");
@@ -71,18 +75,6 @@ public class MainScreenController {
 				loadMethod();
 			}
 
-			/*
-			 * FileChooser fileChooser = new FileChooser();
-			 * 
-			 * File initialDirectory = new File("./Task");
-			 * fileChooser.setInitialDirectory(initialDirectory);
-			 * 
-			 * FileChooser.ExtensionFilter extFilter = new
-			 * FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
-			 * //fileChooser.getExtensionFilters().add(extFilter);
-			 * 
-			 * fileChooser.showOpenDialog(stage);
-			 */
 		}
 		if (e.getSource() == load) {
 			loadMethod();
@@ -117,6 +109,7 @@ public class MainScreenController {
 		Console con = new Console(console);
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
+		
 		if (e.getSource() == runCode) {
 
 			try {
@@ -125,18 +118,15 @@ public class MainScreenController {
 
 				Program program = new Program(info, console);
 
-				boolean codeTrue = program.compile();
-				boolean noRunTimeError = program.run(" " + commandField.getText());
+				int zeroFails = program.test();
 				
-				if (codeTrue && noRunTimeError) {
+				if (zeroFails == 0) {
 					try {
 						nextCode.setDisable(false);
 					} catch (NullPointerException e2) {
 
 					}
 				}
-
-
 
 			} catch (NullPointerException e1) {
 				System.out.println("Bitte waehlen Sie eine Übung aus");
@@ -153,8 +143,8 @@ public class MainScreenController {
 
 				Program program = new Program(info, console);
 
-				boolean testTrue = program.test();
-				if (testTrue) {
+				int oneFail = program.test();
+				if (oneFail == 1) {
 					try {
 						nextTest.setDisable(false);
 					} catch (NullPointerException e2) {
@@ -167,6 +157,24 @@ public class MainScreenController {
 			}
 
 		}
+		
+		if (e.getSource() == run){
+			try {
+				Information info = new Information(config.getTestName(), config.getProgramName(),
+						"./Task/" + config.getTask() + "/");
+
+				Program program = new Program(info, console);
+				
+				program.compile();
+
+				program.run(" " + commandField.getText());
+
+			} catch (NullPointerException e1) {
+				System.out.println("Bitte waehlen Sie eine Übung aus");
+
+			}
+		}
+		
 		if (e.getSource() == clear) {
 			console.clear();
 		}

@@ -140,27 +140,32 @@
             </HBox>
 			</top>
 			<center>
-				<TextArea fx:id="console" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
+				<TextArea fx:id="console" editable="false" prefHeight="209.0" prefWidth="523.0" BorderPane.alignment="CENTER" />
 			</center>
 			<bottom>
 				<VBox>
 					<children>
-						<Label text="Arguments" textFill="#ff0606">
-							<font>
-								<Font name="System Bold" size="12.0" />
-							</font>
-							<graphic>
-								<Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#4d15bc">
-									<font>
-										<Font name="Consolas Bold" size="12.0" />
-									</font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-								</Button>
-							</graphic>
-						</Label>
+                  <HBox>
+                     <children>
+      						<Label text="Arguments" textFill="#ff0606">
+      							<font>
+      								<Font name="System Bold" size="12.0" />
+      							</font>
+      							<graphic>
+      								<Button fx:id="fieldClear" mnemonicParsing="false" onAction="#handleButton" text="clear" textFill="#0c50c6">
+      									<font>
+      										<Font name="Consolas Bold" size="12.0" />
+      									</font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+      								</Button>
+      							</graphic>
+      						</Label>
+                     </children>
+                  </HBox>
 						<TextField fx:id="commandField" prefHeight="39.0" prefWidth="600.0" />
+                  <Button fx:id="run" maxHeight="25.0" maxWidth="49.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="22.0" prefWidth="49.0" style="-fx-background-color: #090a09;" text="run" textFill="#00f200" />
 					</children>
 				</VBox>
 			</bottom>
