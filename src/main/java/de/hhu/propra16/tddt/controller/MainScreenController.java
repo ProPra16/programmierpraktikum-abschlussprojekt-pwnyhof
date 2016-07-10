@@ -125,7 +125,6 @@ public class MainScreenController {
 
 				int zeroFails = program.test();
 
-				int zeroFails = program.test();
 
 				if (zeroFails == 0) {
 					try {
@@ -157,14 +156,10 @@ public class MainScreenController {
 			}
 		}
 
-		}
+		
 
-		if (e.getSource() == run) {
 		if (e.getSource() == run) {
 			try {
-
-				Program program = new Program(info, console);
-
 				program.compile();
 
 				program.run(" " + commandField.getText());
@@ -214,7 +209,7 @@ public class MainScreenController {
 		}
 	}
 
-	}
+	
 
 	private void loadMethod() {
 		Console con = new Console(console);
