@@ -24,20 +24,20 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainScreenController {
-	Runtime rt = Runtime.getRuntime();
+	private Runtime rt = Runtime.getRuntime();
 	private Stage stage;
-
-	String commandLine = " ";
+	private String commandLine = " ";
+	private ConfigReader config = null;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
 
 	@FXML
 	public Button runTest, fieldClear, runCode, clear, nextTest;
-	
+
 	@FXML
 	public Button nextCode, currentPhase;
-	
+
 	@FXML
 	public TextArea leftTA, rightTA, console;
 
@@ -55,38 +55,40 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == catalog) {
-			
+
 			final DirectoryChooser ExerciseFolder = new DirectoryChooser();
 			File initialDirectory = new File("./Task");
 			ExerciseFolder.setInitialDirectory(initialDirectory);
 			String sfolder = "";
-			
+
 			final File selectedDirectory = ExerciseFolder.showDialog(stage);
 			if (selectedDirectory != null) {
 				sfolder = selectedDirectory.getName();
 			}
-			
-			if (!sfolder.isEmpty()){
-				ConfigReader CR = new ConfigReader(sfolder);
+
+			if (!sfolder.isEmpty()) {
+				config = new ConfigReader(sfolder);
 			}
-			
+
 			/*
-			FileChooser fileChooser = new FileChooser();
-
-			File initialDirectory = new File("./Task");
-			fileChooser.setInitialDirectory(initialDirectory);
-
-			FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
-			//fileChooser.getExtensionFilters().add(extFilter);
-
-			fileChooser.showOpenDialog(stage);
-			*/		
+			 * FileChooser fileChooser = new FileChooser();
+			 * 
+			 * File initialDirectory = new File("./Task");
+			 * fileChooser.setInitialDirectory(initialDirectory);
+			 * 
+			 * FileChooser.ExtensionFilter extFilter = new
+			 * FileChooser.ExtensionFilter("Java files (*.java)", "*.java");
+			 * //fileChooser.getExtensionFilters().add(extFilter);
+			 * 
+			 * fileChooser.showOpenDialog(stage);
+			 */
 		}
 		if (e.getSource() == load) {
 
 			try {
 				leftTA.setText("");
-				BufferedReader codeLoad = new BufferedReader(new FileReader("./Task/Aufgabe1/Code.java"));
+				BufferedReader codeLoad = new BufferedReader(
+						new FileReader(config.getPath() + config.getProgramName() + ".java"));
 				String code = null;
 				while ((code = codeLoad.readLine()) != null) {
 					if (!code.startsWith("#")) {
@@ -96,7 +98,8 @@ public class MainScreenController {
 				codeLoad.close();
 
 				rightTA.setText("");
-				BufferedReader testLoad = new BufferedReader(new FileReader("./Task/Aufgabe1/Try.java"));
+				BufferedReader testLoad = new BufferedReader(
+						new FileReader(config.getPath() + config.getTestName() + ".java"));
 				String test = null;
 				while ((test = testLoad.readLine()) != null) {
 					if (!test.startsWith("#")) {
@@ -106,13 +109,15 @@ public class MainScreenController {
 				testLoad.close();
 			} catch (IOException ex) {
 
+			} catch (NullPointerException e1) {
+				System.out.println("Bitte waehlen Sie eine Übung aus (du Lappen)");
 			}
 
 		}
 
 		if (e.getSource() == saveTest) {
 
-			File testfile = new File("./Task/Aufgabe1/Try.java");
+			File testfile = new File(config.getPath() + config.getTestName() + ".java");
 
 			if (testfile != null) {
 				SaveFile(rightTA.getText(), testfile);
@@ -121,7 +126,7 @@ public class MainScreenController {
 
 		if (e.getSource() == saveCode) {
 
-			File codefile = new File("./Task/Aufgabe1/Code.java");
+			File codefile = new File(config.getPath() + config.getProgramName() + ".java");
 
 			if (codefile != null) {
 				SaveFile(leftTA.getText(), codefile);
@@ -141,45 +146,51 @@ public class MainScreenController {
 		System.setOut(out);
 		if (e.getSource() == runCode) {
 
-			ConfigReader config = new ConfigReader("Aufgabe1");
+			try {
+				Information info = new Information(config.getTestName(), config.getProgramName(),
+						"./Task/" + config.getTask() + "/");
 
-			Information info = new Information(config.getTestName(), config.getProgramName(),
-					"./Task/" + config.getTask() + "/");
+				Program program = new Program(info, console);
 
-			Program program = new Program(info, console);
+				boolean codeTrue = program.compile();
+				if (codeTrue) {
+					try {
+						nextCode.setDisable(false);
+					} catch (NullPointerException e2) {
 
-			boolean codeTrue = program.compile();
-			if(codeTrue) {
-				try {
-				nextCode.setDisable(false);
-				} catch (NullPointerException e2) {
-					
-				}	
+					}
+				}
+
+				program.run(" " + commandField.getText());
+
+			} catch (NullPointerException e1) {
+				System.out.println("Bitte waehlen Sie eine Übung aus");
+
 			}
-
-			program.run(" " + commandField.getText());
 
 		}
-		
+
 		if (e.getSource() == runTest) {
 
-			ConfigReader config = new ConfigReader("Aufgabe1");
+			try {
+				Information info = new Information(config.getTestName(), config.getProgramName(),
+						"./Task/" + config.getTask() + "/");
 
-			Information info = new Information(config.getTestName(), config.getProgramName(),
-					"./Task/" + config.getTask() + "/");
+				Program program = new Program(info, console);
 
-			Program program = new Program(info, console);
+				boolean testTrue = program.test();
+				if (testTrue) {
+					try {
+						nextTest.setDisable(false);
+					} catch (NullPointerException e2) {
+					}
 
-			boolean testTrue = program.test();
-			if(testTrue) {
-				try {
-				nextTest.setDisable(false);
-				} catch (NullPointerException e2) {	
 				}
-				
+			} catch (NullPointerException e1) {
+				System.out.println("Bitte waehlen Sie eine Übung aus");
+
 			}
-			
-			
+
 		}
 		if (e.getSource() == clear) {
 			console.clear();
@@ -187,8 +198,8 @@ public class MainScreenController {
 		if (e.getSource() == fieldClear) {
 			commandField.clear();
 		}
-		
-		if(e.getSource() == nextTest){
+
+		if (e.getSource() == nextTest) {
 			runCode.setDisable(false);
 			leftTA.setDisable(false);
 			runTest.setDisable(true);
@@ -196,8 +207,8 @@ public class MainScreenController {
 			nextCode.setDisable(true);
 			currentPhase.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
-		
-		if(e.getSource() == nextCode){
+
+		if (e.getSource() == nextCode) {
 			runCode.setDisable(true);
 			nextCode.setDisable(true);
 			leftTA.setDisable(true);

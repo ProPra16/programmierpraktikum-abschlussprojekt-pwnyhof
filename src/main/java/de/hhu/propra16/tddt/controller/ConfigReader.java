@@ -9,9 +9,11 @@ import java.util.List;
 public class ConfigReader {
 	private String task;
 	private List<String> contentOfConfig;
+	private String filePathToTask;
 	
 	public ConfigReader(String task){
 		this.task = task;
+		filePathToTask = "./Task/" + task + "/";
 		Path filePathToConfig = Paths.get("./Task/" + task + "/" + "config.txt");
 		
 		try {
@@ -24,6 +26,10 @@ public class ConfigReader {
 	
 	public String getTask(){
 		return task;
+	}
+	
+	public String getPath(){
+		return filePathToTask;
 	}
 	
 	public String getProgramName(){
