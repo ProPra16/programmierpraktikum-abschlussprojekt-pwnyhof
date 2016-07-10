@@ -110,6 +110,11 @@ public class MainScreenController {
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
 
+		if (config == null) {
+			System.out.println("Bitte waehlen Sie eine Übung aus");
+			return;
+		}
+
 		if (e.getSource() == runCode) {
 
 			try {
@@ -170,7 +175,7 @@ public class MainScreenController {
 				program.run(" " + commandField.getText());
 
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Uebung aus");
+				// System.out.println("Bitte waehlen Sie eine Uebung aus");
 
 			}
 		}
@@ -204,6 +209,9 @@ public class MainScreenController {
 	}
 
 	private void loadMethod() {
+		Console con = new Console(console);
+		PrintStream out = new PrintStream(con, true);
+		System.setOut(out);
 		try {
 			leftTA.setText("");
 			BufferedReader codeLoad = new BufferedReader(
