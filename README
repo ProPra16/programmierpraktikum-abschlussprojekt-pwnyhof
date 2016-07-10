@@ -14,31 +14,18 @@ Informationen:
 
 2. Das Projekt kooperiert nun mit Travis.
 
-3. Grundger√ºst/konzept der Grafischen Oberfl√§che steht
+3. Grundger¸st/konzept der Grafischen Oberfl‰che steht
 
-4. Grafische Oberfl√§che per FXML erstellt
+4. Grafische Oberfl‰che per FXML erstellt
 
-5. Erstellung, Kompilieren und Ausf√ºhren eines Programms aus TDDT heraus m√∂glich
+5. Erstellung, Kompilieren und Ausf¸hren eines Programms aus TDDT heraus mˆglich
 
 6. Anzeige der Konsolenmeldungen in der Programmeigenen Konsole
 
 7. Implementierung eines ConfigReaders
 
-8. Implementierung von Catalog
-
-9. Beginn des Phasenmodell
-
-10. ?
-
 Ziele:
 
-1. Graphische Oberfl√§che per fxml-Datei erstellen
+1. Graphische Oberfl‰che per fxml-Datei erstellen
 
 2. Implementierung der Programm-Logik
---
-
-3. Phasenmodell vollst√§ndig implementieren
-
-4. Erweiterungen implementieren
-
-5. Abgabe
