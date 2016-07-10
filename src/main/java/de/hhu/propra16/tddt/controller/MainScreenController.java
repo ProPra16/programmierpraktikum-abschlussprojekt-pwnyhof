@@ -97,33 +97,33 @@ public class MainScreenController {
 					SaveFile(rightTA.getText(), testfile);
 				}
 			} catch (NullPointerException e1) {
-			try {
-				SaveFile(rightTA.getText(), testfile);
-			} catch (Exception e1) {
-				System.out.println("Keine Uebung ausgewaehlt");
-			}
-		}
-
-		if (e.getSource() == saveCode)
-
-		{
-
-			try {
-				File codefile = new File(config.getPath() + config.getProgramName() + ".java");
-
-				if (codefile != null) {
-					SaveFile(leftTA.getText(), codefile);
+				try {
+					SaveFile(rightTA.getText(), testfile);
+				} catch (Exception e11) {
+					System.out.println("Keine Uebung ausgewaehlt");
 				}
-			} catch (NullPointerException e1) {
-			try {
-				SaveFile(leftTA.getText(), codefile);
-			} catch (Exception e1) {
-				System.out.println("Keine Uebung ausgewaehlt");
 			}
-		}
 
-		if (e.getSource() == exit) {
-			System.exit(0);
+			if (e.getSource() == saveCode) {
+
+				try {
+					File codefile = new File(config.getPath() + config.getProgramName() + ".java");
+
+					if (codefile != null) {
+						SaveFile(leftTA.getText(), codefile);
+					}
+				} catch (NullPointerException e1) {
+					try {
+						SaveFile(leftTA.getText(), codefile);
+					} catch (Exception e11) {
+						System.out.println("Keine Uebung ausgewaehlt");
+					}
+				}
+			}
+
+			if (e.getSource() == exit) {
+				System.exit(0);
+			}
 		}
 	}
 
