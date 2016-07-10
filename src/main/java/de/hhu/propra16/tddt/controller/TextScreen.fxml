@@ -74,7 +74,7 @@
 							<items>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 									<children>
-										<Button fx:id="runCode" disable="true" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="runCode" textFill="#1809eb">
+										<Button fx:id="runCode" disable="true" layoutY="-1.0" mnemonicParsing="false" onAction="#handleButton" text="check" textFill="#1809eb">
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
@@ -92,7 +92,7 @@
 								</AnchorPane>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
 									<children>
-										<Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="runTest" textFill="#eb0303">
+										<Button fx:id="runTest" mnemonicParsing="false" onAction="#handleButton" text="check" textFill="#eb0303">
 											<font>
 												<Font name="Consolas Bold" size="15.0" />
 											</font>
