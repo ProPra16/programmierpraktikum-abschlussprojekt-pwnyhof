@@ -5,7 +5,7 @@ public class Try{
 	
 	@Test
 	public void stringTest(){
-		assertEquals("Hell World!", Code.greet());
+		assertEquals("Hel World!", Code.greet());
 		
 	}
 	
