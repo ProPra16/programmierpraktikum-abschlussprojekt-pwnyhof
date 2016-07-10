@@ -129,13 +129,13 @@ public class MainScreenController {
 			Program program = new Program(info, console);
 
 			boolean codeTrue = program.compile();
-			
-			if(codeTrue) {
+
+			if (codeTrue) {
 				try {
-				nextCode.setDisable(false);
+					nextCode.setDisable(false);
 				} catch (NullPointerException e2) {
-					
-				}	
+
+				}
 			}
 
 			program.run(" " + commandField.getText());
@@ -166,32 +166,23 @@ public class MainScreenController {
 		if (e.getSource() == fieldClear) {
 			commandField.clear();
 		}
-<<<<<<< HEAD
-
-		if (e.getSource() == nextCode) {
-
-		}
 
 		if (e.getSource() == nextTest) {
-=======
-		
-		if(e.getSource() == nextTest){
->>>>>>> refs/heads/master
+
 			runCode.setDisable(false);
 			leftTA.setDisable(false);
 			runTest.setDisable(true);
 			rightTA.setDisable(true);
 			nextCode.setDisable(true);
 		}
-		
-		if(e.getSource() == nextCode){
+
+		if (e.getSource() == nextCode) {
 			runCode.setDisable(true);
 			leftTA.setDisable(true);
 			runTest.setDisable(false);
 			rightTA.setDisable(false);
 			nextTest.setDisable(true);
 		}
-
 	}
 
 	private void SaveFile(String content, File file) {
