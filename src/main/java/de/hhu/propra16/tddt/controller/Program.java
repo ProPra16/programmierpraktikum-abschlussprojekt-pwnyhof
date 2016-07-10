@@ -90,7 +90,7 @@ public class Program {
 		return false;
 	}
 
-	public void run(String args) {
+	public boolean run(String args) {
 		// Wenn es keine Errors gibt wird das Programm gestartet
 		if (result != null && !result.hasCompileErrors()) {
 			Process processRun = null;
@@ -102,11 +102,16 @@ public class Program {
 			}
 			try {
 				println(processRun.getInputStream());
-				println(processRun.getErrorStream());
+				boolean error = println(processRun.getErrorStream());
+				
+				if(error){
+					return true;
+				}
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
+		return false;
 	}
 
 	public boolean test() {
@@ -192,12 +197,15 @@ public class Program {
 	 * "Der gegebene Dateipfad ist falsch!\n"); } }
 	 */
 
-	private void println(InputStream inStream) throws Exception {
+	private boolean println(InputStream inStream) throws Exception {
 		String line = null;
+		boolean b = true;
 		BufferedReader in = new BufferedReader(new InputStreamReader(inStream));
 		while ((line = in.readLine()) != null) {
 			System.out.println(line);
+			b = false;
 		}
+		return b;
 	}
 
 }

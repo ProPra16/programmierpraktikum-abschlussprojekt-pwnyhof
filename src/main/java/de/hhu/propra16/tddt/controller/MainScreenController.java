@@ -68,6 +68,7 @@ public class MainScreenController {
 
 			if (!sfolder.isEmpty()) {
 				config = new ConfigReader(sfolder);
+				loadMethod();
 			}
 
 			/*
@@ -84,35 +85,7 @@ public class MainScreenController {
 			 */
 		}
 		if (e.getSource() == load) {
-
-			try {
-				leftTA.setText("");
-				BufferedReader codeLoad = new BufferedReader(
-						new FileReader(config.getPath() + config.getProgramName() + ".java"));
-				String code = null;
-				while ((code = codeLoad.readLine()) != null) {
-					if (!code.startsWith("#")) {
-						leftTA.setText(leftTA.getText() + code + "\n");
-					}
-				}
-				codeLoad.close();
-
-				rightTA.setText("");
-				BufferedReader testLoad = new BufferedReader(
-						new FileReader(config.getPath() + config.getTestName() + ".java"));
-				String test = null;
-				while ((test = testLoad.readLine()) != null) {
-					if (!test.startsWith("#")) {
-						rightTA.setText(rightTA.getText() + test + "\n");
-					}
-				}
-				testLoad.close();
-			} catch (IOException ex) {
-
-			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus (du Lappen)");
-			}
-
+			loadMethod();
 		}
 
 		if (e.getSource() == saveTest) {
@@ -153,7 +126,9 @@ public class MainScreenController {
 				Program program = new Program(info, console);
 
 				boolean codeTrue = program.compile();
-				if (codeTrue) {
+				boolean noRunTimeError = program.run(" " + commandField.getText());
+				
+				if (codeTrue && noRunTimeError) {
 					try {
 						nextCode.setDisable(false);
 					} catch (NullPointerException e2) {
@@ -161,7 +136,7 @@ public class MainScreenController {
 					}
 				}
 
-				program.run(" " + commandField.getText());
+
 
 			} catch (NullPointerException e1) {
 				System.out.println("Bitte waehlen Sie eine Übung aus");
@@ -218,6 +193,36 @@ public class MainScreenController {
 			currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
 
+	}
+	
+	private void loadMethod() {
+		try {
+			leftTA.setText("");
+			BufferedReader codeLoad = new BufferedReader(
+					new FileReader(config.getPath() + config.getProgramName() + ".java"));
+			String code = null;
+			while ((code = codeLoad.readLine()) != null) {
+				if (!code.startsWith("#")) {
+					leftTA.setText(leftTA.getText() + code + "\n");
+				}
+			}
+			codeLoad.close();
+
+			rightTA.setText("");
+			BufferedReader testLoad = new BufferedReader(
+					new FileReader(config.getPath() + config.getTestName() + ".java"));
+			String test = null;
+			while ((test = testLoad.readLine()) != null) {
+				if (!test.startsWith("#")) {
+					rightTA.setText(rightTA.getText() + test + "\n");
+				}
+			}
+			testLoad.close();
+		} catch (IOException ex) {
+
+		} catch (NullPointerException e1) {
+			System.out.println("Bitte waehlen Sie eine Übung aus (du Lappen)");
+		}
 	}
 
 	private void SaveFile(String content, File file) {
