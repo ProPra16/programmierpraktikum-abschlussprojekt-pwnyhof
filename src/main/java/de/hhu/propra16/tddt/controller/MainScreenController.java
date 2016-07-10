@@ -8,10 +8,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/master
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -34,14 +30,7 @@ public class MainScreenController {
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
 
 	@FXML
-<<<<<<< HEAD
-	public Button runTest, fieldClear, runCode, clear, nextTest;
-
-	@FXML
-	public Button nextCode;
-=======
 	public Button runTest, fieldClear, runCode, clear, nextTest, run;
->>>>>>> refs/heads/master
 
 	@FXML
 	public Button nextCode, currentPhase;
@@ -62,7 +51,7 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == catalog) {
-			
+
 			runCode.setDisable(true);
 			nextCode.setDisable(true);
 			leftTA.setDisable(true);
@@ -120,7 +109,7 @@ public class MainScreenController {
 		Console con = new Console(console);
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
-		
+
 		if (e.getSource() == runCode) {
 
 			try {
@@ -130,29 +119,18 @@ public class MainScreenController {
 				Program program = new Program(info, console);
 
 				int zeroFails = program.test();
-				
+
 				if (zeroFails == 0) {
 					try {
 						nextCode.setDisable(false);
 					} catch (NullPointerException e2) {
 
-<<<<<<< HEAD
-			boolean codeTrue = program.compile();
-
-			if (codeTrue) {
-				try {
-					nextCode.setDisable(false);
-				} catch (NullPointerException e2) {
-
-				}
-=======
 					}
 				}
 
 			} catch (NullPointerException e1) {
 				System.out.println("Bitte waehlen Sie eine Übung aus");
 
->>>>>>> refs/heads/master
 			}
 
 		}
@@ -172,42 +150,31 @@ public class MainScreenController {
 					} catch (NullPointerException e2) {
 					}
 
-<<<<<<< HEAD
-			boolean testTrue = program.test();
-			if (testTrue) {
-				try {
-					nextTest.setDisable(false);
-				} catch (NullPointerException e2) {
-=======
->>>>>>> refs/heads/master
 				}
-<<<<<<< HEAD
-=======
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus");
->>>>>>> refs/heads/master
+				System.out.println("Bitte waehlen Sie eine Uebung aus");
 
 			}
 
 		}
-		
-		if (e.getSource() == run){
+
+		if (e.getSource() == run) {
 			try {
 				Information info = new Information(config.getTestName(), config.getProgramName(),
 						"./Task/" + config.getTask() + "/");
 
 				Program program = new Program(info, console);
-				
+
 				program.compile();
 
 				program.run(" " + commandField.getText());
 
 			} catch (NullPointerException e1) {
-				System.out.println("Bitte waehlen Sie eine Übung aus");
+				System.out.println("Bitte waehlen Sie eine Uebung aus");
 
 			}
 		}
-		
+
 		if (e.getSource() == clear) {
 			console.clear();
 		}
@@ -216,10 +183,6 @@ public class MainScreenController {
 		}
 
 		if (e.getSource() == nextTest) {
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/heads/master
 			runCode.setDisable(false);
 			leftTA.setDisable(false);
 			runTest.setDisable(true);
@@ -237,8 +200,9 @@ public class MainScreenController {
 			nextTest.setDisable(true);
 			currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 		}
+
 	}
-	
+
 	private void loadMethod() {
 		try {
 			leftTA.setText("");
@@ -265,7 +229,7 @@ public class MainScreenController {
 		} catch (IOException ex) {
 
 		} catch (NullPointerException e1) {
-			System.out.println("Bitte waehlen Sie eine Übung aus (du Lappen)");
+			System.out.println("Bitte waehlen Sie eine Uebung aus (du Lappen)");
 		}
 	}
 
