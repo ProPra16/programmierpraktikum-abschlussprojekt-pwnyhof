@@ -30,6 +30,7 @@ public class MainScreenController {
 	private File codefile;
 	private Program program;
 	private List<String> contentOfPhases;
+	private Timer timer;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
@@ -77,7 +78,7 @@ public class MainScreenController {
 				
 				//Babysteps ?????????
 				if(config.withBabysteps()){
-					Timer timer = new Timer(this);
+					timer = new Timer(this);
 				}
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
@@ -192,7 +193,12 @@ public class MainScreenController {
 
 				if (oneFail == 1) {
 					try {
-						contentOfPhases.add(leftTA.getText());
+						if(config.withBabysteps()){
+							timer.stopTimer();
+							timer.resetTimer();
+							timer.startTimer();
+							contentOfPhases.add(leftTA.getText());
+						}
 						disableTest();
 					} catch (NullPointerException e2) {
 
@@ -210,7 +216,12 @@ public class MainScreenController {
 
 				if (zeroFails == 0) {
 					try {
-						contentOfPhases.add(rightTA.getText());
+						if(config.withBabysteps()){
+							timer.stopTimer();
+							timer.resetTimer();
+							timer.startTimer();
+							contentOfPhases.add(rightTA.getText());
+						}
 						disableCode();
 					} catch (NullPointerException e2) {
 
@@ -276,6 +287,7 @@ public class MainScreenController {
 			SaveFile(oldContent, testfile);
 			
 			disableCode();
+			timer.resetTimer();
 		}
 		
 		if(rightTA.isDisabled()){
@@ -284,6 +296,7 @@ public class MainScreenController {
 			SaveFile(oldContent, codefile);
 			
 			disableTest();
+			timer.resetTimer();
 		}
 	}
 	

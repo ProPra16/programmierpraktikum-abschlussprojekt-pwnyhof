@@ -32,7 +32,7 @@ public class Timer {
 	}
 	
 	public long timePassed(){
-		stopTimer();
+		endTime = System.currentTimeMillis();
 		try{
 			long msec =  endTime - startTime;
 			return msec;
@@ -44,7 +44,7 @@ public class Timer {
 	}
 	
 	public void stopTimer(){
-		endTime = System.currentTimeMillis();
+		timerRuns = false;
 	}
 	
 	public void resetTimer(){
