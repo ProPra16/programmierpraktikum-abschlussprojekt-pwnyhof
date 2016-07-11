@@ -124,8 +124,10 @@ public class MainScreenController {
 			program = new Program(info, console);
 
 		} catch (NullPointerException e3) {
-			System.out.println("Bitte waehlen Sie eine Uebung aus");
-			return;
+			if (e.getSource() != clear && e.getSource() != fieldClear){
+				System.out.println("Bitte waehlen Sie eine Uebung aus");
+				return;
+			}
 		}
 
 		if (e.getSource() == runCode) {
