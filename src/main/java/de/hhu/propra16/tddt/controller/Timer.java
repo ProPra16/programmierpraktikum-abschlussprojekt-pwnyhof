@@ -4,50 +4,56 @@ public class Timer {
 
 	private long startTime;
 	private long endTime;
-	private boolean timerRuns;
+	private volatile boolean timerRuns;
 	private MainScreenController controller;
-	
-	public Timer(MainScreenController con){
+	private Thread t;
+
+	public Timer(MainScreenController con) {
 		this.controller = con;
 		startTimer();
-		Thread t = new Thread(new Runnable() {
-			
+		t = new Thread(new Runnable() {
+
 			@Override
-			public void run(){
-				while(timerRuns){
-					if(timePassed() >= 180000){
+			public void run() {
+				while (timerRuns) {
+					if (timePassed() >= 15000) {
 						timerRuns = false;
 						controller.timerLapsed();
-						
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+
 					}
 				}
+				Thread.currentThread().interrupt();
+				return;
 			}
 		});
 		t.start();
 	}
-	
-	public void startTimer(){
+
+	public void startTimer() {
 		startTime = System.currentTimeMillis();
 		timerRuns = true;
 	}
-	
-	public long timePassed(){
+
+	public long timePassed() {
 		endTime = System.currentTimeMillis();
-		try{
-			long msec =  endTime - startTime;
+		try {
+			long msec = endTime - startTime;
 			return msec;
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Timer Error!");
 		}
 		return 0;
 	}
-	
-	public void stopTimer(){
+
+	public void stopTimer() {
 		timerRuns = false;
 	}
-	
-	public void resetTimer(){
+
+	public void resetTimer() {
 		startTime = 0;
 		endTime = 0;
 	}

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +30,7 @@ public class MainScreenController {
 	private File testfile;
 	private File codefile;
 	private Program program;
-	private List<String> contentOfPhases;
+	private String contentOfPhase;
 	private Timer timer;
 
 	@FXML
@@ -76,10 +77,6 @@ public class MainScreenController {
 				config = new ConfigReader(sfolder);
 				loadMethod();
 				
-				//Babysteps ?????????
-				if(config.withBabysteps()){
-					timer = new Timer(this);
-				}
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
 			testfile = new File(config.getPath() + config.getTestName() + ".java");
@@ -142,6 +139,7 @@ public class MainScreenController {
 						nextCode.setDisable(false);
 						currentPhase.setBackground(
 								new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+						timer.stopTimer();
 					} catch (NullPointerException e2) {
 
 					}
@@ -193,13 +191,12 @@ public class MainScreenController {
 
 				if (oneFail == 1) {
 					try {
+						disableTest();
 						if(config.withBabysteps()){
 							timer.stopTimer();
-							timer.resetTimer();
-							timer.startTimer();
-							contentOfPhases.add(leftTA.getText());
+							timer = new Timer(this);
+							contentOfPhase = leftTA.getText();
 						}
-						disableTest();
 					} catch (NullPointerException e2) {
 
 					}
@@ -216,13 +213,11 @@ public class MainScreenController {
 
 				if (zeroFails == 0) {
 					try {
-						if(config.withBabysteps()){
-							timer.stopTimer();
-							timer.resetTimer();
-							timer.startTimer();
-							contentOfPhases.add(rightTA.getText());
-						}
 						disableCode();
+						if(config.withBabysteps()){
+							timer = new Timer(this);
+							contentOfPhase = rightTA.getText();
+						}
 					} catch (NullPointerException e2) {
 
 					}
@@ -282,21 +277,16 @@ public class MainScreenController {
 	
 	public void timerLapsed(){
 		if(leftTA.isDisabled()){
-			String oldContent = contentOfPhases.get(contentOfPhases.lastIndexOf(contentOfPhases));
-			rightTA.setText(oldContent);
-			SaveFile(oldContent, testfile);
-			
-			disableCode();
-			timer.resetTimer();
-		}
-		
-		if(rightTA.isDisabled()){
-			String oldContent = contentOfPhases.get(contentOfPhases.lastIndexOf(contentOfPhases));
-			leftTA.setText(oldContent);
-			SaveFile(oldContent, codefile);
+			rightTA.setText(contentOfPhase);
+			SaveFile(contentOfPhase, testfile);
 			
 			disableTest();
-			timer.resetTimer();
+		}
+		else if(rightTA.isDisabled()){
+			leftTA.setText(contentOfPhase);
+			SaveFile(contentOfPhase, codefile);
+			
+			disableCode();
 		}
 	}
 	

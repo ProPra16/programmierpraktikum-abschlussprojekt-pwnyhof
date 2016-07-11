@@ -8,7 +8,7 @@ public class Code {
 	}
 
 	public static String greet() {
-		return "Hel World!";
+		return "Hell World!";
 	}
 
 	public static int add() {
