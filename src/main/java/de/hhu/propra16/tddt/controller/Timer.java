@@ -2,56 +2,45 @@ package de.hhu.propra16.tddt.controller;
 
 public class Timer {
 
-	long startTime;
-	long endTime;
+	private long startTime;
+	private long endTime;
+	private boolean timerRuns;
+	private MainScreenController controller;
 	
-	public Timer(){
+	public Timer(MainScreenController con){
+		this.controller = con;
+		startTimer();
+		Thread t = new Thread(new Runnable() {
+			
+			@Override
+			public void run(){
+				while(timerRuns){
+					if(timePassed() >= 180000){
+						timerRuns = false;
+						controller.timerLapsed();
+						
+					}
+				}
+			}
+		});
+		t.start();
 	}
 	
 	public void startTimer(){
 		startTime = System.currentTimeMillis();
+		timerRuns = true;
 	}
 	
-	public String timePassed(){
+	public long timePassed(){
+		stopTimer();
 		try{
 			long msec =  endTime - startTime;
-			long sec = 0;
-			long min = 0;
-			if(msec >=  1000){
-				sec = msec / 1000;
-				msec = msec - sec * 1000;
-				if(sec >= 60){
-					min = sec/60;
-					sec = sec - min * 60;
-				}
-			}
-			String minute;
-			String second;
-			String milliSec;
-			
-			if(min < 10)
-				minute = "0" +min;
-			else
-				minute = "" +min;
-			
-			if(sec < 10)
-				second = "0" +sec;
-			else
-				second = "" +sec;
-			
-			if(msec < 100)
-				milliSec = "0" +msec;
-			else
-				milliSec = "" +msec;
-			
-			if(msec < 10)
-				milliSec = "00" +msec;
-			
-			return minute +":" +second +":" +milliSec;
+			return msec;
 		}
 		catch(Exception e){
-			return "Error";
+			System.out.println("Timer Error!");
 		}
+		return 0;
 	}
 	
 	public void stopTimer(){

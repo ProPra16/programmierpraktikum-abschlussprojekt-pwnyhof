@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -28,6 +29,7 @@ public class MainScreenController {
 	private File testfile;
 	private File codefile;
 	private Program program;
+	private List<String> contentOfPhases;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
@@ -42,7 +44,6 @@ public class MainScreenController {
 	public TextArea leftTA, rightTA, console;
 
 	@FXML
-
 	public TextField commandField;
 
 	@FXML
@@ -58,13 +59,7 @@ public class MainScreenController {
 
 		if (e.getSource() == catalog) {
 
-			runCode.setDisable(true);
-			nextCode.setDisable(true);
-			leftTA.setDisable(true);
-			runTest.setDisable(false);
-			rightTA.setDisable(false);
-			nextTest.setDisable(true);
-			currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+			disableCode();
 
 			final DirectoryChooser ExerciseFolder = new DirectoryChooser();
 			File initialDirectory = new File("./Task");
@@ -79,6 +74,11 @@ public class MainScreenController {
 			if (!sfolder.isEmpty()) {
 				config = new ConfigReader(sfolder);
 				loadMethod();
+				
+				//Babysteps ?????????
+				if(config.withBabysteps()){
+					Timer timer = new Timer(this);
+				}
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
 			testfile = new File(config.getPath() + config.getTestName() + ".java");
@@ -111,6 +111,7 @@ public class MainScreenController {
 		}
 	}
 
+	// Button Methods
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
 		Console con = new Console(console);
@@ -191,13 +192,8 @@ public class MainScreenController {
 
 				if (oneFail == 1) {
 					try {
-						runCode.setDisable(false);
-						leftTA.setDisable(false);
-						runTest.setDisable(true);
-						rightTA.setDisable(true);
-						nextCode.setDisable(true);
-						currentPhase.setBackground(
-								new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+						contentOfPhases.add(leftTA.getText());
+						disableTest();
 					} catch (NullPointerException e2) {
 
 					}
@@ -214,14 +210,8 @@ public class MainScreenController {
 
 				if (zeroFails == 0) {
 					try {
-						runCode.setDisable(true);
-						nextCode.setDisable(true);
-						leftTA.setDisable(true);
-						runTest.setDisable(false);
-						rightTA.setDisable(false);
-						nextTest.setDisable(true);
-						currentPhase.setBackground(
-								new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+						contentOfPhases.add(rightTA.getText());
+						disableCode();
 					} catch (NullPointerException e2) {
 
 					}
@@ -277,6 +267,45 @@ public class MainScreenController {
 			Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
+	}
+	
+	public void timerLapsed(){
+		if(leftTA.isDisabled()){
+			String oldContent = contentOfPhases.get(contentOfPhases.lastIndexOf(contentOfPhases));
+			rightTA.setText(oldContent);
+			SaveFile(oldContent, testfile);
+			
+			disableCode();
+		}
+		
+		if(rightTA.isDisabled()){
+			String oldContent = contentOfPhases.get(contentOfPhases.lastIndexOf(contentOfPhases));
+			leftTA.setText(oldContent);
+			SaveFile(oldContent, codefile);
+			
+			disableTest();
+		}
+	}
+	
+	private void disableTest(){
+		runCode.setDisable(false);
+		leftTA.setDisable(false);
+		runTest.setDisable(true);
+		rightTA.setDisable(true);
+		nextCode.setDisable(true);
+		currentPhase.setBackground(
+				new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+	}
+	
+	private void disableCode(){
+		runCode.setDisable(true);
+		nextCode.setDisable(true);
+		leftTA.setDisable(true);
+		runTest.setDisable(false);
+		rightTA.setDisable(false);
+		nextTest.setDisable(true);
+		currentPhase.setBackground(
+				new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
 
 }
