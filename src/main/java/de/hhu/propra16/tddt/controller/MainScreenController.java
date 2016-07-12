@@ -28,6 +28,8 @@ public class MainScreenController {
 	private File testfile;
 	private File codefile;
 	private Program program;
+	private String contentOfPhase;
+	private Timer timer;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
@@ -42,7 +44,6 @@ public class MainScreenController {
 	public TextArea leftTA, rightTA, console;
 
 	@FXML
-
 	public TextField commandField;
 
 	@FXML
@@ -58,13 +59,7 @@ public class MainScreenController {
 
 		if (e.getSource() == catalog) {
 
-			runCode.setDisable(true);
-			nextCode.setDisable(true);
-			leftTA.setDisable(true);
-			runTest.setDisable(false);
-			rightTA.setDisable(false);
-			nextTest.setDisable(true);
-			currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+			disableCode();
 
 			final DirectoryChooser ExerciseFolder = new DirectoryChooser();
 			File initialDirectory = new File("./Task");
@@ -79,6 +74,7 @@ public class MainScreenController {
 			if (!sfolder.isEmpty()) {
 				config = new ConfigReader(sfolder);
 				loadMethod();
+				
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
 			testfile = new File(config.getPath() + config.getTestName() + ".java");
@@ -111,6 +107,7 @@ public class MainScreenController {
 		}
 	}
 
+	// Button Methods
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
 		Console con = new Console(console);
@@ -124,8 +121,10 @@ public class MainScreenController {
 			program = new Program(info, console);
 
 		} catch (NullPointerException e3) {
-			System.out.println("Bitte waehlen Sie eine Uebung aus");
-			return;
+			if (e.getSource() != clear && e.getSource() != fieldClear){
+				System.out.println("Bitte waehlen Sie eine Uebung aus");
+				return;
+			}
 		}
 
 		if (e.getSource() == runCode) {
@@ -138,6 +137,7 @@ public class MainScreenController {
 						nextCode.setDisable(false);
 						currentPhase.setBackground(
 								new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+						timer.stopTimer();
 					} catch (NullPointerException e2) {
 
 					}
@@ -189,13 +189,12 @@ public class MainScreenController {
 
 				if (oneFail == 1) {
 					try {
-						runCode.setDisable(false);
-						leftTA.setDisable(false);
-						runTest.setDisable(true);
-						rightTA.setDisable(true);
-						nextCode.setDisable(true);
-						currentPhase.setBackground(
-								new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+						disableTest();
+						if(config.withBabysteps()){
+							timer.stopTimer();
+							timer = new Timer(this);
+							contentOfPhase = leftTA.getText();
+						}
 					} catch (NullPointerException e2) {
 
 					}
@@ -212,14 +211,11 @@ public class MainScreenController {
 
 				if (zeroFails == 0) {
 					try {
-						runCode.setDisable(true);
-						nextCode.setDisable(true);
-						leftTA.setDisable(true);
-						runTest.setDisable(false);
-						rightTA.setDisable(false);
-						nextTest.setDisable(true);
-						currentPhase.setBackground(
-								new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+						disableCode();
+						if(config.withBabysteps()){
+							timer = new Timer(this);
+							contentOfPhase = rightTA.getText();
+						}
 					} catch (NullPointerException e2) {
 
 					}
@@ -275,6 +271,42 @@ public class MainScreenController {
 			Logger.getLogger(MainScreenController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
+	}
+	
+	public void timerLapsed(){
+		if(leftTA.isDisabled()){
+			rightTA.setText(contentOfPhase);
+			SaveFile(contentOfPhase, testfile);
+			
+			disableTest();
+		}
+		else if(rightTA.isDisabled()){
+			leftTA.setText(contentOfPhase);
+			SaveFile(contentOfPhase, codefile);
+			
+			disableCode();
+		}
+	}
+	
+	private void disableTest(){
+		runCode.setDisable(false);
+		leftTA.setDisable(false);
+		runTest.setDisable(true);
+		rightTA.setDisable(true);
+		nextCode.setDisable(true);
+		currentPhase.setBackground(
+				new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+	}
+	
+	private void disableCode(){
+		runCode.setDisable(true);
+		nextCode.setDisable(true);
+		leftTA.setDisable(true);
+		runTest.setDisable(false);
+		rightTA.setDisable(false);
+		nextTest.setDisable(true);
+		currentPhase.setBackground(
+				new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
 
 }

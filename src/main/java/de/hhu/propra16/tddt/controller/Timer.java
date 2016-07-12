@@ -2,63 +2,58 @@ package de.hhu.propra16.tddt.controller;
 
 public class Timer {
 
-	long startTime;
-	long endTime;
-	
-	public Timer(){
-	}
-	
-	public void startTimer(){
-		startTime = System.currentTimeMillis();
-	}
-	
-	public String timePassed(){
-		try{
-			long msec =  endTime - startTime;
-			long sec = 0;
-			long min = 0;
-			if(msec >=  1000){
-				sec = msec / 1000;
-				msec = msec - sec * 1000;
-				if(sec >= 60){
-					min = sec/60;
-					sec = sec - min * 60;
+	private long startTime;
+	private long endTime;
+	private volatile boolean timerRuns;
+	private MainScreenController controller;
+	private Thread t;
+
+	public Timer(MainScreenController con) {
+		this.controller = con;
+		startTimer();
+		t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (timerRuns) {
+					if (timePassed() >= 15000) {
+						timerRuns = false;
+						controller.timerLapsed();
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+
+					}
 				}
+				Thread.currentThread().interrupt();
+				return;
 			}
-			String minute;
-			String second;
-			String milliSec;
-			
-			if(min < 10)
-				minute = "0" +min;
-			else
-				minute = "" +min;
-			
-			if(sec < 10)
-				second = "0" +sec;
-			else
-				second = "" +sec;
-			
-			if(msec < 100)
-				milliSec = "0" +msec;
-			else
-				milliSec = "" +msec;
-			
-			if(msec < 10)
-				milliSec = "00" +msec;
-			
-			return minute +":" +second +":" +milliSec;
-		}
-		catch(Exception e){
-			return "Error";
-		}
+		});
+		t.start();
 	}
-	
-	public void stopTimer(){
+
+	public void startTimer() {
+		startTime = System.currentTimeMillis();
+		timerRuns = true;
+	}
+
+	public long timePassed() {
 		endTime = System.currentTimeMillis();
+		try {
+			long msec = endTime - startTime;
+			return msec;
+		} catch (Exception e) {
+			System.out.println("Timer Error!");
+		}
+		return 0;
 	}
-	
-	public void resetTimer(){
+
+	public void stopTimer() {
+		timerRuns = false;
+	}
+
+	public void resetTimer() {
 		startTime = 0;
 		endTime = 0;
 	}
