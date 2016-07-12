@@ -34,7 +34,7 @@
 		</SplitPane>
 	</center>
 	<top>
-		<SplitPane dividerPositions="0.4117647058823529" orientation="VERTICAL" prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+		<SplitPane dividerPositions="0.5147058823529411" orientation="VERTICAL" prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 			<items>
 				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
 					<children>
