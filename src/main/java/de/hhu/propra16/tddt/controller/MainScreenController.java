@@ -257,7 +257,7 @@ public class MainScreenController {
 		} catch (IOException ex) {
 
 		} catch (NullPointerException e1) {
-			System.out.println("Bitte waehlen Sie eine Übung aus (du Lappen)");
+			System.out.println("Please choose an exercise!");
 		}
 	}
 
