@@ -8,9 +8,14 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
@@ -18,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -30,6 +36,9 @@ public class MainScreenController {
 	private Program program;
 	private String contentOfPhase;
 	private Timer timer;
+	private Tracking MyProgress = new Tracking();
+	private StringProperty trackStep;
+	private StringProperty trackStepStep;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
@@ -38,7 +47,7 @@ public class MainScreenController {
 	public Button runTest, fieldClear, runCode, clear, nextTest, run;
 
 	@FXML
-	public Button nextCode, currentPhase;
+	public Button nextCode, currentPhase, tracking;
 
 	@FXML
 	public TextArea leftTA, rightTA, console;
@@ -78,7 +87,6 @@ public class MainScreenController {
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
 			testfile = new File(config.getPath() + config.getTestName() + ".java");
-
 		}
 		if (e.getSource() == load) {
 			loadMethod();
@@ -121,7 +129,7 @@ public class MainScreenController {
 			program = new Program(info, console);
 
 		} catch (NullPointerException e3) {
-			if (e.getSource() != clear && e.getSource() != fieldClear){
+			if (e.getSource() != clear && e.getSource() != fieldClear && e.getSource() != tracking){
 				System.out.println("Bitte waehlen Sie eine Uebung aus");
 				return;
 			}
@@ -225,6 +233,10 @@ public class MainScreenController {
 
 			}
 		}
+		
+		if (e.getSource() == tracking) {
+			showTrackingWindow();
+		}
 	}
 
 	private void loadMethod() {
@@ -240,6 +252,7 @@ public class MainScreenController {
 			while ((code = codeLoad.readLine()) != null) {
 				if (!code.startsWith("#")) {
 					leftTA.setText(leftTA.getText() + code + "\n");
+					MyProgress.addToCodeList(leftTA.getText());
 				}
 			}
 			codeLoad.close();
@@ -251,6 +264,7 @@ public class MainScreenController {
 			while ((test = testLoad.readLine()) != null) {
 				if (!test.startsWith("#")) {
 					rightTA.setText(rightTA.getText() + test + "\n");
+					MyProgress.addToTestList(rightTA.getText());
 				}
 			}
 			testLoad.close();
@@ -284,7 +298,6 @@ public class MainScreenController {
 		else if(rightTA.isDisabled()){
 			leftTA.setText(contentOfPhase);
 			SaveFile(contentOfPhase, codefile);
-			
 			disableCode();
 		}
 	}
@@ -308,6 +321,47 @@ public class MainScreenController {
 		nextTest.setDisable(true);
 		currentPhase.setBackground(
 				new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+	}
+	
+	private void showTrackingWindow(){
+		Stage trackingWindow = new Stage();
+        GridPane track = new GridPane();	
+        Scene trackWindow = new Scene(track, 800, 510);
+        trackingWindow.setScene(trackWindow);
+        
+		track.setHgap(5);
+        track.setAlignment(Pos.TOP_LEFT);
+        
+        trackingWindow.setScene(trackWindow);
+        trackingWindow.setTitle("Tracking");
+           
+        TextArea TACode = new TextArea("TACODE");
+        TACode.setEditable(false);
+        TACode.setWrapText(false);
+        TACode.prefWidth(295);
+        TACode.setMinHeight(500);
+        
+        
+        TextArea TATest = new TextArea("TATEST");
+        TATest.setEditable(false);
+        TATest.setWrapText(false);
+        
+        trackStep = new SimpleStringProperty("");
+        trackStepStep = new SimpleStringProperty("");
+        TACode.textProperty().bind(trackStep);
+        TATest.textProperty().bind(trackStepStep);
+        
+        Button loadText = new Button("test");
+        loadText.setOnAction(event -> {
+			trackStep.set("Hab ich mich verändert?");
+			trackStepStep.set("Ja hast du");
+		});
+        
+        track.add(TACode, 1, 1);
+        track.add(TATest, 2, 1);
+        track.add(loadText, 3, 1);
+        
+		trackingWindow.show();
 	}
 
 }
