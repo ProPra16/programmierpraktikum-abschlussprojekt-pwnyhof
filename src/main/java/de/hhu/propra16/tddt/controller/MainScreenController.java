@@ -81,6 +81,7 @@ public class MainScreenController {
 			}
 
 			if (!sfolder.isEmpty()) {
+				MyProgress.clearLists();
 				config = new ConfigReader(sfolder);
 				loadMethod();
 				
@@ -199,6 +200,7 @@ public class MainScreenController {
 
 				if (oneFail == 1) {
 					try {
+						MyProgress.addToTestList(rightTA.getText());
 						disableTest();
 						if(config.withBabysteps()){
 							timer = new Timer(this);
@@ -220,6 +222,7 @@ public class MainScreenController {
 
 				if (zeroFails == 0) {
 					try {
+						MyProgress.addToCodeList(leftTA.getText());
 						disableCode();
 						if(config.withBabysteps()){
 							timer = new Timer(this);
@@ -251,8 +254,9 @@ public class MainScreenController {
 			String code = null;
 			while ((code = codeLoad.readLine()) != null) {
 				if (!code.startsWith("#")) {
+					String test = leftTA.getText() + code + "\n";
+					MyProgress.addToCodeList(test);
 					leftTA.setText(leftTA.getText() + code + "\n");
-					MyProgress.addToCodeList(leftTA.getText());
 				}
 			}
 			codeLoad.close();
@@ -263,8 +267,10 @@ public class MainScreenController {
 			String test = null;
 			while ((test = testLoad.readLine()) != null) {
 				if (!test.startsWith("#")) {
-					rightTA.setText(rightTA.getText() + test + "\n");
-					MyProgress.addToTestList(rightTA.getText());
+					String test2 = rightTA.getText() + test + "\n";
+					MyProgress.addToTestList(test2);
+					//rightTA.setText(rightTA.getText() + test + "\n");
+					rightTA.setText(test2);
 				}
 			}
 			testLoad.close();
@@ -353,8 +359,8 @@ public class MainScreenController {
         
         Button loadText = new Button("test");
         loadText.setOnAction(event -> {
-			trackStep.set("Hab ich mich verändert?");
-			trackStepStep.set("Ja hast du");
+			trackStep.set(MyProgress.getTest(0));
+			trackStepStep.set(MyProgress.getTest(1));
 		});
         
         track.add(TACode, 1, 1);

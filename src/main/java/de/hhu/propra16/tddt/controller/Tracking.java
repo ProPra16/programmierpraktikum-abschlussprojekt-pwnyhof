@@ -31,11 +31,24 @@ public class Tracking {
 		testList.add(testfile);
 	}
 	
+	public String getCode(int index) {
+		return codeList.get(index);
+	}
+	
+	public String getTest(int index) {
+		return testList.get(index);
+	}
+	
 	public void setCodefile(String codefile) {
 		this.codefile = codefile;
 	}
 	
 	public void setTestfile(String testfile) {
 		this.testfile = testfile;
+	}
+	
+	public void clearLists(){
+		this.codeList.clear();
+		this.testList.clear();
 	}
 }
