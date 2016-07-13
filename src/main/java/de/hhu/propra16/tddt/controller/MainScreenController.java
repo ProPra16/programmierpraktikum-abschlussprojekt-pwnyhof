@@ -130,6 +130,7 @@ public class MainScreenController {
 		if (e.getSource() == runCode) {
 			try {
 				SaveFile(leftTA.getText(), codefile);
+				program.compile();
 				int zeroFails = program.test();
 
 				if (zeroFails == 0) {
@@ -150,6 +151,7 @@ public class MainScreenController {
 		if (e.getSource() == runTest) {
 			try {
 				SaveFile(rightTA.getText(), testfile);
+				program.compile();
 				int oneFail = program.test();
 				if (oneFail == 1) {
 					try {
@@ -191,7 +193,6 @@ public class MainScreenController {
 					try {
 						disableTest();
 						if(config.withBabysteps()){
-							timer.stopTimer();
 							timer = new Timer(this);
 							contentOfPhase = leftTA.getText();
 						}
