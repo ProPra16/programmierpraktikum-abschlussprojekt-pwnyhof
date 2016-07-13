@@ -166,7 +166,7 @@ public class Program {
 		if (numberFailed == 0) {
 			Duration testDur = testResult.getTestDuration();
 			testDur.toString();
-			System.out.println(testDur + "\n" + "All tests succesfull! Congratulations ASSHOLE!");
+			System.out.println(testDur + "\n" + "All tests succesfull! Congratulations!");
 			if(numberFailed == 0) {
 				return 0;
 			}
