@@ -15,6 +15,7 @@ public class Timer {
 	private volatile boolean timerRuns;
 	private MainScreenController controller;
 	private Thread t;
+	private long timePassed;
 	/**
 	 * as long as timerRuns is true and timePassed is below 15000(milliseconds)
 	 * the current Thread doesn't get interrupted. when timePassed got >= 15000
@@ -58,8 +59,8 @@ public class Timer {
 	public long timePassed() {
 		endTime = System.currentTimeMillis();
 		try {
-			long msec = endTime - startTime;
-			return msec;
+			this.timePassed = endTime - startTime;
+			return this.timePassed;
 		} catch (Exception e) {
 			System.out.println("Timer Error!");
 		}
@@ -77,5 +78,13 @@ public class Timer {
 	public void resetTimer() {
 		startTime = 0;
 		endTime = 0;
+	}
+	
+	public void setTime(long timePassed) {
+		this.timePassed = timePassed;
+	}
+	
+	public long getTime() {
+		return timePassed;
 	}
 }
