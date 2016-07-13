@@ -200,6 +200,7 @@ public class MainScreenController {
 
 				if (oneFail == 1) {
 					try {
+
 						MyProgress.addToTestList(rightTA.getText());
 						disableTest();
 						if(config.withBabysteps()){
@@ -254,8 +255,7 @@ public class MainScreenController {
 			String code = null;
 			while ((code = codeLoad.readLine()) != null) {
 				if (!code.startsWith("#")) {
-					String test = leftTA.getText() + code + "\n";
-					MyProgress.addToCodeList(test);
+					MyProgress.addToCodeList(leftTA.getText() + code);
 					leftTA.setText(leftTA.getText() + code + "\n");
 				}
 			}
@@ -267,10 +267,8 @@ public class MainScreenController {
 			String test = null;
 			while ((test = testLoad.readLine()) != null) {
 				if (!test.startsWith("#")) {
-					String test2 = rightTA.getText() + test + "\n";
-					MyProgress.addToTestList(test2);
-					//rightTA.setText(rightTA.getText() + test + "\n");
-					rightTA.setText(test2);
+					MyProgress.addToTestList(rightTA.getText() + test);
+					rightTA.setText(rightTA.getText() + test + "\n");
 				}
 			}
 			testLoad.close();
