@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -36,6 +35,7 @@ public class MainScreenController {
 	private Program program;
 	private String contentOfPhase;
 	private Timer timer;
+	private boolean firstTest;
 	private Tracking MyProgress = new Tracking();
 	private StringProperty trackStep;
 	private StringProperty trackStepStep;
@@ -84,6 +84,7 @@ public class MainScreenController {
 				MyProgress.clearLists();
 				config = new ConfigReader(sfolder);
 				loadMethod();
+				firstTest = true;
 				
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
@@ -204,8 +205,12 @@ public class MainScreenController {
 						MyProgress.addToTestList(rightTA.getText());
 						disableTest();
 						if(config.withBabysteps()){
+							if(!firstTest){
+								timer.stopTimer();
+							}
 							timer = new Timer(this);
 							contentOfPhase = leftTA.getText();
+							firstTest = false;
 						}
 					} catch (NullPointerException e2) {
 

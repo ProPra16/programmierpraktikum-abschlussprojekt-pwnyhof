@@ -12,7 +12,7 @@ public class Timer {
  */
 	private long startTime;
 	private long endTime;
-	private volatile boolean timerRuns;
+	private volatile boolean timerRuns = true;
 	private MainScreenController controller;
 	private Thread t;
 	private long timePassed;
