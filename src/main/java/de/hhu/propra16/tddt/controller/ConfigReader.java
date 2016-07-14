@@ -50,6 +50,12 @@ public class ConfigReader {
 		return Boolean.parseBoolean(babysteps);
 	}
 	
+	public long timeOfBabysteps(){
+		String lineWithInfo = contentOfConfig.get(3);
+		String duration = lineWithInfo.substring(19);
+		return Long.parseLong(duration);
+	}
+	
 	
 
 }

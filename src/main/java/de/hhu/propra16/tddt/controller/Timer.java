@@ -16,6 +16,7 @@ public class Timer {
 	private MainScreenController controller;
 	private Thread t;
 	private long timePassed;
+	private final long babystepDuration;
 	/**
 	 * as long as timerRuns is true and timePassed is below 15000(milliseconds)
 	 * the current Thread doesn't get interrupted. when timePassed got >= 15000
@@ -24,15 +25,16 @@ public class Timer {
 	 * Then the current Thread is interrupted then the Thread starts again.
 	 * @param con is a new MainScreenController aka. a new GUI window from TDDT
 	 */
-	public Timer(MainScreenController con) {
+	public Timer(MainScreenController con, long babystepDuration) {
 		this.controller = con;
+		this.babystepDuration = babystepDuration;
 		startTimer();
 
 		t = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				while (timerRuns) {
-					if (timePassed() >= 15000) {
+					if (timePassed() >= babystepDuration) {
 						timerRuns = false;
 						controller.timerLapsed();
 					}

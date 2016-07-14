@@ -36,6 +36,7 @@ public class MainScreenController {
 	private String contentOfPhase;
 	private Timer timer;
 	private boolean firstTest;
+	private long babystepDuration;
 	private Tracking MyProgress = new Tracking();
 	private StringProperty trackStep;
 	private StringProperty trackStepStep;
@@ -85,6 +86,9 @@ public class MainScreenController {
 				config = new ConfigReader(sfolder);
 				loadMethod();
 				firstTest = true;
+				if(config.withBabysteps()){
+					babystepDuration = config.timeOfBabysteps();
+				}
 				
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
@@ -208,7 +212,7 @@ public class MainScreenController {
 							if(!firstTest){
 								timer.stopTimer();
 							}
-							timer = new Timer(this);
+							timer = new Timer(this, babystepDuration);
 							contentOfPhase = leftTA.getText();
 							firstTest = false;
 						}
@@ -231,7 +235,7 @@ public class MainScreenController {
 						MyProgress.addToCodeList(leftTA.getText());
 						disableCode();
 						if(config.withBabysteps()){
-							timer = new Timer(this);
+							timer = new Timer(this, babystepDuration);
 							contentOfPhase = rightTA.getText();
 						}
 					} catch (NullPointerException e2) {
