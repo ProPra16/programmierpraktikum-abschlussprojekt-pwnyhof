@@ -67,8 +67,11 @@ config.txt
 
 Inhalt:
 ProgramName: Code
+
 TestName: Try
+
 Babysteps: true
+
 Babystep Duration: 15000
 
 Beachten Sie, dass keine Leerzeichen am Ende jeder Zeile stehen und, dass "ProgramName: xxxx" in
