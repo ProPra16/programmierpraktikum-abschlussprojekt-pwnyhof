@@ -58,7 +58,7 @@ public class Tracking {
 	public int getCodeSize() {
 		return codeList.size();
 	}
-	
+
 	/**
 	 * method to clear lists
 	 */
