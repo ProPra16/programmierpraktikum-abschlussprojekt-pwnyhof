@@ -9,7 +9,11 @@ public class Code {
 	}
 
 	public static String greet() {
+<<<<<<< HEAD
 		return "Hel World!";
+=======
+		return "He3 World!";
+>>>>>>> branch 'master' of https://github.com/ProPra16/programmierpraktikum-abschlussprojekt-pwnyhof.git
 	}
 
 	public static int add() {
