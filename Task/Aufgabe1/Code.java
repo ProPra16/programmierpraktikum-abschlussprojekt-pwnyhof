@@ -12,12 +12,13 @@ public class Code {
 
 		return "Hel World!";
 
-		return "He3 World!";
+
 	}
 
 	public static int add() {
 		int a = 5;
-		int b = 10;
+		int b = 5;
 		return a + b;
+
 	}
 }
