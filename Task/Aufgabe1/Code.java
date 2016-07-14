@@ -9,7 +9,7 @@ public class Code {
 	}
 
 	public static String greet() {
-		return "He1234World!";
+		return "He3 World!";
 	}
 
 	public static int add() {

@@ -110,7 +110,7 @@ public class TrackingScreenController {
 					counter = counter - 2;
 				}
 				else {
-					counter = counter -1;
+					counter = counter - 1;
 				}
 				TARight.setText(TALeft.getText());
 				TALeft.setText(main.MyProgress.getCode(counter));

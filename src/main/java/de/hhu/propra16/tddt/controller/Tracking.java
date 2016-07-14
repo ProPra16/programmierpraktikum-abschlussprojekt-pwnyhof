@@ -11,8 +11,6 @@ public class Tracking {
 	private String testfile = "";
 	private ArrayList<String> codeList = new ArrayList<String>();
 	private ArrayList<String> testList = new ArrayList<String>();
-	private ArrayList<Integer> codeTime = new ArrayList<Integer>();
-	private ArrayList<Integer> testTime = new ArrayList<Integer>();
 	
 	public Tracking () {
 		codefile = this.codefile;
@@ -24,22 +22,6 @@ public class Tracking {
 		
 		return "";
 	}*/
-	
-	public void addToCodeTime(int time) {
-		codeTime.add(time);
-	}
-	
-	public void addToTestTime(int time) {
-		testTime.add(time);
-	}
-	
-	public int getCodeTime(int index) {
-		return codeTime.get(index);
-	}
-	
-	public int getTestTime(int index) {
-		return testTime.get(index);
-	}
 	
 	public void addToCodeList(String codefile) {
 		codeList.add(codefile);
