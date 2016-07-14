@@ -48,14 +48,16 @@ public class TrackingScreenController {
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
 		if (e.getSource() == test) {
-			counter = 0;
+			counter = 0;	//default werte
+			TASwitch = true;
 			CodeTestSwitch = true;
 			TALeft.setText("");
 			TARight.setText("");
 		}
 
 		if (e.getSource() == code) {
-			counter = 0;
+			counter = 0;	//default werte
+			TASwitch = true;
 			CodeTestSwitch = false;
 			TALeft.setText("");
 			TARight.setText("");
@@ -64,58 +66,64 @@ public class TrackingScreenController {
 		if (e.getSource() == next) {
 			if (!CodeTestSwitch) {
 				if (counter < main.MyProgress.getCodeSize()) {
-					if (TASwitch) {
-						TASwitch = !TASwitch;
-						TALeft.setText(main.MyProgress.getCode(counter));
-						counter = counter + 1;
-					} else {
-						TASwitch = !TASwitch;
+					if (!TARight.getText().isEmpty()) {
+						TALeft.setText(TARight.getText());
 						TARight.setText(main.MyProgress.getCode(counter));
 						counter = counter + 1;
+					} else {
+						if (TASwitch) {
+							TASwitch = !TASwitch;
+							TALeft.setText(main.MyProgress.getCode(counter));
+							counter = counter + 1;
+						} else {
+							TASwitch = !TASwitch;
+							TARight.setText(main.MyProgress.getCode(counter));
+							counter = counter + 1;
+						}
 					}
 				}
-
-			} else if (CodeTestSwitch) {
+			}
+			if (CodeTestSwitch) {
 				if (counter < main.MyProgress.getTestSize()) {
-					if (TASwitch) {
-						TASwitch = !TASwitch;
-						TALeft.setText(main.MyProgress.getTest(counter));
-						counter = counter + 1;
-					} else {
-						TASwitch = !TASwitch;
+					if (counter > 1) {
+						TALeft.setText(TARight.getText());
 						TARight.setText(main.MyProgress.getTest(counter));
 						counter = counter + 1;
+					} else {
+						if (TASwitch) {
+							TASwitch = !TASwitch;
+							TALeft.setText(main.MyProgress.getTest(counter));
+							counter = counter + 1;
+						} else {
+							TASwitch = !TASwitch;
+							TARight.setText(main.MyProgress.getTest(counter));
+							counter = counter + 1;
+						}
 					}
 				}
 			}
 		}
 
 		if (e.getSource() == back) {
-			if (!CodeTestSwitch) {
-				if (counter > 0) {
-					if (TASwitch) {
-						TASwitch = !TASwitch;
-						counter = counter - 1;
-						TALeft.setText(main.MyProgress.getCode(counter));
-					} else {
-						TASwitch = !TASwitch;
-						counter = counter - 1;
-						TARight.setText(main.MyProgress.getCode(counter));
-					}
+			if (!CodeTestSwitch && counter > 0) {
+				if (counter == main.MyProgress.getCodeSize()) {
+					counter = counter - 2;
 				}
-
-			} else if (CodeTestSwitch) {
-				if (counter > 0) {
-					if (TASwitch) {
-						TASwitch = !TASwitch;
-						counter = counter - 1;
-						TALeft.setText(main.MyProgress.getTest(counter));
-					} else {
-						TASwitch = !TASwitch;
-						counter = counter - 1;
-						TARight.setText(main.MyProgress.getTest(counter));
-					}
+				else {
+					counter = counter - 1;
 				}
+				TARight.setText(TALeft.getText());
+				TALeft.setText(main.MyProgress.getCode(counter));
+			}
+			if (CodeTestSwitch && counter > 0) {
+				if (counter == main.MyProgress.getCodeSize()) {
+					counter = counter - 2;
+				}
+				else {
+					counter = counter - 1;
+				}
+				TARight.setText(TALeft.getText());
+				TALeft.setText(main.MyProgress.getCode(counter));
 			}
 		}
 	}
