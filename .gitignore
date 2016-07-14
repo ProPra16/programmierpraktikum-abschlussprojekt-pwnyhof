@@ -12,3 +12,5 @@ build.fxbuild
 .idea/
 *.iml
 out/
+.gradle/2.14/taskArtifacts/fileHashes.bin
+.gradle/2.14/taskArtifacts/cache.properties.lock

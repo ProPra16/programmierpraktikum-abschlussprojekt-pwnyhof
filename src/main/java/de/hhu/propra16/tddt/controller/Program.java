@@ -84,9 +84,12 @@ public class Program {
 			console.setText(console.getText() + array[i].toString() + "\n");
 		}
 	}
-
+/**
+ * run method (button in the bottom left corner from the GUI)
+ * @param args gives the possibility to run a code with parameters like you can do on terminal
+ * runs the program when there are no errors within compilation
+ */
 	public void run(String args) {
-		// Wenn es keine Errors gibt wird das Programm gestartet
 		if (result != null && !result.hasCompileErrors()) {
 			Process processRun = null;
 			try {
@@ -166,7 +169,7 @@ public class Program {
 		if (numberFailed == 0) {
 			Duration testDur = testResult.getTestDuration();
 			testDur.toString();
-			System.out.println(testDur + "\n" + "All tests succesfull! Congratulations ASSHOLE!");
+			System.out.println(testDur + "\n" + "All tests succesfull! Congratulations!");
 			if(numberFailed == 0) {
 				return 0;
 			}
