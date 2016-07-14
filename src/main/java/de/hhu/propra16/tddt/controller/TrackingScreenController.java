@@ -81,18 +81,8 @@ public class TrackingScreenController {
 		if (e.getSource() == next) {
 			if (!CodeTestSwitch) {
 				if (counter < main.MyProgress.getCodeSize()) {
-<<<<<<< HEAD
 					if (!TARight.getText().isEmpty()) {
 						TALeft.setText(TARight.getText());
-=======
-					if (TASwitch) {
-						TASwitch = !TASwitch;
-
-						TALeft.setText(main.MyProgress.getCode(counter));
-						counter = counter + 1;
-					} else {
-						TASwitch = !TASwitch;
->>>>>>> origin/master
 						TARight.setText(main.MyProgress.getCode(counter));
 						counter = counter + 1;
 					} else {
