@@ -18,13 +18,13 @@ public class TDDTStart extends Application {
 
 			// Load root layout from fxml file.
 			BorderPane base = FXMLLoader.load(getClass().getResource("./controller/TextScreen.fxml"));
-			
-			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
-				
+
+			primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+
 				@Override
-				public void handle(WindowEvent t){
+				public void handle(WindowEvent t) {
 					Platform.exit();
-					
+
 				}
 			});
 
