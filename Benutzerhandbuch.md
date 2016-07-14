@@ -9,7 +9,7 @@ Dazu  wird folgendes Schema verwendet:
 3. Wenn der Code kompiliert und der Test durchläuft kann man in der REFACTOR-Phase seinen
    geschriebenen Code verbessern.
 4. Der nächste Test soll geschrieben werden
-....
+5. Diese Reihenfolge wiederholt sich daraufhin
 
 Für den Benutzer:
 
