@@ -12,12 +12,12 @@ public class Timer {
 	 * of the timer (runs or not), a new MainScreenController and also a Thread
 	 * to do stuff with
 	 */
-	private static long startTime;
-	private static long endTime;
+	private long startTime;
+	private long endTime;
 	private volatile boolean timerRuns = true;
 	private MainScreenController controller;
 	private Thread t;
-	private static long timePassed;
+	private long timePassed;
 	private final long babystepDuration;
 
 	/**
@@ -68,15 +68,15 @@ public class Timer {
 	 * @return this.timePassed: passed time as it's the difference between
 	 *         endTime & 0: if something went wrong
 	 */
-	public static long timePassed() {
+	public long timePassed() {
 		endTime = System.currentTimeMillis();
 		try {
-			timePassed = endTime - startTime;
-			return timePassed;
+			this.timePassed = endTime - startTime;
+			return this.timePassed;
 		} catch (Exception e) {
 			System.out.println("Timer Error!");
 		}
-		return timePassed;
+		return 0;
 	}
 
 	/**
