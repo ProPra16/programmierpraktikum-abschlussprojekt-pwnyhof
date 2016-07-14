@@ -8,7 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-
+/**
+ * Controller for Tracking Tool
+ * @author group pwnyhof
+ *
+ */
 public class TrackingScreenController {
 
 	private MainScreenController main;
@@ -44,9 +48,17 @@ public class TrackingScreenController {
 		this.main = main;
 
 	}
-
+/**
+ * method is called with 
+ * @param e an ActionEvent
+ * @throws IOException 
+ * 
+ * each if-statement with e.getSource() determines what should be done next
+ * based on which button was clicked
+ */
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
+		
 		if (e.getSource() == test) {
 			counter = 0;
 			CodeTestSwitch = true;
@@ -60,7 +72,10 @@ public class TrackingScreenController {
 			TALeft.setText("");
 			TARight.setText("");
 		}
-
+		/**
+		 * for e == next there are two possible cases to handle depending if CodeTestSwitch
+		 * is true or not
+		 */
 		if (e.getSource() == next) {
 			if (!CodeTestSwitch) {
 				if (counter < main.MyProgress.getCodeSize()) {
@@ -89,7 +104,10 @@ public class TrackingScreenController {
 				}
 			}
 		}
-
+		/**
+		 * for e == back there are two possible cases to handle depending if CodeTestSwitch
+		 * is true or not
+		 */
 		if (e.getSource() == back) {
 			if (!CodeTestSwitch) {
 				if (counter > 0) {
