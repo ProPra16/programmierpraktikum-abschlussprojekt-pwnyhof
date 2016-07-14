@@ -5,12 +5,20 @@ package de.hhu.propra16.tddt.controller;
 
 import java.io.File;
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author group pwnyhof
+ *
+ */
 public class Tracking {
 	private String codefile = "";
 	private String testfile = "";
+	
 	private ArrayList<String> codeList = new ArrayList<String>();
 	private ArrayList<String> testList = new ArrayList<String>();
+	
+	private ArrayList<Integer> codeTime = new ArrayList<Integer>();
+	private ArrayList<Integer> testTime = new ArrayList<Integer>();
 	
 	public Tracking () {
 		codefile = this.codefile;
@@ -22,6 +30,32 @@ public class Tracking {
 		
 		return "";
 	}*/
+	
+	public void addToCodeTime(int time) {
+		codeTime.add(time);
+	}
+	
+	public void addToTestTime(int time) {
+		testTime.add(time);
+	}
+	
+	public int getCodeTime(int index) {
+		return codeTime.get(index);
+	}
+	
+	public int getTestTime(int index) {
+		return testTime.get(index);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void addToCodeList(String codefile) {
 		codeList.add(codefile);
@@ -46,7 +80,7 @@ public class Tracking {
 	public void setTestfile(String testfile) {
 		this.testfile = testfile;
 	}
-	
+
 	public int getTestSize() {
 		return testList.size();
 	}
@@ -54,7 +88,10 @@ public class Tracking {
 	public int getCodeSize() {
 		return codeList.size();
 	}
-	
+
+	/**
+	 * method to clear lists
+	 */
 	public void clearLists(){
 		this.codeList.clear();
 		this.testList.clear();

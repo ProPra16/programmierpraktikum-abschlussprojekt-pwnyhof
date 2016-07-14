@@ -6,16 +6,27 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * 
+ * @author group pwnyhof
+ *
+ */
 public class ConfigReader {
 	private String task;
 	private List<String> contentOfConfig;
 	private String filePathToTask;
-	
-	public ConfigReader(String task){
+
+	/**
+	 * 
+	 * @param task is a string type variable which contains the name of the
+	 *             folder in which your config.txt should exist. If it's not
+	 *             there you will get an Error.
+	 */
+	public ConfigReader(String task) {
 		this.task = task;
 		filePathToTask = "./Task/" + task + "/";
 		Path filePathToConfig = Paths.get("./Task/" + task + "/" + "config.txt");
-		
+
 		try {
 			contentOfConfig = Files.readAllLines(filePathToConfig);
 
@@ -23,39 +34,58 @@ public class ConfigReader {
 			System.out.println("ERROR: Config.txt Not Found!");
 		}
 	}
-	
-	public String getTask(){
+
+	/**
+	 * getter to
+	 * @return the actual task
+	 */
+	public String getTask() {
 		return task;
 	}
-	
-	public String getPath(){
+
+	/**
+	 * getter to
+	 * @return the file path from the task
+	 */
+	public String getPath() {
 		return filePathToTask;
 	}
-	
-	public String getProgramName(){
+
+	/**
+	 * getter to
+	 * @return programName
+	 */
+	public String getProgramName() {
 		String lineWithInfo = contentOfConfig.get(0);
 		String programName = lineWithInfo.substring(13);
 		return programName;
 	}
-	
-	public String getTestName(){
+/**
+ * getter to
+ * @return testName 
+ */
+	public String getTestName() {
 		String lineWithInfo = contentOfConfig.get(1);
 		String testName = lineWithInfo.substring(10);
 		return testName;
 	}
-	
-	public boolean withBabysteps(){
+/**
+ * getter to 
+ * @return parsed boolean value of babysteps
+ */
+	public boolean withBabysteps() {
 		String lineWithInfo = contentOfConfig.get(2);
-		String babysteps = lineWithInfo.substring(11 , 15);
+		String babysteps = lineWithInfo.substring(11, 15);
 		return Boolean.parseBoolean(babysteps);
 	}
-	
-	public long timeOfBabysteps(){
+/**
+ * method to
+ * @return duration parsed as long type 
+ */
+	public long timeOfBabysteps() {
 		String lineWithInfo = contentOfConfig.get(3);
 		String duration = lineWithInfo.substring(19);
 		return Long.parseLong(duration);
 	}
-	
-	
 
 }
