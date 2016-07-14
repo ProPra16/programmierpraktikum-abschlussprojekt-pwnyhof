@@ -5,7 +5,11 @@ package de.hhu.propra16.tddt.controller;
 
 import java.io.File;
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author group pwnyhof
+ *
+ */
 public class Tracking {
 	private String codefile = "";
 	private String testfile = "";
@@ -46,7 +50,7 @@ public class Tracking {
 	public void setTestfile(String testfile) {
 		this.testfile = testfile;
 	}
-	
+
 	public int getTestSize() {
 		return testList.size();
 	}
@@ -54,6 +58,7 @@ public class Tracking {
 	public int getCodeSize() {
 		return codeList.size();
 	}
+
 	/**
 	 * method to clear lists
 	 */
