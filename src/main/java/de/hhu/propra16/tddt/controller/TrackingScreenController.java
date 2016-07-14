@@ -50,15 +50,19 @@ public class TrackingScreenController {
 		if (e.getSource() == test) {
 			counter = 0;
 			CodeTestSwitch = true;
+			TALeft.setText("");
+			TARight.setText("");
 		}
 
 		if (e.getSource() == code) {
 			counter = 0;
 			CodeTestSwitch = false;
+			TALeft.setText("");
+			TARight.setText("");
 		}
 
 		if (e.getSource() == next) {
-			if (CodeTestSwitch) {
+			if (!CodeTestSwitch) {
 				if (counter < main.MyProgress.getCodeSize()) {
 					if (TASwitch) {
 						TASwitch = !TASwitch;
@@ -71,8 +75,7 @@ public class TrackingScreenController {
 					}
 				}
 
-			} 
-			else if (!CodeTestSwitch) {
+			} else if (CodeTestSwitch) {
 				if (counter < main.MyProgress.getTestSize()) {
 					if (TASwitch) {
 						TASwitch = !TASwitch;
@@ -82,6 +85,35 @@ public class TrackingScreenController {
 						TASwitch = !TASwitch;
 						TARight.setText(main.MyProgress.getTest(counter));
 						counter = counter + 1;
+					}
+				}
+			}
+		}
+
+		if (e.getSource() == back) {
+			if (!CodeTestSwitch) {
+				if (counter > 0) {
+					if (TASwitch) {
+						TASwitch = !TASwitch;
+						counter = counter - 1;
+						TALeft.setText(main.MyProgress.getCode(counter));
+					} else {
+						TASwitch = !TASwitch;
+						counter = counter - 1;
+						TARight.setText(main.MyProgress.getCode(counter));
+					}
+				}
+
+			} else if (CodeTestSwitch) {
+				if (counter > 0) {
+					if (TASwitch) {
+						TASwitch = !TASwitch;
+						counter = counter - 1;
+						TALeft.setText(main.MyProgress.getTest(counter));
+					} else {
+						TASwitch = !TASwitch;
+						counter = counter - 1;
+						TARight.setText(main.MyProgress.getTest(counter));
 					}
 				}
 			}
