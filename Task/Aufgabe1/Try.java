@@ -5,12 +5,12 @@ public class Try{
 	
 	@Test
 	public void stringTest(){
-		assertEquals("Hel World!", Code.greet());
+		assertEquals("He4 World!", Code.greet());
 	}
 	
 	@Test
 	public void addTest(){
 
-		assertEquals(10, Code.add());
+		assertEquals(15, Code.add());
 	}
 }

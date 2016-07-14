@@ -66,7 +66,9 @@ public class TrackingScreenController {
 				if (counter < main.MyProgress.getCodeSize()) {
 					if (TASwitch) {
 						TASwitch = !TASwitch;
+
 						TALeft.setText(main.MyProgress.getCode(counter));
+						long timeP = Timer.timePassed();
 						counter = counter + 1;
 					} else {
 						TASwitch = !TASwitch;
