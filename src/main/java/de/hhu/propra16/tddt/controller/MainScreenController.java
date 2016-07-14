@@ -260,10 +260,10 @@ public class MainScreenController {
 			String code = null;
 			while ((code = codeLoad.readLine()) != null) {
 				if (!code.startsWith("#")) {
-					MyProgress.addToCodeList(leftTA.getText() + code);
 					leftTA.setText(leftTA.getText() + code + "\n");
 				}
 			}
+			if (code != null) MyProgress.addToCodeList(leftTA.getText() + code);
 			codeLoad.close();
 
 			rightTA.setText("");
@@ -272,10 +272,10 @@ public class MainScreenController {
 			String test = null;
 			while ((test = testLoad.readLine()) != null) {
 				if (!test.startsWith("#")) {
-					MyProgress.addToTestList(rightTA.getText() + test);
 					rightTA.setText(rightTA.getText() + test + "\n");
 				}
 			}
+			if (test != null) MyProgress.addToTestList(rightTA.getText() + test);
 			testLoad.close();
 		} catch (IOException ex) {
 
