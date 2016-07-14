@@ -46,9 +46,9 @@ public class TimerTest {
 		Timer testTimer = new Timer(con, babystepDuration);
 		
 		testTimer.startTimer();
-		Thread.sleep(2000);
 		testTimer.stopTimer();
-		assertEquals(2000, testTimer.timePassed());
+		
+		assertEquals(testTimer.getTime(), testTimer.timePassed());
 		
 	}
 	@Test

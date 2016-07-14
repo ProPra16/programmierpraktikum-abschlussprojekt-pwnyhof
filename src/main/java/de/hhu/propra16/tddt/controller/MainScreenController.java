@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 
 public class MainScreenController {
 	private Stage stage;
-	private ConfigReader config = null;
+	public ConfigReader config = null;
 	private File testfile;
 	private File codefile;
 	private Program program;
@@ -82,10 +82,10 @@ public class MainScreenController {
 				config = new ConfigReader(sfolder);
 				loadMethod();
 				firstTest = true;
-				if(config.withBabysteps()){
+				if (config.withBabysteps()) {
 					babystepDuration = config.timeOfBabysteps();
 				}
-				
+
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
 			testfile = new File(config.getPath() + config.getTestName() + ".java");
@@ -131,7 +131,7 @@ public class MainScreenController {
 			program = new Program(info, console);
 
 		} catch (NullPointerException e3) {
-			if (e.getSource() != clear && e.getSource() != fieldClear && e.getSource() != tracking){
+			if (e.getSource() != clear && e.getSource() != fieldClear && e.getSource() != tracking) {
 				System.out.println("Bitte waehlen Sie eine Uebung aus");
 				return;
 			}
@@ -204,8 +204,8 @@ public class MainScreenController {
 
 						MyProgress.addToTestList(rightTA.getText());
 						disableTest();
-						if(config.withBabysteps()){
-							if(!firstTest){
+						if (config.withBabysteps()) {
+							if (!firstTest) {
 								timer.stopTimer();
 							}
 							timer = new Timer(this, babystepDuration);
@@ -230,7 +230,7 @@ public class MainScreenController {
 					try {
 						MyProgress.addToCodeList(leftTA.getText());
 						disableCode();
-						if(config.withBabysteps()){
+						if (config.withBabysteps()) {
 							timer = new Timer(this, babystepDuration);
 							contentOfPhase = rightTA.getText();
 						}
@@ -242,13 +242,13 @@ public class MainScreenController {
 
 			}
 		}
-		
+
 		if (e.getSource() == tracking) {
 			showTrackingWindow();
 		}
 	}
 
-	private void loadMethod() {
+	public void loadMethod() {
 		Console con = new Console(console);
 		PrintStream out = new PrintStream(con, true);
 		System.setOut(out);
@@ -263,7 +263,8 @@ public class MainScreenController {
 					leftTA.setText(leftTA.getText() + code + "\n");
 				}
 			}
-			if (code != null) MyProgress.addToCodeList(leftTA.getText() + code);
+			if (code != null)
+				MyProgress.addToCodeList(leftTA.getText() + code);
 			codeLoad.close();
 
 			rightTA.setText("");
@@ -275,7 +276,8 @@ public class MainScreenController {
 					rightTA.setText(rightTA.getText() + test + "\n");
 				}
 			}
-			if (test != null) MyProgress.addToTestList(rightTA.getText() + test);
+			if (test != null)
+				MyProgress.addToTestList(rightTA.getText() + test);
 			testLoad.close();
 		} catch (IOException ex) {
 
@@ -296,49 +298,46 @@ public class MainScreenController {
 		}
 
 	}
-	
-	public void timerLapsed(){
-		if(leftTA.isDisabled()){
+
+	public void timerLapsed() {
+		if (leftTA.isDisabled()) {
 			rightTA.setText(contentOfPhase);
 			SaveFile(contentOfPhase, testfile);
-			
+
 			disableTest();
-		}
-		else if(rightTA.isDisabled()){
+		} else if (rightTA.isDisabled()) {
 			leftTA.setText(contentOfPhase);
 			SaveFile(contentOfPhase, codefile);
 			disableCode();
 		}
 	}
-	
-	private void disableTest(){
+
+	private void disableTest() {
 		runCode.setDisable(false);
 		leftTA.setDisable(false);
 		runTest.setDisable(true);
 		rightTA.setDisable(true);
 		nextCode.setDisable(true);
-		currentPhase.setBackground(
-				new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+		currentPhase.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
-	
-	private void disableCode(){
+
+	private void disableCode() {
 		runCode.setDisable(true);
 		nextCode.setDisable(true);
 		leftTA.setDisable(true);
 		runTest.setDisable(false);
 		rightTA.setDisable(false);
 		nextTest.setDisable(true);
-		currentPhase.setBackground(
-				new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+		currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
-	
-	private void showTrackingWindow(){
+
+	private void showTrackingWindow() {
 		try {
-			
+
 			Stage trackingStage = new Stage();
 			BorderPane base = FXMLLoader.load(getClass().getResource("TrackingScreen.fxml"));
 			Scene scene = new Scene(base);
-			
+
 			TrackingScreenController tracking = new TrackingScreenController();
 			tracking.setMain(this);
 
@@ -346,12 +345,10 @@ public class MainScreenController {
 			trackingStage.setScene(scene);
 
 			trackingStage.show();
-			
+
 		} catch (IOException e) {
 			System.out.println("Error while loading the Tracking-Window!");
 		}
 	}
-	
-	
 
 }
