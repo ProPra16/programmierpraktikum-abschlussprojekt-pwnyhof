@@ -12,9 +12,11 @@ public class Timer {
  */
 	private long startTime;
 	private long endTime;
-	private volatile boolean timerRuns;
+	private volatile boolean timerRuns = true;
 	private MainScreenController controller;
 	private Thread t;
+	private long timePassed;
+	private final long babystepDuration;
 	/**
 	 * as long as timerRuns is true and timePassed is below 15000(milliseconds)
 	 * the current Thread doesn't get interrupted. when timePassed got >= 15000
@@ -23,15 +25,16 @@ public class Timer {
 	 * Then the current Thread is interrupted then the Thread starts again.
 	 * @param con is a new MainScreenController aka. a new GUI window from TDDT
 	 */
-	public Timer(MainScreenController con) {
+	public Timer(MainScreenController con, long babystepDuration) {
 		this.controller = con;
+		this.babystepDuration = babystepDuration;
 		startTimer();
 
 		t = new Thread(new Runnable() {
 			@Override
 			public void run() {
 				while (timerRuns) {
-					if (timePassed() >= 15000) {
+					if (timePassed() >= babystepDuration) {
 						timerRuns = false;
 						controller.timerLapsed();
 					}
@@ -58,8 +61,8 @@ public class Timer {
 	public long timePassed() {
 		endTime = System.currentTimeMillis();
 		try {
-			long msec = endTime - startTime;
-			return msec;
+			this.timePassed = endTime - startTime;
+			return this.timePassed;
 		} catch (Exception e) {
 			System.out.println("Timer Error!");
 		}
@@ -77,5 +80,13 @@ public class Timer {
 	public void resetTimer() {
 		startTime = 0;
 		endTime = 0;
+	}
+	
+	public void setTime(long timePassed) {
+		this.timePassed = timePassed;
+	}
+	
+	public long getTime() {
+		return timePassed;
 	}
 }

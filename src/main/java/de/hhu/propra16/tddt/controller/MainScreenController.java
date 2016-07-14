@@ -8,9 +8,13 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
@@ -18,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -30,6 +35,11 @@ public class MainScreenController {
 	private Program program;
 	private String contentOfPhase;
 	private Timer timer;
+	private boolean firstTest;
+	private long babystepDuration;
+	private Tracking MyProgress = new Tracking();
+	private StringProperty trackStep;
+	private StringProperty trackStepStep;
 
 	@FXML
 	public MenuItem neu, load, saveTest, saveCode, exit, catalog;
@@ -38,7 +48,7 @@ public class MainScreenController {
 	public Button runTest, fieldClear, runCode, clear, nextTest, run;
 
 	@FXML
-	public Button nextCode, currentPhase;
+	public Button nextCode, currentPhase, tracking;
 
 	@FXML
 	public TextArea leftTA, rightTA, console;
@@ -72,13 +82,17 @@ public class MainScreenController {
 			}
 
 			if (!sfolder.isEmpty()) {
+				MyProgress.clearLists();
 				config = new ConfigReader(sfolder);
 				loadMethod();
+				firstTest = true;
+				if(config.withBabysteps()){
+					babystepDuration = config.timeOfBabysteps();
+				}
 				
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
 			testfile = new File(config.getPath() + config.getTestName() + ".java");
-
 		}
 		if (e.getSource() == load) {
 			loadMethod();
@@ -121,7 +135,7 @@ public class MainScreenController {
 			program = new Program(info, console);
 
 		} catch (NullPointerException e3) {
-			if (e.getSource() != clear && e.getSource() != fieldClear){
+			if (e.getSource() != clear && e.getSource() != fieldClear && e.getSource() != tracking){
 				System.out.println("Bitte waehlen Sie eine Uebung aus");
 				return;
 			}
@@ -191,10 +205,16 @@ public class MainScreenController {
 
 				if (oneFail == 1) {
 					try {
+
+						MyProgress.addToTestList(rightTA.getText());
 						disableTest();
 						if(config.withBabysteps()){
-							timer = new Timer(this);
+							if(!firstTest){
+								timer.stopTimer();
+							}
+							timer = new Timer(this, babystepDuration);
 							contentOfPhase = leftTA.getText();
+							firstTest = false;
 						}
 					} catch (NullPointerException e2) {
 
@@ -212,9 +232,10 @@ public class MainScreenController {
 
 				if (zeroFails == 0) {
 					try {
+						MyProgress.addToCodeList(leftTA.getText());
 						disableCode();
 						if(config.withBabysteps()){
-							timer = new Timer(this);
+							timer = new Timer(this, babystepDuration);
 							contentOfPhase = rightTA.getText();
 						}
 					} catch (NullPointerException e2) {
@@ -224,6 +245,10 @@ public class MainScreenController {
 			} catch (NullPointerException e1) {
 
 			}
+		}
+		
+		if (e.getSource() == tracking) {
+			showTrackingWindow();
 		}
 	}
 
@@ -242,6 +267,7 @@ public class MainScreenController {
 					leftTA.setText(leftTA.getText() + code + "\n");
 				}
 			}
+			if (code != null) MyProgress.addToCodeList(leftTA.getText() + code);
 			codeLoad.close();
 
 			rightTA.setText("");
@@ -253,6 +279,7 @@ public class MainScreenController {
 					rightTA.setText(rightTA.getText() + test + "\n");
 				}
 			}
+			if (test != null) MyProgress.addToTestList(rightTA.getText() + test);
 			testLoad.close();
 		} catch (IOException ex) {
 
@@ -284,7 +311,6 @@ public class MainScreenController {
 		else if(rightTA.isDisabled()){
 			leftTA.setText(contentOfPhase);
 			SaveFile(contentOfPhase, codefile);
-			
 			disableCode();
 		}
 	}
@@ -308,6 +334,47 @@ public class MainScreenController {
 		nextTest.setDisable(true);
 		currentPhase.setBackground(
 				new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+	}
+	
+	private void showTrackingWindow(){
+		Stage trackingWindow = new Stage();
+        GridPane track = new GridPane();	
+        Scene trackWindow = new Scene(track, 800, 510);
+        trackingWindow.setScene(trackWindow);
+        
+		track.setHgap(5);
+        track.setAlignment(Pos.TOP_LEFT);
+        
+        trackingWindow.setScene(trackWindow);
+        trackingWindow.setTitle("Tracking");
+           
+        TextArea TACode = new TextArea("TACODE");
+        TACode.setEditable(false);
+        TACode.setWrapText(false);
+        TACode.prefWidth(295);
+        TACode.setMinHeight(500);
+        
+        
+        TextArea TATest = new TextArea("TATEST");
+        TATest.setEditable(false);
+        TATest.setWrapText(false);
+        
+        trackStep = new SimpleStringProperty("");
+        trackStepStep = new SimpleStringProperty("");
+        TACode.textProperty().bind(trackStep);
+        TATest.textProperty().bind(trackStepStep);
+        
+        Button loadText = new Button("test");
+        loadText.setOnAction(event -> {
+			trackStep.set(MyProgress.getTest(0));
+			trackStepStep.set(MyProgress.getTest(1));
+		});
+        
+        track.add(TACode, 1, 1);
+        track.add(TATest, 2, 1);
+        track.add(loadText, 3, 1);
+        
+		trackingWindow.show();
 	}
 
 }
