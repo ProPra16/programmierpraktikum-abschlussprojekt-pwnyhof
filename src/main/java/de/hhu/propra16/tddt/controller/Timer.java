@@ -28,7 +28,8 @@ public class Timer {
 	 * gets unlocked Then the current Thread is interrupted then the Thread
 	 * starts again.
 	 * 
-	 * @param con is a new MainScreenController aka. a new GUI window from TDDT
+	 * @param con
+	 *            is a new MainScreenController aka. a new GUI window from TDDT
 	 */
 	public Timer(MainScreenController con, long babystepDuration) {
 		this.controller = con;
@@ -63,8 +64,9 @@ public class Timer {
 
 	/**
 	 * function to simply calculate the passed time
-	 * @return this.timePassed: passed time as it's the difference between endTime &
-	 *                       0: if something went wrong
+	 * 
+	 * @return this.timePassed: passed time as it's the difference between
+	 *         endTime & 0: if something went wrong
 	 */
 	public long timePassed() {
 		endTime = System.currentTimeMillis();
@@ -92,19 +94,24 @@ public class Timer {
 	public long resetTimer() {
 		startTime = 0;
 		endTime = 0;
-		return endTime+startTime;
+		return endTime + startTime;
 	}
-/**
- * setter to work with time
- * @param timePassed is a value in milliseconds you want to set the timer to
- * @return the now changed value of timePassed
- */
+
+	/**
+	 * setter to work with time
+	 * 
+	 * @param timePassed
+	 *            is a value in milliseconds you want to set the timer to
+	 * @return the now changed value of timePassed
+	 */
 	public long setTime(long timePassed) {
 		this.timePassed = timePassed;
 		return timePassed;
 	}
+
 	/**
 	 * getter function
+	 * 
 	 * @return the value of timePassed
 	 */
 	public long getTime() {

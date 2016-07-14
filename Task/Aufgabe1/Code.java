@@ -9,12 +9,16 @@ public class Code {
 	}
 
 	public static String greet() {
-		return "He3 World!";
+
+		return "He4 World!";
+
+
 	}
 
 	public static int add() {
 		int a = 5;
 		int b = 10;
 		return a + b;
+
 	}
 }
