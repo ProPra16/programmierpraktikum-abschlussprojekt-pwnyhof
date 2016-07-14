@@ -1,9 +1,10 @@
 import org.junit.Test;
 
 public class ConfigReaderTest {
+
 	@Test
-	public  {
-		
+	public void blabla1() {
+
 	}
- 
+
 }
