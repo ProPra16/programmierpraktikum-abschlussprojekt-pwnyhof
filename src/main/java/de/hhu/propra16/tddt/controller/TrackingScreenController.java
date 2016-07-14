@@ -10,43 +10,81 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class TrackingScreenController {
-	
+
 	private MainScreenController main;
-	
+	private boolean CodeTestSwitch = true; // code - 0, test - 1
+	private boolean TASwitch = true; // rechts - 0, links - 1
+	private int counter = 0;
+
 	@FXML
 	public TextArea TALeft;
-	
+
 	@FXML
 	public TextArea TARight;
 
 	@FXML
 	public Button code;
-	
+
 	@FXML
 	public Button test;
-	
+
 	@FXML
 	public Button back;
-	
+
 	@FXML
 	public Button next;
-	
+
 	@FXML
 	public Label timeLeft;
-	
+
 	@FXML
 	public Label timeRight;
 
-	public void setMain(MainScreenController main){
+	public void setMain(MainScreenController main) {
 		this.main = main;
-        
+
 	}
-	
+
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
-		if(e.getSource() == next){
-			TALeft.setText(main.MyProgress.getTest(0));
-        	TARight.setText(main.MyProgress.getTest(1));
+		if (e.getSource() == test) {
+			counter = 0;
+			CodeTestSwitch = true;
+		}
+
+		if (e.getSource() == code) {
+			counter = 0;
+			CodeTestSwitch = false;
+		}
+
+		if (e.getSource() == next) {
+			if (CodeTestSwitch) {
+				if (counter < main.MyProgress.getCodeSize()) {
+					if (TASwitch) {
+						TASwitch = !TASwitch;
+						TALeft.setText(main.MyProgress.getCode(counter));
+						counter = counter + 1;
+					} else {
+						TASwitch = !TASwitch;
+						TARight.setText(main.MyProgress.getCode(counter));
+						counter = counter + 1;
+					}
+				}
+
+			} 
+			else if (!CodeTestSwitch) {
+				if (counter < main.MyProgress.getTestSize()) {
+					if (TASwitch) {
+						TASwitch = !TASwitch;
+						TALeft.setText(main.MyProgress.getTest(counter));
+						counter = counter + 1;
+					} else {
+						TASwitch = !TASwitch;
+						TARight.setText(main.MyProgress.getTest(counter));
+						counter = counter + 1;
+					}
+				}
+			}
 		}
 	}
 }

@@ -47,6 +47,14 @@ public class Tracking {
 		this.testfile = testfile;
 	}
 	
+	public int getTestSize() {
+		return testList.size();
+	}
+	
+	public int getCodeSize() {
+		return codeList.size();
+	}
+	
 	public void clearLists(){
 		this.codeList.clear();
 		this.testList.clear();
