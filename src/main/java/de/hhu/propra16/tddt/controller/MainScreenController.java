@@ -263,10 +263,6 @@ public class MainScreenController {
 					leftTA.setText(leftTA.getText() + code + "\n");
 				}
 			}
-
-			if (code != null)
-				MyProgress.addToCodeList(leftTA.getText() + code);
-
 			codeLoad.close();
 
 			rightTA.setText("");
@@ -278,10 +274,6 @@ public class MainScreenController {
 					rightTA.setText(rightTA.getText() + test + "\n");
 				}
 			}
-
-			if (test != null)
-				MyProgress.addToTestList(rightTA.getText() + test);
-
 			testLoad.close();
 		} catch (IOException ex) {
 
