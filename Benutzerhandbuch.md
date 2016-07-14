@@ -11,8 +11,6 @@ Dazu  wird folgendes Schema verwendet:
 4. Der nächste Test soll geschrieben werden
 5. Diese Reihenfolge wiederholt sich daraufhin
 
-
-
 Für den Benutzer:
 
 Um sich eine Übung auszusuchen, navigieren Sie auf den Menüreiter File -> Catalog und wählen Sie die 
@@ -50,3 +48,32 @@ Falls Sie explizit während des Programmiervorgangs speichern wollen können Sie
 auf den Menüreiter File -> SaveCode oder SaveTest navigieren.
 Den letzten speicherstand können Sie per File -> Load abrufen, beachten Sie jedoch, dass nach einem "next" oder "check"
 Knopfdruck das Programm automatisch gespeichert wird.
+
+Für die Übungsleiter:
+
+Um eine neue Übungsaufgabe zu kreieren, legen Sie im Ordner "Task" einen neuen Ordner mit dem Übungsnamen an.
+Dieser muss drei Dateien enthalten:
+
+1. Eine Code-Datei (.java)
+2. Eine Test-Datei (.java)
+3. Eine config-Datei (.txt)
+
+Solang ihre Code.java und Test.java kompilieren können Sie ein beliebiges Programmgerüst erstellen.
+
+Wichtig ist das Layout der config-Datei.
+Hier ein Beispiel:
+
+config.txt
+
+Inhalt:
+ProgramName: Code
+TestName: Try
+Babysteps: true
+Babystep Duration: 15000
+
+Beachten Sie, dass keine Leerzeichen am Ende jeder Zeile stehen und, dass "ProgramName: xxxx" in
+der ersten Zeile stehen müssen.
+"ProgramName: xxxx" muss den Namen ihrer Code-Datei zugewiesen bekommen (ohne .java).
+"TestName: xxxx" muss den Namen ihrer Test-Datei zugewiesen bekommen (ohne .java).
+"Babysteps: xxxx" ist "true" oder "false" je nachdem ob die Erweiterung aktiviert sein soll.
+"Babystep Duration: xxxxx" gibt an wie lange eine Phase dauern darf (in Milisekunden).
