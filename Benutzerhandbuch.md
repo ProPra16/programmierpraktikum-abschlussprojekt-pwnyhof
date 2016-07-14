@@ -11,6 +11,8 @@ Dazu  wird folgendes Schema verwendet:
 4. Der nächste Test soll geschrieben werden
 5. Diese Reihenfolge wiederholt sich daraufhin
 
+
+
 Für den Benutzer:
 
 Um sich eine Übung auszusuchen, navigieren Sie auf den Menüreiter File -> Catalog und wählen Sie die 
@@ -43,3 +45,8 @@ Unten links im Programmfenster sehen Sie einen Knopf "run", dieser kann betätig
 Wenn Sie Argumente übergeben wollen können Sie dies in dem dafür vorgesehenen Textfeld tun.
 
 Der Knopf "next" leitet im folgenden die nächste Test-Phase ein.
+
+Falls Sie explizit während des Programmiervorgangs speichern wollen können Sie dies tun, indem Sie
+auf den Menüreiter File -> SaveCode oder SaveTest navigieren.
+Den letzten speicherstand können Sie per File -> Load abrufen, beachten Sie jedoch, dass nach einem "next" oder "check"
+Knopfdruck das Programm automatisch gespeichert wird.
