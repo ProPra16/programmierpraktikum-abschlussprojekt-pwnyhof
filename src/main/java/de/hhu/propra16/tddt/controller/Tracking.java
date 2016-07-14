@@ -50,12 +50,7 @@ public class Tracking {
 	public void setTestfile(String testfile) {
 		this.testfile = testfile;
 	}
-<<<<<<< HEAD
-	/**
-	 * method to clear lists
-	 */
-=======
-	
+
 	public int getTestSize() {
 		return testList.size();
 	}
@@ -64,7 +59,9 @@ public class Tracking {
 		return codeList.size();
 	}
 	
->>>>>>> refs/remotes/origin/master
+	/**
+	 * method to clear lists
+	 */
 	public void clearLists(){
 		this.codeList.clear();
 		this.testList.clear();
