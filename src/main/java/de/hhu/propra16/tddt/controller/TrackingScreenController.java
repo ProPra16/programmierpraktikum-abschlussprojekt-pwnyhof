@@ -58,6 +58,7 @@ public class TrackingScreenController {
  */
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
+		
 		if (e.getSource() == test) {
 			counter = 0;
 			CodeTestSwitch = true;
@@ -80,6 +81,7 @@ public class TrackingScreenController {
 				if (counter < main.MyProgress.getCodeSize()) {
 					if (TASwitch) {
 						TASwitch = !TASwitch;
+
 						TALeft.setText(main.MyProgress.getCode(counter));
 						counter = counter + 1;
 					} else {
