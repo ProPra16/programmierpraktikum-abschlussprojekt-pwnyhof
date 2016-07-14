@@ -39,4 +39,25 @@ public class TimerTest {
 		
 		assertEquals(false, testTimer.stopTimer());
 	}
+	@Test
+	public void timePassed() throws InterruptedException{
+		MainScreenController con = new MainScreenController();
+		long babystepDuration = 15;
+		Timer testTimer = new Timer(con, babystepDuration);
+		
+		testTimer.startTimer();
+		Thread.sleep(2000);
+		testTimer.stopTimer();
+		assertEquals(2000, testTimer.timePassed());
+		
+	}
+	@Test
+	public void setAndGetTime(){
+		MainScreenController con = new MainScreenController();
+		long babystepDuration = 15;
+		Timer testTimer = new Timer(con, babystepDuration);
+		
+		testTimer.setTime(5000);
+		assertEquals(5000, testTimer.getTime());
+	}
 }
