@@ -77,6 +77,20 @@ public class TrackingScreenController {
 		 * CodeTestSwitch is true or not
 		 */
 		if (e.getSource() == next) {
+			try {
+				if (MainScreenController.config.withBabysteps()) {
+					long with = MainScreenController.getBabyStepDuration() / 1000;
+					String withBSteps = String.valueOf(with);
+					timeLeft.setText(withBSteps);
+				}
+				if (MainScreenController.config.withoutBabysteps()) {
+					long without = MainScreenController.getBabyStepDuration() / 1000;
+					String withBSteps = String.valueOf(without);
+					timeLeft.setText(withBSteps);
+				}
+			} catch (NullPointerException eNull) {
+			}
+
 			if (!CodeTestSwitch) { // FALSE IST CODE
 				if (counter < main.MyProgress.getCodeSize()) {
 					counter++;
@@ -129,7 +143,7 @@ public class TrackingScreenController {
 			}
 		}
 	}
-	
+
 	public void defaultTest() {
 		counter = 1; // default werte
 		CodeTestSwitch = true;
@@ -149,7 +163,7 @@ public class TrackingScreenController {
 			System.out.println("Test[1] does not exist");
 		}
 	}
-	
+
 	public void defaultCode() {
 		counter = 1; // default werte
 		CodeTestSwitch = false;
@@ -169,6 +183,5 @@ public class TrackingScreenController {
 			System.out.println("Code[1] does not exist");
 		}
 	}
-	
-	
+
 }

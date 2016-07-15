@@ -27,14 +27,16 @@ import javafx.stage.Stage;
 
 public class MainScreenController {
 	private Stage stage;
-	public ConfigReader config = null;
+	public static ConfigReader config = null;
 	private File testfile;
 	private File codefile;
 	private Program program;
 	private String contentOfPhase;
 	private Timer timer;
 	private boolean firstTest;
-	private long babystepDuration;
+	private static long babystepDuration;
+	private static long duration;
+
 	protected static Tracking MyProgress = new Tracking();
 
 	@FXML
@@ -84,6 +86,10 @@ public class MainScreenController {
 				firstTest = true;
 				if (config.withBabysteps()) {
 					babystepDuration = config.timeOfBabysteps();
+				}
+				// ***************************************************
+				if (config.withoutBabysteps()) {
+					duration = config.timeOfBabysteps();
 				}
 
 			}
@@ -212,6 +218,16 @@ public class MainScreenController {
 							contentOfPhase = leftTA.getText();
 							firstTest = false;
 						}
+						// ***************************************************
+						if (config.withoutBabysteps()) {
+							if (!firstTest) {
+								timer.stopTimer();
+							}
+							timer = new Timer(this, duration);
+							contentOfPhase = leftTA.getText();
+							firstTest = false;
+						}
+
 					} catch (NullPointerException e2) {
 
 					}
@@ -232,6 +248,11 @@ public class MainScreenController {
 						disableCode();
 						if (config.withBabysteps()) {
 							timer = new Timer(this, babystepDuration);
+							contentOfPhase = rightTA.getText();
+						}
+						// ***************************************************
+						if (config.withBabysteps()) {
+							timer = new Timer(this, duration);
 							contentOfPhase = rightTA.getText();
 						}
 					} catch (NullPointerException e2) {
@@ -327,6 +348,14 @@ public class MainScreenController {
 		rightTA.setDisable(false);
 		nextTest.setDisable(true);
 		currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
+	}
+
+	public static long getBabyStepDuration() {
+		return babystepDuration;
+	}
+
+	public static long getDuration() {
+		return duration;
 	}
 
 	private void showTrackingWindow() {

@@ -1,21 +1,16 @@
-public class Code {
-	public static void main(String[] args) {
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-		int a = Integer.valueOf(args[0]);
-		
-		System.out.println(a);
-		System.out.println(add());
-		System.out.println(greet());
+public class Try{
+	
+	@Test
+	public void stringTest(){
+		assertEquals("He3 World!", Test2.greet());
 	}
+	
+	@Test
+	public void addTest(){
 
-	public static String greet() {
-		return "Hel World!";
-	}
-
-	public static int add() {
-		int a = 5;
-		int b = 10;
-		return a + b;
+		assertEquals(15, Test2.add());
 	}
 }
-

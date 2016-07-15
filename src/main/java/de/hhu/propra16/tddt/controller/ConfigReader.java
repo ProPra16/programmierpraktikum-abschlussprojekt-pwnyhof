@@ -78,6 +78,13 @@ public class ConfigReader {
 		String babysteps = lineWithInfo.substring(11, 15);
 		return Boolean.parseBoolean(babysteps);
 	}
+	
+	
+	public boolean withoutBabysteps() {
+		String lineWithInfo = contentOfConfig.get(2);
+		String babysteps = lineWithInfo.substring(11, 15);
+		return Boolean.parseBoolean(babysteps);
+	}
 /**
  * method to
  * @return duration parsed as long type 
