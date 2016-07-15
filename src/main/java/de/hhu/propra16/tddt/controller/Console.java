@@ -13,7 +13,7 @@ public class Console extends OutputStream {
 
 	private TextArea txtArea = null;
 	/**
-	 * is called with
+	 * method is called with
 	 * @param txtArea (from MainScreenController)
 	 * sets this.txtArea to the delivered parameter.
 	 */

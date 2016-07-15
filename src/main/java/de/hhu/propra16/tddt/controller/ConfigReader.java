@@ -36,23 +36,23 @@ public class ConfigReader {
 	}
 
 	/**
-	 * getter to
-	 * @return the actual task
+	 * String type getter method
+	 * @return task 
 	 */
 	public String getTask() {
 		return task;
 	}
 
 	/**
-	 * getter to
-	 * @return the file path from the task
+	 * String type getter method
+	 * @return filePathToTask
 	 */
 	public String getPath() {
 		return filePathToTask;
 	}
 
 	/**
-	 * getter to
+	 * String type getter method
 	 * @return programName
 	 */
 	public String getProgramName() {
@@ -61,7 +61,7 @@ public class ConfigReader {
 		return programName;
 	}
 /**
- * getter to
+ * String type getter method
  * @return testName 
  */
 	public String getTestName() {
@@ -70,8 +70,8 @@ public class ConfigReader {
 		return testName;
 	}
 /**
- * getter to 
- * @return parsed boolean value of babysteps
+ * Boolean type getter method 
+ * @return Boolean.parseBoolean(babysteps)
  */
 	public boolean withBabysteps() {
 		String lineWithInfo = contentOfConfig.get(2);
@@ -80,8 +80,8 @@ public class ConfigReader {
 	}
 	
 /**
- * method to
- * @return duration parsed as long type 
+ * Long type getter method
+ * @return Long.parseLong(duration) 
  */
 	public long timeOfBabysteps() {
 		String lineWithInfo = contentOfConfig.get(3);

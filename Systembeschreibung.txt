@@ -26,8 +26,8 @@ TDDTStart:
  gezeigt wird.
  
 MainScreenController:
- Der MainScreenController weist den GUI Elementen (Menue, Buttons, TextAreas und
- TextField) Variablen zu um diese spaeter in den Methoden nutzen zu können.
+	 Der MainScreenController weist den GUI Elementen (Menue, Buttons, TextAreas und
+	 TextField) Variablen zu um diese spaeter in den Methoden nutzen zu können.
  	Methoden:
  	public void handleMenuItem(ActionEvent e)
  		Hier wird erst mit Hilfe der Klasse Console aus der vorher zugewiesenen TextArea
@@ -183,6 +183,32 @@ Information:
 		
 		
 Program:
+  Die Klasse Program compiliert sowohl den Java- als auch den JUnit-Quellcode und fuehrt diesen aus.
+	public void compile()
+		Die Methode compiliert den Code, wartet bis dies getan ist, liest ein Programm aus einer Datei
+		im Pfad von codeFilePath (Error wenn der Pfad nicht existiert), wandelt den Quellcode in einen
+		String um, erstellt aus diesen Daten eine CompilationUnit, compiliert das Programm imaginär,
+		nimmt dan das Resultat entgegen und gibt schliesslich alle Fehlermeldungen aus, sollte es welche
+		gegeben haben.
+		
+	public void run(String args)
+		Fuer den Fall, dass ein Resultat vorhanden ist (!=null) und es keine Fehler gab wird das Programm
+		mit zusammen mit dem String agrs als Uebergabeparameter ausgeführt. Der zweite try & catch Block
+		gibt die Ausgabe die normalerweise auf dem Terminal erscheint auf der eigenen Console von TDDT aus.
+		
+	public int test()
+		liest Code und Test aus den Pfaden testFilePath und codeFilePath, gibt eine Fehlermeldung aus wenn
+		ein Pfad nicht gefunden wurde. Wandelt danach Test und Code in zwei seperat Strings um (contentTestInString
+		und contentCodeInString) und erstellt aus diesen Daten eine neue CompilationUnit. Dann werden die Tests
+		ausgefuehrt, die Resultate gespeichert und eventuell aufgetretene Fehler ausgegeben. Selbiges geschieht mit
+		den Resultaten vom Testen. Die Anzahl der Fehler wird in der Integer Variable numberFailed gespeichert, ist
+		diese = 0 Wird eine Benachrichtigung ausgegeben, dass alle Tests bestanden wurden. Sollten jedoch ein oder mehr
+		Fehler aufgetreten sein wird die Anzahl der fehlgeschlagen, ignorierten und erfolgreichen Tests ausgegeben.
+	
+	private void println(InputStream inStream)
+		liest einen InputStream aus dem Terminal und speichert diesen um ihn auf der TDDT eigenen Console ausgeben
+		zu können.
+
  
 Tracking:
   Die Klasse enthaelt 4 Listen fuer Code und Test(String) sowie todeTime und testTime(int)
@@ -220,6 +246,63 @@ Tracking:
 		Methode um beide Listen zu leeren
 		
 TrackingScreenController:
- 
+   Der TrackingScreenController weist den GUI Elementen (Label, Buttons, TextAreas)
+   Variablen zu um diese spaeter in den Methoden nutzen zu können.
+   
+	public void setMain(MainScreenController main)
+		hier wird der MainScreenController main aus der Klasse TrackingScreenController
+		auf den uebergebenen MainScreenController gesetzt
+		
+	public void handleButton(ActionEvent e)
+		Hier werden mit verschiedenen if-Abfragen die Funktionen der Buttons bedacht:
+		test:
+			ruft die Funktion public void defaultTest() auf.
+				public void defaultTest()
+					laedt als standard Test den Eintrag main.MyProgress.getTest(0) in
+					die linke TextArea und den Eintrag main.MyProgress.getTest(1) in
+					die rechte TextArea. Ist kein Test vorhanden wird eine Fehlermeldung
+					mit "Test[0] bzw. Test[1] doesn't exist." ausgegeben.
+					MyProgress ist bekannt als Tracking Objekt aus
+					MainScreenController.
+					
+		code:
+			ruft die Funktion public void defaultCode() auf.
+				public void defaultCode()
+					laed als standard Code den Eintrag main.MyProgress.getCode(0) in
+					die linke TextArea, und den Eintrag main.MyProgress.getCode(1) in
+					die rechte TextArea. Ist kein Code vorhanden wird eine Fehlermeldung
+					mit "Code[0] bzw. Code[1] doesn't exist." ausgegeben.
+					MyProgress ist bekannt als Tracking Objekt aus
+					MainScreenController.
+		next:
+			fragt ab ob MainScreenController.config.withBabysteps() oder
+			MainScreenController.config.withoutBabysteps() zutrifft und setzt den Wert vom
+			String withBSteps auf "with" bzw. "without".
+			Ausserdem:
+			Ist CodeTestSwitch = false wird der getrackte Code von der rechten in die linke
+			TextArea "geschoben", bis ein counter, der vor jedem "Schieben" um 1 erhöht wird
+			den wert main.MyProgress.getCodeSize() - 1 erreicht. Ist dies der Fall so wird
+			der Counter um 1 verringert wird der next-Button ge- und der back-Button entsperrt.
+			Ist CodeTestSwitch = true wird der getrackte Test von der rechten in die linke
+			TextArea "geschoben", bis ein counter, der vor jedem "Schieben" um 1 erhöht wird
+			den wert main.MyProgress.getTestSize() - 1 erreicht. Ist dies der Fall so wird
+			der Counter um 1 verringert wird der next-Button ge- und der back-Button entsperrt.
+			
+		back:
+			Ist CodeTestSwitch = false und der Counter > 0 wird der rechten TextArea der Wert von
+			main.MyProgress.getCode(counter) und der linken TextArea der Wert von
+			main.MyProgress.getCode(counter - 1) zugewiesen, der counter wird um 1 verringert und
+			die Funktion des next-Buttons wird wieder aktiviert. Dies geschieht so lange bis der 
+			Counter 0 erreicht, in diesem Fall wird die Funktion des back-Buttons deaktiviert und
+			der Counter wieder um 1 erhoeht.
+			Ist CodeTestSwitch = true und der Counter > 0 wird der rechten TextArea der Wert von
+			main.MyProgress.getTest(counter) und der linken TextArea der Wert von
+			main.MyProgress.getTest(counter - 1) zugewiesen, der counter wird um 1 verringert und
+			die Funktion des next-Buttons wird wieder aktiviert. Dies geschieht so lange bis der 
+			Counter 0 erreicht, in diesem Fall wird die Funktion des back-Buttons deaktiviert und
+			der Counter wieder um 1 erhoeht.			
+	
+	
+	
  
  
