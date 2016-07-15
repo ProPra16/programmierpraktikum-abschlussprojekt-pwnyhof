@@ -9,7 +9,7 @@ public class Test2 {
 
 	public static String greet() {
 
-		return "He4World!";
+		return "He2World!";
 
 
 	}

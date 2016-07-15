@@ -18,9 +18,10 @@ public class ConfigReader {
 
 	/**
 	 * 
-	 * @param task is a string type variable which contains the name of the
-	 *             folder in which your config.txt should exist. If it's not
-	 *             there you will get an Error.
+	 * @param task
+	 *            is a string type variable which contains the name of the
+	 *            folder in which your config.txt should exist. If it's not
+	 *            there you will get an Error.
 	 */
 	public ConfigReader(String task) {
 		this.task = task;
@@ -37,6 +38,7 @@ public class ConfigReader {
 
 	/**
 	 * getter to
+	 * 
 	 * @return the actual task
 	 */
 	public String getTask() {
@@ -45,6 +47,7 @@ public class ConfigReader {
 
 	/**
 	 * getter to
+	 * 
 	 * @return the file path from the task
 	 */
 	public String getPath() {
@@ -53,6 +56,7 @@ public class ConfigReader {
 
 	/**
 	 * getter to
+	 * 
 	 * @return programName
 	 */
 	public String getProgramName() {
@@ -60,35 +64,40 @@ public class ConfigReader {
 		String programName = lineWithInfo.substring(13);
 		return programName;
 	}
-/**
- * getter to
- * @return testName 
- */
+
+	/**
+	 * getter to
+	 * 
+	 * @return testName
+	 */
 	public String getTestName() {
 		String lineWithInfo = contentOfConfig.get(1);
 		String testName = lineWithInfo.substring(10);
 		return testName;
 	}
-/**
- * getter to 
- * @return parsed boolean value of babysteps
- */
+
+	/**
+	 * getter to
+	 * 
+	 * @return parsed boolean value of babysteps
+	 */
 	public boolean withBabysteps() {
 		String lineWithInfo = contentOfConfig.get(2);
 		String babysteps = lineWithInfo.substring(11, 15);
 		return Boolean.parseBoolean(babysteps);
 	}
-	
-	
+
 	public boolean withoutBabysteps() {
 		String lineWithInfo = contentOfConfig.get(2);
-		String babysteps = lineWithInfo.substring(11, 15);
+		String babysteps = lineWithInfo.substring(7, 9);
 		return Boolean.parseBoolean(babysteps);
 	}
-/**
- * method to
- * @return duration parsed as long type 
- */
+
+	/**
+	 * method to
+	 * 
+	 * @return duration parsed as long type
+	 */
 	public long timeOfBabysteps() {
 		String lineWithInfo = contentOfConfig.get(3);
 		String duration = lineWithInfo.substring(19);
