@@ -95,7 +95,26 @@ Welche Klassen gibt es?
  		initialisiert ein neus Fenster für die Tracking GUI
  		
  Timer:
- 
+ 	public long startTimer()
+ 		startet den Timer bei System.currentTimeMillis()
+ 	
+ 	public long timePassed()
+ 		berechnet die Differenz zwischen Start und Endzeit des Timers und gibt diese
+ 		mit der Variable timePassed zurueck.
+ 	
+ 	public boolean stopTimer()
+ 		stoppt den Timer indem die Variable timerRuns auf false gesetzt wird
+ 	
+ 	public long resetTimer()
+ 		resettet den Timer indem die Werte der Start und Endzeit auf 0 gesetzt werden
+ 		
+ 	public long setTime(long timePassed)
+ 		setzt die Variable timePassed auf einen beliebigen Wert des Typen long.
+ 		
+ 	public long getTime()
+ 		gibt den aktuellen Wert der Variable timePassed zurueck.
+ 		
+ 		
  ConfigReader:
  
  Console:
