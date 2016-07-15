@@ -69,7 +69,7 @@ Inhalt:
 ProgramName: Code                                                                                                                    
 TestName: Try                                                                                                                         
 Babysteps: true                                                                                                                       
-Babystep Duration: 15000
+Babystep Duration: 180000
 
 Beachten Sie, dass keine Leerzeichen am Ende jeder Zeile stehen und, dass "ProgramName: xxxx" in
 der ersten Zeile stehen muessen.
