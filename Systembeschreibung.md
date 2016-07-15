@@ -6,7 +6,7 @@ Welche Klassen gibt es?
  - Information
  - MainScreenController 
  - Program
- - TDDTStart +
+ - TDDTStart
  - Timer
  - Tracking
  - TrackingScreenController
@@ -43,8 +43,57 @@ Welche Klassen gibt es?
  		erstellt eine neue CLasse und einen neuen Test basierend auf den von in
  		ConfigReader gelesenen Daten.
  	load:
+ 		fuehrt loadMethod() aus, welche die GUI resetted und die Daten aus der 		config.txt ausliest.
+ 	saveTest:
+ 		speichert, wenn eine Uebung ausgewaehlt ist, den Test.
+ 	saveCode:
+ 		speichert, wenn eine Uebung ausgewaehlt ist, den Code.
+ 	exit:
+ 		beendet das Programm.
  		
- 
+ 	public void handleButton(ActionEvent e)
+  		Hier wird erst mit Hilfe der Klasse Console aus der vorher zugewiesenen TextArea
+ 		console ein Outputstream initiiert, um eine Terminal-Ausgabe zu simulieren. Dazu
+ 		dient der PrintStream out, welchem der OutputStream zugewiesen wird.
+ 		Die ActionEvents werden wie folgt behandelt:
+ 	runCode:
+ 		speichert zunaechst den Code, compiliert diesen und führt danach die Methode 		test() aus der Klasse Program aus, sofern hier keine Fehler aufgetreten sind.
+ 		Wurden die Tests bestanden wird der Button "next" auf der Code Seite aktiviert
+ 		und die Code TextArea deaktiviert.
+ 	runTest:
+ 	 	speichert zunaechst den Test, compiliert diesen und führt danach die Methode 		test() aus der Klasse Program aus, sofern hier keine Fehler aufgetreten sind.
+ 		Ist der Test fehlgeschlagen wird der Button "next" auf der Test Seite aktiviert
+ 		und die Test TextArea deaktiviert.
+ 	run:
+ 		Compiliert den Code/Test und führt diesen dann aus.
+ 	clear:
+ 		Leert die Console
+ 	fieldClear:
+ 		Leert das TextField in welchem Übergabeparameter eingegeben werden koennen.
+ 	nextTest:
+ 		Wechselt vom Test schreiben zum Code schreiben. Dabei wird der Test gespeichert
+ 		und ausgefuehrt. Schlaegt dieser Fehl wird der Inhalt der rechten TextArea dem
+ 		Tracking Objekt MyProgress zur TestList hinzugefuegt.
+ 	nextCode:
+ 	 	Wechselt vom Code schreiben zum Test schreiben. Dabei wird der Code gespeichert
+ 		und ausgefuehrt. Besteht dieser den Test wird der Inhalt der rechten TextArea 		dem Tracking Objekt MyProgress zur CodeList hinzugefuegt.
+ 	Tracking:
+ 		Oeffnet das Tracking Fenster.
+ 	
+ 	public void timerLapsed()
+ 		ist der Timer abgelaufen wird vom aktuell aktivem Fenster in das inaktive
+ 		Fenster gewechselt, sodass der Nutzer gezwungen ist seine aktuelle Phase zu
+ 		beenden und entweder mit dem Code oder dem Test weiter zu machen.
+ 		
+ 	private void disableTest()
+ 		setzt die Werte aller relevanten Variablen so, dass die Testphase beendet wird
+ 		
+ 	private void disableCode()
+ 		setzt die Werte aller relevanten Variablen so, dass die Codephase beendet wird
+ 		
+ 	private void showTrackingWindow()
+ 		initialisiert ein neus Fenster für die Tracking GUI
+ 		
  Timer:
  
  ConfigReader:
