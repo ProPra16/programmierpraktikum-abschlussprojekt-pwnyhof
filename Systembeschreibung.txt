@@ -149,7 +149,40 @@ Information:
 Program:
  
 Tracking:
- 
+  Die Klasse enthaelt 4 Listen fuer Code und Test(String) sowie todeTime und testTime(int)
+	public void addToCodeTime(int time)
+		fügt der Liste codeTime den uebergebenen Integer time hinzu
+		
+	public void addToTestTime(int time)
+		fügt der Liste testTime den uebergebenen Integer time hinzu
+		
+	public int getCodeTime(int index)
+		getter Methode um den Index der codeTime zu erhalten
+		
+	public int getTestTime(int index)
+		getter Methode um den Index der testTime zu erhalten
+		
+	public void addToCodeList(String codefile)
+		fuegt der codeList den uebergebene String codefile zu
+		
+	public void addToTestList(String codefile)
+		fuegt der testList den uebergebene String testfile zu
+
+	public String getCode(int index)
+		getter um den Eintrag in der codeList am uebergebenen Index zu erhalten
+		
+	public String getTest(int index)
+		getter um den Eintrag in der testList am uebergebenen Index zu erhalten
+	
+	public String getTestSize(int index)
+		getter um die Anzahl der Elemente der testList zu erhalten
+	
+	public String getCodeSize(int index)
+		getter um die Anzahl der Elemente der codeList zu erhalten
+	
+	public void clearLists()
+		Methode um beide Listen zu leeren
+		
 TrackingScreenController:
  
  
