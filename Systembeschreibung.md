@@ -34,10 +34,15 @@ Welche Klassen gibt es?
  		console ein Outputstream initiiert, um eine Terminal-Ausgabe zu simulieren. Dazu
  		dient der PrintStream out, welchem der OutputStream zugewiesen wird.
  		Die ActionEvents werden wie folgt behandelt:
- 		neu:
+ 	neu:
  		die linke und rechte TextArea werden geleert.
- 		catalog:
- 		die Möglichkeit in der linken TextArea einen Code zu schreiben wird deaktiviert,
+ 	catalog:
+ 		die Moeglichkeit in der linken TextArea einen Code zu schreiben wird
+ 		deaktiviert, ein neuer DirectoryChooser wird mit dem Pfad ./Task/ als
+ 		initialDirectory initiiert und bietet die Moeglichkeit eine Aufgabe zu wählen
+ 		erstellt eine neue CLasse und einen neuen Test basierend auf den von in
+ 		ConfigReader gelesenen Daten.
+ 	load:
  		
  
  Timer:
