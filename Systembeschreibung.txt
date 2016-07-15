@@ -11,21 +11,21 @@ Welche Klassen gibt es?
  - Tracking
  - TrackingScreenController
  
- Desweiteren gibt es noch 2 .fxml Dokumente
+Desweiteren gibt es noch 2 .fxml Dokumente
  - TextScreen
  - TrackingScreen
- in welchen sich das jeweilige Layout für das Hauptfenster bzw. das Trackingfenster
- befindet.
+in welchen sich das jeweilige Layout für das Hauptfenster bzw. das Trackingfenster
+befindet.
  
  Interaktion der Klassen untereinander:
  
- TDDTStart:
+TDDTStart:
  Zunaechst wird durch das Ausfuehren der Klasse TDDTStart das Layout des Programms
  aus der Datei TextScreen.fxml geladen, danach wird darauf basierend eine neue Scene
  erstellt und zusammen mit dem Fenstertitel der Stage hinzugefuegt, bevor diese dann
  gezeigt wird.
  
- MainScreenController:
+MainScreenController:
  Der MainScreenController weist den GUI Elementen (Menue, Buttons, TextAreas und
  TextField) Variablen zu um diese spaeter in den Methoden nutzen zu können.
  	Methoden:
@@ -98,7 +98,8 @@ Welche Klassen gibt es?
  	private void showTrackingWindow()
  		initialisiert ein neus Fenster für die Tracking GUI
  		
- Timer:
+		
+Timer:
  	public long startTimer()
  		startet den Timer bei System.currentTimeMillis()
  	
@@ -119,17 +120,29 @@ Welche Klassen gibt es?
  		gibt den aktuellen Wert der Variable timePassed zurueck.
  		
  		
- ConfigReader:
+ConfigReader:
+	
  
- Console:
+Console:
  
- Information:
+Information:
+		Diese Klasse beinhaltet den Datentyp Information, in welchem testName, codeName und filePath
+		gespeichert sind.
+	public String getTestFileName()
+		gibt beim Aufruf den Namen der Testdatei wieder
+		
+	public String getCodeFileName()
+		gibt beim Aufruf den Namen der Code Datei wieder
+	
+	public String getPathToFiles()
+		gibt beim Aufruf den Dateipfad von Test und Code zurueck
+		
+		
+Program:
  
- Program:
+Tracking:
  
- Tracking:
- 
- TrackingScreenController:
+TrackingScreenController:
  
  
  
