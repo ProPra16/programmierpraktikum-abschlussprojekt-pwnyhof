@@ -124,10 +124,18 @@ ConfigReader:
 	
  
 Console:
+  Die Klasse Console beinhaltet eine TextArea und erweitert OutputStream.
+	
+	public Console(TextArea txtArea)
+		Beim Aufruf wird hier der TextArea aus der Klasse Console die uebergebene TextArea
+		zugewiesen.
+	
+	public void write(int b)
+		fügt der TextArea eine Ausgabe basierend auf dem String.valueOf((char) b) hinzu.
  
 Information:
-		Diese Klasse beinhaltet den Datentyp Information, in welchem testName, codeName und filePath
-		gespeichert sind.
+  Diese Klasse beinhaltet den Datentyp Information, in welchem testName, codeName und filePath
+  gespeichert sind.
 	public String getTestFileName()
 		gibt beim Aufruf den Namen der Testdatei wieder
 		
