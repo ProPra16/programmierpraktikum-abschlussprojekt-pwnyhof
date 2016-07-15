@@ -80,13 +80,13 @@ public class TrackingScreenController {
 			try {
 				if (MainScreenController.config.withBabysteps()) {
 					long with = MainScreenController.getBabyStepDuration() / 1000;
-					String withBSteps = String.valueOf(with);
+					String withBSteps = String.valueOf(with + "s");
 					timeLeft.setText(withBSteps);
 				}
 				if (MainScreenController.config.withoutBabysteps()) {
-					long without = MainScreenController.getBabyStepDuration() / 1000;
+					long without = MainScreenController.getDuration() / 1000;
 					String withBSteps = String.valueOf(without);
-					timeLeft.setText(withBSteps);
+					timeLeft.setText(withBSteps + "s");
 				}
 			} catch (NullPointerException eNull) {
 			}
@@ -121,6 +121,20 @@ public class TrackingScreenController {
 		 * CodeTestSwitch is true or not
 		 */
 		if (e.getSource() == back) {
+			try {
+				if (MainScreenController.config.withBabysteps()) {
+					long with = MainScreenController.getBabyStepDuration() / 1000;
+					String withBSteps = String.valueOf(with + "s");
+					timeLeft.setText(withBSteps);
+				}
+				if (MainScreenController.config.withoutBabysteps()) {
+					long without = MainScreenController.getDuration() / 1000;
+					String withBSteps = String.valueOf(without);
+					timeLeft.setText(withBSteps + "s");
+				}
+			} catch (NullPointerException eNull) {
+			}
+
 			if (!CodeTestSwitch && counter > 0) { // Code
 				TARight.setText(main.MyProgress.getCode(counter));
 				TALeft.setText(main.MyProgress.getCode(counter - 1));
