@@ -2,9 +2,8 @@ package de.hhu.propra16.tddt.controller;
 
 	/**
 	 * The Timer Class from TDDT project
-	 * 
-	 * @author group pwnyhof
 	 * contains some variables for time management
+	 * @author group pwnyhof
 	 * @param startTime long type, Time to start with
 	 * @param endTime long type, Time at the end
 	 * @param timerRuns (true if it runs or false if not)
