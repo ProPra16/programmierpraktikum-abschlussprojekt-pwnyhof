@@ -121,8 +121,44 @@ Timer:
  		
  		
 ConfigReader:
-	
- 
+  Klasse um die Konfiguration aus einer Datei config.txt zu lesen, welche sich in einem
+  Unterordner von ./Tasks/ befindet.
+  
+	public ConfigReader(String task)
+		Bekommt einen String übergeben, welcher dem Dateipfad filePathToTask angehaengt wird.
+		es wird der Path filePathToConfig erstellt, welcher dem vorher erstellten filePathToTask
+		den suffix "config.txt" anhaengt.
+		Abschliessend wird versucht an diesem Ort die config.txt auszulesen und der String Liste
+		contentOfConfig hinzu zu fuegen.
+		Es wird ein Error ausgegeben, sollte keine config.txt vorhanden sein.
+		
+	public String getTask()
+		getter Methode um den aktuellen Task zu erhalten
+		
+	public String getPath()
+		getter Methode um den aktuellen Dateipfad zu erhalten
+		
+	public String getProgramName()
+		liest den Namen des Programms aus der contentOfConfig Liste an Position 1 aus, fuegt diesen
+		dem String lineWithInfo hinzu, aus welchem danach der Name mit lineWithInfo.substring(13)
+		ausgelesen wird.
+		
+	public String getTestName()
+		liest den Namen des Tests aus der contentOfConfig Liste an Position 0 aus, fuegt diesen
+		dem String lineWithInfo hinzu, aus welchem danach der Name mit lineWithInfo.substring(10)
+		ausgelesen wird.
+		
+	public boolean withBabysteps()
+		fuegt dem String lineWithInfo den Inhalt von contentOfConfig an Position 2 hinzu, der
+		Substring lineWithInfo.substring(11, 15) wird dann zum String babysteps hinzugefuegt, aus
+		welchem dann ein Boolean Wert geparsed wird um zu bestimmen ob Babysteps aktiviert oder
+		deaktiviert sind.
+
+	public long timeOfBabysteps()
+		fuegt dem String lineWithInfo den Inhalt von contentOfConfig an Position 3 hinzu, der
+		Substring lineWithInfo.substring(19) wird dann zum String duration hinzugefuegt, aus
+		welchem dann ein Long Wert geparsed wird um die Dauer der Babysteps zu erhalten.
+		
 Console:
   Die Klasse Console beinhaltet eine TextArea und erweitert OutputStream.
 	
