@@ -1,10 +1,7 @@
 package de.hhu.propra16.tddt.controller;
 
 import java.io.IOException;
-import java.io.PrintStream;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -55,12 +52,11 @@ public class TrackingScreenController {
 	/**
 	 * method is called with
 	 * 
-	 * @param e
-	 *            an ActionEvent
+	 * @param ActionEvent
 	 * @throws IOException
 	 * 
-	 *             each if-statement with e.getSource() determines what should
-	 *             be done next based on which button was clicked
+	 * each if-statement with e.getSource() determines what should
+	 * be done next based on which button was clicked
 	 */
 	@FXML
 	public void handleButton(ActionEvent e) throws IOException {
