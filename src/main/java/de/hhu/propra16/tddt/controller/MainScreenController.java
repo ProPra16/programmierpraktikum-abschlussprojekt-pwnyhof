@@ -263,10 +263,7 @@ public class MainScreenController {
 					leftTA.setText(leftTA.getText() + code + "\n");
 				}
 			}
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/master
 			codeLoad.close();
 
 			rightTA.setText("");
@@ -278,10 +275,7 @@ public class MainScreenController {
 					rightTA.setText(rightTA.getText() + test + "\n");
 				}
 			}
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/master
 			testLoad.close();
 		} catch (IOException ex) {
 
