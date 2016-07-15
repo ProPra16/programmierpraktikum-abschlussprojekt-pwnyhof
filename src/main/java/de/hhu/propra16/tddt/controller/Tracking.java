@@ -11,8 +11,6 @@ import java.util.ArrayList;
  *
  */
 public class Tracking {
-	private String codefile = "";
-	private String testfile = "";
 	
 	private ArrayList<String> codeList = new ArrayList<String>();
 	private ArrayList<String> testList = new ArrayList<String>();
@@ -21,8 +19,7 @@ public class Tracking {
 	private ArrayList<Integer> testTime = new ArrayList<Integer>();
 	
 	public Tracking () {
-		codefile = this.codefile;
-		testfile = this.testfile;
+
 	}
 	
 	/*
@@ -47,16 +44,6 @@ public class Tracking {
 		return testTime.get(index);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public void addToCodeList(String codefile) {
 		codeList.add(codefile);
 	}
@@ -71,14 +58,6 @@ public class Tracking {
 	
 	public String getTest(int index) {
 		return testList.get(index);
-	}
-	
-	public void setCodefile(String codefile) {
-		this.codefile = codefile;
-	}
-	
-	public void setTestfile(String testfile) {
-		this.testfile = testfile;
 	}
 
 	public int getTestSize() {
