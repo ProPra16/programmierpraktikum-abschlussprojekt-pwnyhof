@@ -190,6 +190,24 @@ Program:
 		String um, erstellt aus diesen Daten eine CompilationUnit, compiliert das Programm imaginär,
 		nimmt dan das Resultat entgegen und gibt schliesslich alle Fehlermeldungen aus, sollte es welche
 		gegeben haben.
+		
+	public void run(String args)
+		Fuer den Fall, dass ein Resultat vorhanden ist (!=null) und es keine Fehler gab wird das Programm
+		mit zusammen mit dem String agrs als Uebergabeparameter ausgeführt. Der zweite try & catch Block
+		gibt die Ausgabe die normalerweise auf dem Terminal erscheint auf der eigenen Console von TDDT aus.
+		
+	public int test()
+		liest Code und Test aus den Pfaden testFilePath und codeFilePath, gibt eine Fehlermeldung aus wenn
+		ein Pfad nicht gefunden wurde. Wandelt danach Test und Code in zwei seperat Strings um (contentTestInString
+		und contentCodeInString) und erstellt aus diesen Daten eine neue CompilationUnit. Dann werden die Tests
+		ausgefuehrt, die Resultate gespeichert und eventuell aufgetretene Fehler ausgegeben. Selbiges geschieht mit
+		den Resultaten vom Testen. Die Anzahl der Fehler wird in der Integer Variable numberFailed gespeichert, ist
+		diese = 0 Wird eine Benachrichtigung ausgegeben, dass alle Tests bestanden wurden. Sollten jedoch ein oder mehr
+		Fehler aufgetreten sein wird die Anzahl der fehlgeschlagen, ignorierten und erfolgreichen Tests ausgegeben.
+	
+	private void println(InputStream inStream)
+		liest einen InputStream aus dem Terminal und speichert diesen um ihn auf der TDDT eigenen Console ausgeben
+		zu können.
 
  
 Tracking:
