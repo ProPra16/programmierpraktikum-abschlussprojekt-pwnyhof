@@ -1,64 +1,64 @@
 Einleitung:
 
-Das eigentliche Lehrziel des Programms, ist es einen Überblick in die Testgetriebene Entwicklung zu bekommen.
+Das eigentliche Lehrziel des Programms, ist es einen Ueberblick in die Testgetriebene Entwicklung zu bekommen.
 Dazu  wird folgendes Schema verwendet:
 
 1. Einen Test schreiben
   - Dieser soll fehlschlagen
-2. Wenn die Bedingung erfüllt ist muss Code geschrieben werden der den Test gelingen lässt.
-3. Wenn der Code kompiliert und der Test durchläuft kann man in der REFACTOR-Phase seinen
+2. Wenn die Bedingung erfuellt ist muss Code geschrieben werden der den Test gelingen laesst.
+3. Wenn der Code kompiliert und der Test durchlaeuft kann man in der REFACTOR-Phase seinen
    geschriebenen Code verbessern.
-4. Der nächste Test soll geschrieben werden
+4. Der naechste Test soll geschrieben werden
 5. Diese Reihenfolge wiederholt sich daraufhin
 
-Für den Benutzer:
+Fuer den Benutzer:
 
-Um sich eine Übung auszusuchen, navigieren Sie auf den Menüreiter File -> Catalog und wählen Sie die 
-gewünschte Aufgabe aus.
+Um sich eine Uebung auszusuchen, navigieren Sie auf den Menuereiter File -> Catalog und waehlen Sie die 
+gewuenschte Aufgabe aus.
 
 Nun haben Sie Zeit sich die Aufgabe anzuschauen.
 
-In den beiden vorliegenden Textfeldern sollte nun ein Programmgerüst erschienen sein.
+In den beiden vorliegenden Textfeldern sollte nun ein Programmgeruest erschienen sein.
 Ihre erste Aufgabe wird sein einen fehlschlagenden Test zu schreiben.
 
-Wenn Sie dies getan haben können sie den Knopf "check" betätigen.
+Wenn Sie dies getan haben koennen sie den Knopf "check" betaetigen.
 Ihr Test wird kompiliert und getestet.
-Falls es einen fehlschlagenden Test gibt, können Sie den Knopf "next" benutzen.
-Dieser Überprüft nochmals die Bedingung, dass ein Test fehlschlägt und leitet Sie
-zur Codephase über.
+Falls es einen fehlschlagenden Test gibt, koennen Sie den Knopf "next" benutzen.
+Dieser Ueberprueft nochmals die Bedingung, dass ein Test fehlschlaegt und leitet Sie
+zur Codephase ueber.
 
 Falls bei der Aufgabe die Erweiterung "Babysteps" aktiviert ist, ist Ihnen in den darauffolgenden
 Phasen ein Zeitlimit gesetzt.
-Wenn das Zeitlimit abgelaufen ist, werden Ihre Änderungen der aktuellen Phase gelöscht und Sie werden
-in die vorherige Phase zurückversetzt.
-Sie können jedoch nicht mehr als eine Phase zurückfallen.
+Wenn das Zeitlimit abgelaufen ist, werden Ihre Aenderungen der aktuellen Phase geloescht und Sie werden
+in die vorherige Phase zurueckversetzt.
+Sie koennen jedoch nicht mehr als eine Phase zurueckfallen.
 
-In der Codephase müssen Sie nun den Code zu Ihrem Test schreiben.
-Mit Hilfe des Knopfes "check" können Sie überprüfen ob ihr Programm kompiliert und Ihr Test
-durchläuft.
+In der Codephase muessen Sie nun den Code zu Ihrem Test schreiben.
+Mit Hilfe des Knopfes "check" koennen Sie Ueberpruefen ob ihr Programm kompiliert und Ihr Test
+durchlaeuft.
 Falls dies der Fall ist (Ihr Programm kompiliert und alle Tests laufen durch) kommen
 Sie zur REFACTOR-Phase.
-Nun haben Sie die Möglichkeit ihr Programm zu verbessern.
-Unten links im Programmfenster sehen Sie einen Knopf "run", dieser kann betätigt werden um Ihr Programm zu starten.
-Wenn Sie Argumente übergeben wollen können Sie dies in dem dafür vorgesehenen Textfeld tun.
+Nun haben Sie die Moeglichkeit ihr Programm zu verbessern.
+Unten links im Programmfenster sehen Sie einen Knopf "run", dieser kann betaetigt werden um Ihr Programm zu starten.
+Wenn Sie Argumente Uebergeben wollen koennen Sie dies in dem dafuer vorgesehenen Textfeld tun.
 
-Der Knopf "next" leitet im folgenden die nächste Test-Phase ein.
+Der Knopf "next" leitet im folgenden die naechste Test-Phase ein.
 
-Falls Sie explizit während des Programmiervorgangs speichern wollen können Sie dies tun, indem Sie
-auf den Menüreiter File -> SaveCode oder SaveTest navigieren.
-Den letzten speicherstand können Sie per File -> Load abrufen, beachten Sie jedoch, dass nach einem "next" oder "check"
+Falls Sie explizit waehrend des Programmiervorgangs speichern wollen k�oennen Sie dies tun, indem Sie
+auf den Menuereiter File -> SaveCode oder SaveTest navigieren.
+Den letzten speicherstand koennen Sie per File -> Load abrufen, beachten Sie jedoch, dass nach einem "next" oder "check"
 Knopfdruck das Programm automatisch gespeichert wird.
 
-Für die Übungsleiter:
+Fuer die Uebungsleiter:
 
-Um eine neue Übungsaufgabe zu kreieren, legen Sie im Ordner "Task" einen neuen Ordner mit dem Übungsnamen an.
+Um eine neue Uebungsaufgabe zu kreieren, legen Sie im Ordner "Task" einen neuen Ordner mit dem Uebungsnamen an.
 Dieser muss drei Dateien enthalten:
 
 1. Eine Code-Datei (.java)
 2. Eine Test-Datei (.java)
 3. Eine config-Datei (.txt)
 
-Solang ihre Code.java und Test.java kompilieren können Sie ein beliebiges Programmgerüst erstellen.
+Solang ihre Code.java und Test.java kompilieren koennen Sie ein beliebiges Programmgeruest erstellen.
 
 Wichtig ist das Layout der config-Datei.
 Hier ein Beispiel:
@@ -72,7 +72,7 @@ Babysteps: true
 Babystep Duration: 15000
 
 Beachten Sie, dass keine Leerzeichen am Ende jeder Zeile stehen und, dass "ProgramName: xxxx" in
-der ersten Zeile stehen müssen.
+der ersten Zeile stehen muessen.
 "ProgramName: xxxx" muss den Namen ihrer Code-Datei zugewiesen bekommen (ohne .java).
 "TestName: xxxx" muss den Namen ihrer Test-Datei zugewiesen bekommen (ohne .java).
 "Babysteps: xxxx" ist "true" oder "false" je nachdem ob die Erweiterung aktiviert sein soll.

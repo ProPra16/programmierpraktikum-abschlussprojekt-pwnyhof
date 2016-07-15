@@ -1,17 +1,18 @@
 package de.hhu.propra16.tddt.controller;
 
-/**
- * The Timer Class from TDDT project
- * 
- * @author group pwnyhof
- *
- */
-public class Timer {
 	/**
-	 * some variables for time management (start & end time), the actual state
-	 * of the timer (runs or not), a new MainScreenController and also a Thread
-	 * to do stuff with
+	 * The Timer Class from TDDT project
+	 * contains some variables for time management
+	 * @author group pwnyhof
+	 * @param startTime long type, Time to start with
+	 * @param endTime long type, Time at the end
+	 * @param timerRuns (true if it runs or false if not)
+	 * @param controller a new MainScreenController
+	 * @param t a Thread to handle the running timer
+	 * @param timePassed used in method timePassed() to store the passed time
 	 */
+public class Timer {
+
 	private long startTime;
 	private long endTime;
 	private volatile boolean timerRuns = true;
@@ -28,8 +29,7 @@ public class Timer {
 	 * gets unlocked Then the current Thread is interrupted then the Thread
 	 * starts again.
 	 * 
-	 * @param con
-	 *            is a new MainScreenController aka. a new GUI window from TDDT
+	 * @param con is a new MainScreenController aka. a new GUI window from TDDT
 	 */
 	public Timer(MainScreenController con, long babystepDuration) {
 		this.controller = con;
