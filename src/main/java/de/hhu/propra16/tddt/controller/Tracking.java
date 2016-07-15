@@ -15,8 +15,8 @@ public class Tracking {
 	private ArrayList<String> codeList = new ArrayList<String>();
 	private ArrayList<String> testList = new ArrayList<String>();
 	
-	private ArrayList<Integer> codeTime = new ArrayList<Integer>();
-	private ArrayList<Integer> testTime = new ArrayList<Integer>();
+	private ArrayList<Long> codeTime = new ArrayList<Long>();
+	private ArrayList<Long> testTime = new ArrayList<Long>();
 	
 	public Tracking () {
 
@@ -28,19 +28,19 @@ public class Tracking {
 		return "";
 	}*/
 	
-	public void addToCodeTime(int time) {
+	public void addToCodeTime(long time) {
 		codeTime.add(time);
 	}
 	
-	public void addToTestTime(int time) {
+	public void addToTestTime(long time) {
 		testTime.add(time);
 	}
 	
-	public int getCodeTime(int index) {
+	public long getCodeTime(int index) {
 		return codeTime.get(index);
 	}
 	
-	public int getTestTime(int index) {
+	public long getTestTime(int index) {
 		return testTime.get(index);
 	}
 	

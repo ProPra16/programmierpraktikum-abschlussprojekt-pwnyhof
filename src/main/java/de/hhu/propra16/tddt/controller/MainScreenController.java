@@ -87,11 +87,6 @@ public class MainScreenController {
 				if (config.withBabysteps()) {
 					babystepDuration = config.timeOfBabysteps();
 				}
-				// ***************************************************
-				if (config.withoutBabysteps()) {
-					duration = config.timeOfBabysteps();
-				}
-
 			}
 			codefile = new File(config.getPath() + config.getProgramName() + ".java");
 			testfile = new File(config.getPath() + config.getTestName() + ".java");
@@ -154,6 +149,7 @@ public class MainScreenController {
 						nextCode.setDisable(false);
 						currentPhase.setBackground(
 								new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+						// tracking.setDisable(false);
 						timer.stopTimer();
 					} catch (NullPointerException e2) {
 
@@ -209,6 +205,11 @@ public class MainScreenController {
 					try {
 
 						MyProgress.addToTestList(rightTA.getText());
+						try {
+							MyProgress.addToTestTime(timer.getTime());
+						} catch (Exception e5000) {
+							MyProgress.addToTestTime(-1);
+						}
 						disableTest();
 						if (config.withBabysteps()) {
 							if (!firstTest) {
@@ -218,18 +219,8 @@ public class MainScreenController {
 							contentOfPhase = leftTA.getText();
 							firstTest = false;
 						}
-						// ***************************************************
-						if (config.withoutBabysteps()) {
-							if (!firstTest) {
-								timer.stopTimer();
-							}
-							timer = new Timer(this, duration);
-							contentOfPhase = leftTA.getText();
-							firstTest = false;
-						}
-
 					} catch (NullPointerException e2) {
-
+						System.out.print("EXCEPTION");
 					}
 				}
 			} catch (NullPointerException e1) {
@@ -245,18 +236,14 @@ public class MainScreenController {
 				if (zeroFails == 0) {
 					try {
 						MyProgress.addToCodeList(leftTA.getText());
+						MyProgress.addToCodeTime(timer.getTime());
 						disableCode();
 						if (config.withBabysteps()) {
 							timer = new Timer(this, babystepDuration);
 							contentOfPhase = rightTA.getText();
 						}
-						// ***************************************************
-						if (config.withBabysteps()) {
-							timer = new Timer(this, duration);
-							contentOfPhase = rightTA.getText();
-						}
 					} catch (NullPointerException e2) {
-
+						System.out.print("EXCEPTION nextCode");
 					}
 				}
 			} catch (NullPointerException e1) {
@@ -337,15 +324,16 @@ public class MainScreenController {
 		runTest.setDisable(true);
 		rightTA.setDisable(true);
 		nextCode.setDisable(true);
+		nextTest.setDisable(true);
 		currentPhase.setBackground(new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
 
 	private void disableCode() {
 		runCode.setDisable(true);
-		nextCode.setDisable(true);
 		leftTA.setDisable(true);
 		runTest.setDisable(false);
 		rightTA.setDisable(false);
+		nextCode.setDisable(true);
 		nextTest.setDisable(true);
 		currentPhase.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 	}

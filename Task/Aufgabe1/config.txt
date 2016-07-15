@@ -1,4 +1,4 @@
 ProgramName: Code
 TestName: Try
 Babysteps: true
-Babystep Duration: 180000
+Babystep Duration: 10000
