@@ -14,7 +14,7 @@ import de.hhu.propra16.tddt.controller.MainScreenController;
  */
 public class ConfigReaderTest {
 
-	@Test
+	/*@Test
 	public void wrongDirectory() {
 		File file = new File("C:\\Directory1");
 		if (!file.exists()) {
@@ -27,8 +27,8 @@ public class ConfigReaderTest {
 		ConfigReader isConfig = main.config;
 		main.loadMethod();
 		
-		
+	
 
-	}
+	}*/
 
 }
