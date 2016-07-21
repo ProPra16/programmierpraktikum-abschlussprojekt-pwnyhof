@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'TDDTStart'
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+  main {
+    resources {
+        srcDirs = ["src/main/java"]
+        includes = ["**/*.fxml"]
+    }
+  }
+}
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+	compile "de.hhu.stups:virtual-kata-lib:1.0.1"
+}
