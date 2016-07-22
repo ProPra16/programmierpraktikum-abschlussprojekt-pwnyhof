@@ -36,7 +36,7 @@ public class Program {
 
 	
 	public void compile() {
-		// Compiliert das Programm NICHT imaginär
+		// Compiliert das Programm NICHT imaginaer
 		Process processCompile = null;
 		try {
 			processCompile = Runtime.getRuntime().exec("javac " + codeFilePath);
@@ -70,7 +70,7 @@ public class Program {
 		units[0] = unit;
 		InternalCompiler comp = new InternalCompiler(units);
 
-		// Compiliert das Programm imaginär
+		// Compiliert das Programm imaginaer
 		comp.compileAndRunTests();
 
 		// Nimmt das Resultat des Compilierens entgegen
@@ -140,7 +140,7 @@ public class Program {
 		units[1] = unitCode;
 		InternalCompiler comp = new InternalCompiler(units);
 
-		// Lässt die Tests laufen
+		// Laesst die Tests laufen
 		comp.compileAndRunTests();
 
 		// Nimmt das Resultat des Compilierens entgegen
